@@ -11,6 +11,10 @@ export let tileNumberToOffset = tileset => number => {
   };
 };
 
-export let mapRows = map => layerNo => {
-  return _.chunk(map.layers[layerNo].data, map.width);
+export let layerRows = layer => {
+  return _.chunk(layer.data, layer.width);
+};
+
+export let getLayerByName = map => layerName => {
+  return _.find(map.layers, (layer) => layer.name == layerName);
 };
