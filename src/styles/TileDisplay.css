@@ -1,7 +1,7 @@
 .tile-display {
   position: relative;
   margin-left: calc(50% - 40px);
-  margin-top: calc(50% - 80px);
+  margin-top: calc(50% - 120px);
   white-space: nowrap;
   image-rendering: pixelated;
   zoom: 4;
@@ -23,6 +23,27 @@
 .tile-display__player {
   position: absolute;
   width: 16px;
-  height: 16px;
+  height: 15px;
   background: rgba(255, 0, 0, 0.5);
+  border-bottom: 1px solid blue;
+}
+
+.tile-display__player.is-facing-north {
+  transform: rotate(180deg);
+}
+
+.tile-display__player.is-facing-east {
+  transform: rotate(270deg);
+}
+
+.tile-display__player.is-facing-south {
+  transform: rotate(0deg);
+}
+
+.tile-display__player.is-facing-west {
+  transform: rotate(90deg);
+}
+
+.tile-display__player.is-acting {
+  background: rgba(0, 255, 0, 0.5);
 }

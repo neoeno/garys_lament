@@ -5,12 +5,27 @@
  */
 
 import flatMap from '../game/flatMap.json';
-import { getObjectByName, canWalkTo } from '../lib/Tiled';
+import { getObjectByName, canWalkTo, isFacingTalker } from '../lib/Tiled';
 
-const player = getObjectByName(flatMap)('Player');
+const player = getObjectByName('Player')(flatMap);
 const initialState = {
   x: Math.floor(player.x / flatMap.tilewidth),
-  y: Math.floor(player.y / flatMap.tileheight)
+  y: Math.floor(player.y / flatMap.tileheight),
+  facing: 'south'
+};
+
+let movementToFacing = movement => {
+  if (movement.y == -1) {
+    return 'north';
+  } else if (movement.x == 1) {
+    return 'east';
+  } else if (movement.y == 1) {
+    return 'south';
+  } else if (movement.x == -1) {
+    return 'west';
+  } else {
+    return 'south';
+  }
 };
 
 module.exports = function(state = initialState, action) {
@@ -19,13 +34,26 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'MOVE_PLAYER': {
-      Object.assign(nextState, {
+      let targetPosition = {
         x: nextState.x + action.movement.x,
         y: nextState.y + action.movement.y
+      };
+
+      if (canWalkTo(targetPosition)(flatMap)) {
+        Object.assign(nextState, targetPosition);
+      }
+
+      Object.assign(nextState, {
+        facing: movementToFacing(action.movement),
+        acting: false
       });
 
-      if (!canWalkTo(flatMap)({x: nextState.x, y: nextState.y})) { return state; }
-
+      return nextState;
+    } break;
+    case 'ACT': {
+      if (isFacingTalker(flatMap)({x: nextState.x, y: nextState.y})(nextState.facing)) {
+        nextState.acting = true;
+      }
       return nextState;
     } break;
     default: {
