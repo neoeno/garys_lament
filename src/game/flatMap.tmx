@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="19">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="20">
  <tileset firstgid="1" name="poketiles" tilewidth="16" tileheight="16" tilecount="1558">
   <image source="../../../../../Downloads/poketiles.png" width="608" height="656"/>
  </tileset>
@@ -276,6 +276,11 @@
   <object id="17" name="e" x="0" y="16" width="16" height="16">
    <properties>
     <property name="text" value="Hi! My name is e! I'm really tired today."/>
+   </properties>
+  </object>
+  <object id="19" name="Bookcase" x="64" y="64" width="16" height="32">
+   <properties>
+    <property name="text" value="Just a load of books..."/>
    </properties>
   </object>
  </objectgroup>

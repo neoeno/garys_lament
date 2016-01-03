@@ -147,6 +147,21 @@
                  "width":16,
                  "x":0,
                  "y":16
+                }, 
+                {
+                 "height":32,
+                 "id":19,
+                 "name":"Bookcase",
+                 "properties":
+                    {
+                     "text":"Just a load of books..."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -155,7 +170,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":19,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "properties":
     {

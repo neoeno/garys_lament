@@ -17,28 +17,3 @@
   width: 16px;
   line-height: 0;
 }
-
-.tile-display__player {
-  background: url(../images/player.png);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-}
-
-.tile-display__player.is-facing-north {
-  background-position: -16px 0px;
-}
-
-.tile-display__player.is-facing-east {
-  background-position: -96px 0px;
-}
-
-.tile-display__player.is-facing-south {
-  background-position: -0px 0px;
-}
-
-.tile-display__player.is-facing-west {
-  background-position: -32px 0px;
-}

@@ -30,10 +30,6 @@ class TileDisplayComponent extends React.Component {
     );
   }
 
-  player() {
-    return (<div className={`tile-display__player is-facing-${this.props.player.facing}`} />);
-  }
-
   tileDisplayOffset() {
     return {
       left: `${80 - this.props.player.x * 16}px`,
@@ -43,11 +39,8 @@ class TileDisplayComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="tile-display" style={this.tileDisplayOffset()}>
-          {this.background()}
-        </div>
-        {this.player()}
+      <div className="tile-display" style={this.tileDisplayOffset()}>
+        {this.background()}
       </div>
     );
   }

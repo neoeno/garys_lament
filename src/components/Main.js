@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import key from 'key';
 import TileDisplayComponent from './TileDisplayComponent';
 import TextDisplayComponent from './TextDisplayComponent';
+import PlayerComponent from './PlayerComponent';
 import movePlayer from '../actions/player/movePlayer';
 import act from '../actions/player/act';
 
@@ -37,10 +38,11 @@ class AppComponent extends React.Component {
 
   render() {
     return (
-      <div className="index">
+      <div className="game-frame__wrapper">
         <div className="game-frame">
           <TileDisplayComponent player={this.props.player} />
           <TextDisplayComponent player={this.props.player} />
+          <PlayerComponent player={this.props.player} />
         </div>
       </div>
     );
