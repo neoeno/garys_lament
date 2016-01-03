@@ -1,4 +1,5 @@
 .tile-display {
+  position: relative;
   margin-left: calc(50% - 40px);
   margin-top: calc(50% - 80px);
   white-space: nowrap;
@@ -17,4 +18,11 @@
   height: 16px;
   width: 16px;
   line-height: 0;
+}
+
+.tile-display__player {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 0, 0, 0.5);
 }

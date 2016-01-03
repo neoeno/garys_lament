@@ -2,14 +2,14 @@
 
 import React from 'react';
 import flatMap from '../game/flatMap.json';
-import { layerRows, tileNumberToOffset, getLayerByName } from '../lib/Tiled';
+import { layerRows, tileNumberToOffset, getLayerByName, getObjectByName } from '../lib/Tiled';
 
 require('styles/TileDisplay.css');
 
 let offsetToBackgroundPosition = (offset) => `-${offset.x}px -${offset.y}px`;
 
 class TileDisplayComponent extends React.Component {
-  tiles() {
+  background() {
     return layerRows(getLayerByName(flatMap)('Background')).map((row, i) => {
       let cells = row.map((cellValue, i2) => {
         return (<span key={i2}>{this.imageCell(cellValue)}</span>);
@@ -30,10 +30,19 @@ class TileDisplayComponent extends React.Component {
     );
   }
 
+  player() {
+    let playerObj = getObjectByName(flatMap)('Player');
+    return (<div className="tile-display__player" style={{
+      left: `${playerObj.x}px`,
+      top: `${playerObj.y}px`
+    }} />);
+  }
+
   render() {
     return (
       <div className="tile-display">
-        {this.tiles()}
+        {this.background()}
+        {this.player()}
       </div>
     );
   }

@@ -10,8 +10,50 @@
          "width":32,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":32,
+         "name":"Objects",
+         "objects":[
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":16,
+                 "y":80
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"Player",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":16,
+                 "y":80
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":32,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "properties":
     {

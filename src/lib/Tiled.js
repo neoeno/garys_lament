@@ -18,3 +18,7 @@ export let layerRows = layer => {
 export let getLayerByName = map => layerName => {
   return _.find(map.layers, (layer) => layer.name == layerName);
 };
+
+export let getObjectByName = map => objectName => {
+  return _.find(getLayerByName(map)('Objects').objects, (object) => object.name == objectName);
+};
