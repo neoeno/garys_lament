@@ -8,15 +8,19 @@ import TypingAnimationComponent from './TypingAnimationComponent';
 require('styles/TextDisplay.css');
 
 class TextDisplayComponent extends React.Component {
-  actingText() {
+  talker() {
     return getFacingTalker(flatMap)({x: this.props.player.x, y: this.props.player.y})(this.props.player.facing);
+  }
+
+  text() {
+    return this.talker().properties.text.split('//')[this.props.player.acting - 1];
   }
 
   render() {
     if (!this.props.player.acting) { return (<div></div>); }
     return (
       <div className="text-display">
-        <TypingAnimationComponent text={this.actingText().properties.text} />
+        <TypingAnimationComponent text={this.text()} />
       </div>
     );
   }

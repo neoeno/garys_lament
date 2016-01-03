@@ -5,12 +5,13 @@
  */
 
 import flatMap from '../game/flatMap.json';
-import { getObjectByName, canWalkTo, isFacingTalker } from '../lib/Tiled';
+import { getObjectByName, canWalkTo, getFacingTalker } from '../lib/Tiled';
 
 const player = getObjectByName('Player')(flatMap);
 const initialState = {
   x: Math.floor(player.x / flatMap.tilewidth),
   y: Math.floor(player.y / flatMap.tileheight),
+  acting: 0,
   facing: 'south'
 };
 
@@ -51,8 +52,12 @@ module.exports = function(state = initialState, action) {
       return nextState;
     } break;
     case 'ACT': {
-      if (isFacingTalker(flatMap)({x: nextState.x, y: nextState.y})(nextState.facing)) {
-        nextState.acting = !nextState.acting;
+      let talker = getFacingTalker(flatMap)({x: nextState.x, y: nextState.y})(nextState.facing);
+
+      if (talker && talker.properties.text.split('//').length > nextState.acting) {
+        nextState.acting = nextState.acting + 1;
+      } else {
+        nextState.acting = 0;
       }
       return nextState;
     } break;

@@ -13,6 +13,20 @@ class TypingAnimationComponent extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    window.clearInterval(this.state.ticker);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.text != this.props.text) {
+      window.clearInterval(this.state.ticker);
+      this.setState({
+        characterLimit: 0,
+        ticker: window.setInterval(this.tick.bind(this), 25)
+      });
+    }
+  }
+
   tick() {
     if (this.state.characterLimit >= this.props.text.length) {
       window.clearInterval(this.state.ticker);
