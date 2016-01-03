@@ -33,8 +33,8 @@ class TileDisplayComponent extends React.Component {
   player() {
     let playerObj = getObjectByName(flatMap)('Player');
     return (<div className="tile-display__player" style={{
-      left: `${playerObj.x}px`,
-      top: `${playerObj.y}px`
+      left: `${playerObj.x + this.props.player.x * 16}px`,
+      top: `${playerObj.y + this.props.player.y * 16}px`
     }} />);
   }
 
@@ -50,8 +50,8 @@ class TileDisplayComponent extends React.Component {
 
 TileDisplayComponent.displayName = 'TileDisplayComponent';
 
-// Uncomment properties you need
-// TileDisplayComponent.propTypes = {};
-// TileDisplayComponent.defaultProps = {};
+TileDisplayComponent.propTypes = {
+  player: React.PropTypes.object.isRequired
+};
 
 export default TileDisplayComponent;
