@@ -1,0 +1,12 @@
+.game-frame {
+  position: relative;
+  image-rendering: pixelated;
+  /*zoom: 4;*/
+  -webkit-filter: sepia(10%) hue-rotate(0deg) brightness(75%) contrast(180%);
+  width: 160px;
+  height: 160px;
+  border: 1px solid white;
+  overflow: hidden;
+  zoom: 4;
+  margin: 0 auto;
+}

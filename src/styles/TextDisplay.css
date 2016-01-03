@@ -1,6 +1,20 @@
 .text-display {
   position: absolute;
+  right: 0;
+  bottom: 0;
   left: 0;
-  top: 0;
-  color: white;
+  line-height: 1.8;
+  height: 48px;
+  background: white;
+  color: black;
+  padding: 18px;
+  zoom: 0.5;
+  font-family: "Pokemon GB", monospace;
+  font-size: 10px;
+
+  border-image-slice: 16 16 16 16;
+  border-image-width: 16px 16px 16px 16px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: repeat repeat;
+  border-image-source: url(../images/dialog-border.png);
 }

@@ -68,7 +68,7 @@ module.exports = {
         loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
       },
       {
-        test: /\.(png|jpg|gif|woff|woff2)$/,
+        test: /\.(png|jpg|gif|woff|woff2|ttf|svg)$/,
         loader: 'url-loader?limit=8192'
       }
     ]

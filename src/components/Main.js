@@ -1,5 +1,6 @@
 require('normalize.css');
 require('styles/App.css');
+require('styles/GameFrame.css');
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -29,7 +30,7 @@ class AppComponent extends React.Component {
       this.props.dispatch(movePlayer({x: 0, y: 1}));
     } else if (key.is(key.code.arrow.left, evt.which)) {
       this.props.dispatch(movePlayer({x: -1, y: 0}));
-    } else if (key.is(key.code.special.space, evt.which)) {
+    } else if (key.is(key.code.special.space, evt.which) || key.is(key.code.special.enter, evt.which)) {
       this.props.dispatch(act());
     }
   }
@@ -37,8 +38,10 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="index">
-        <TileDisplayComponent player={this.props.player} />
-        <TextDisplayComponent player={this.props.player} />
+        <div className="game-frame">
+          <TileDisplayComponent player={this.props.player} />
+          <TextDisplayComponent player={this.props.player} />
+        </div>
       </div>
     );
   }
