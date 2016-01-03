@@ -3,6 +3,7 @@
 import React from 'react';
 import flatMap from '../game/flatMap.json';
 import { getFacingTalker } from '../lib/Tiled';
+import TypingAnimationComponent from './TypingAnimationComponent';
 
 require('styles/TextDisplay.css');
 
@@ -11,15 +12,11 @@ class TextDisplayComponent extends React.Component {
     return getFacingTalker(flatMap)({x: this.props.player.x, y: this.props.player.y})(this.props.player.facing);
   }
 
-  wordWrap(text) {
-    return text.substr(0, 35) + '...';
-  }
-
   render() {
     if (!this.props.player.acting) { return (<div></div>); }
     return (
       <div className="text-display">
-        {this.wordWrap(this.actingText().properties.text)}
+        <TypingAnimationComponent text={this.actingText().properties.text} />
       </div>
     );
   }
