@@ -16,9 +16,30 @@ export let layerRows = layer => {
 };
 
 export let getLayerByName = map => layerName => {
-  return _.find(map.layers, (layer) => layer.name == layerName);
+  return map.layers.find((layer) => layer.name == layerName);
 };
 
 export let getObjectByName = map => objectName => {
-  return _.find(getLayerByName(map)('Objects').objects, (object) => object.name == objectName);
+  return getLayerByName(map)('Objects').objects.find((object) => object.name == objectName);
+};
+
+export let getObjectsByType = map => objectType => {
+  return getLayerByName(map)('Objects').objects.filter((object) => object.type == objectType);
+};
+
+export let objectCovers = object => position => {
+  return (
+    ((position.x * 16) >= object.x) &&
+    ((position.x * 16) < (object.x + object.width)) &&
+    ((position.y * 16) >= object.y) &&
+    ((position.y * 16) < (object.y + object.height))
+  );
+};
+
+export let canWalkTo = map => position => {
+  return getObjectsByType(map)('Room').some((obj) => {
+    return objectCovers(obj)(position);
+  }) && !getObjectsByType(map)('Furniture').some((obj) => {
+    return objectCovers(obj)(position);
+  });
 };

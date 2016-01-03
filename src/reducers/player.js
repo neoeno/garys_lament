@@ -3,7 +3,15 @@
  * If you change the type from object to something else, do not forget to update
  * src/container/App.js accordingly.
  */
-const initialState = {x: 0, y: 0};
+
+import flatMap from '../game/flatMap.json';
+import { getObjectByName, canWalkTo } from '../lib/Tiled';
+
+const player = getObjectByName(flatMap)('Player');
+const initialState = {
+  x: Math.floor(player.x / flatMap.tilewidth),
+  y: Math.floor(player.y / flatMap.tileheight)
+};
 
 module.exports = function(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
@@ -15,6 +23,9 @@ module.exports = function(state = initialState, action) {
         x: nextState.x + action.movement.x,
         y: nextState.y + action.movement.y
       });
+
+      if (!canWalkTo(flatMap)({x: nextState.x, y: nextState.y})) { return state; }
+
       return nextState;
     } break;
     default: {

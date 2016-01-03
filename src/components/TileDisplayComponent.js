@@ -2,7 +2,7 @@
 
 import React from 'react';
 import flatMap from '../game/flatMap.json';
-import { layerRows, tileNumberToOffset, getLayerByName, getObjectByName } from '../lib/Tiled';
+import { layerRows, tileNumberToOffset, getLayerByName } from '../lib/Tiled';
 
 require('styles/TileDisplay.css');
 
@@ -31,10 +31,9 @@ class TileDisplayComponent extends React.Component {
   }
 
   player() {
-    let playerObj = getObjectByName(flatMap)('Player');
     return (<div className="tile-display__player" style={{
-      left: `${playerObj.x + this.props.player.x * 16}px`,
-      top: `${playerObj.y + this.props.player.y * 16}px`
+      left: `${this.props.player.x * 16}px`,
+      top: `${this.props.player.y * 16}px`
     }} />);
   }
 

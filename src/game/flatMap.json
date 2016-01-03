@@ -17,22 +17,7 @@
          "name":"Objects",
          "objects":[
                 {
-                 "height":0,
-                 "id":4,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":16,
-                 "y":80
-                }, 
-                {
-                 "height":0,
+                 "height":16,
                  "id":5,
                  "name":"Player",
                  "properties":
@@ -42,9 +27,99 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
+                 "width":16,
                  "x":16,
                  "y":80
+                }, 
+                {
+                 "height":128,
+                 "id":6,
+                 "name":"Flat",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Room",
+                 "visible":true,
+                 "width":80,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":7,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":16
+                }, 
+                {
+                 "height":32,
+                 "id":9,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":11,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":48,
+                 "x":0,
+                 "y":112
+                }, 
+                {
+                 "height":32,
+                 "id":12,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":0,
+                 "y":16
+                }, 
+                {
+                 "height":16,
+                 "id":14,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":80,
+                 "x":0,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -53,7 +128,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "properties":
     {
