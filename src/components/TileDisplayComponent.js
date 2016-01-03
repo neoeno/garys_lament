@@ -33,7 +33,7 @@ class TileDisplayComponent extends React.Component {
   player() {
     return (
       <div
-        className={`tile-display__player is-facing-${this.props.player.facing} ${this.props.player.acting ? 'is-acting' : ''}`}
+        className={`tile-display__player is-facing-${this.props.player.facing}`}
         style={{
           left: `${this.props.player.x * 16}px`,
           top: `${this.props.player.y * 16}px`

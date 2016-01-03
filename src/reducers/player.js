@@ -52,7 +52,7 @@ module.exports = function(state = initialState, action) {
     } break;
     case 'ACT': {
       if (isFacingTalker(flatMap)({x: nextState.x, y: nextState.y})(nextState.facing)) {
-        nextState.acting = true;
+        nextState.acting = !nextState.acting;
       }
       return nextState;
     } break;

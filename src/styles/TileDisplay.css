@@ -21,29 +21,25 @@
 }
 
 .tile-display__player {
+  background: url(../images/player.png);
   position: absolute;
   width: 16px;
-  height: 15px;
-  background: rgba(255, 0, 0, 0.5);
-  border-bottom: 1px solid blue;
+  height: 16px;
+  transition: left 0.2s linear, top 0.2s linear;
 }
 
 .tile-display__player.is-facing-north {
-  transform: rotate(180deg);
+  background-position: -16px 0px;
 }
 
 .tile-display__player.is-facing-east {
-  transform: rotate(270deg);
+  background-position: -96px 0px;
 }
 
 .tile-display__player.is-facing-south {
-  transform: rotate(0deg);
+  background-position: -0px 0px;
 }
 
 .tile-display__player.is-facing-west {
-  transform: rotate(90deg);
-}
-
-.tile-display__player.is-acting {
-  background: rgba(0, 255, 0, 0.5);
+  background-position: -32px 0px;
 }
