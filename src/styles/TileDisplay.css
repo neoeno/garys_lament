@@ -1,7 +1,10 @@
 .tile-display {
+  margin-left: calc(50% - 40px);
+  margin-top: calc(50% - 80px);
   white-space: nowrap;
   image-rendering: pixelated;
   zoom: 4;
+  -webkit-filter: sepia(10%) hue-rotate(0deg) brightness(75%) contrast(180%);
 }
 
 .tile-display__row {
