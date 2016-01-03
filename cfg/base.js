@@ -48,6 +48,10 @@ module.exports = {
         loader: 'style-loader!css-loader!postcss-loader'
       },
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.sass/,
         loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=expanded&indentedSyntax'
       },
