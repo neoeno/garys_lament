@@ -1,0 +1,17 @@
+.tile-display {
+  white-space: nowrap;
+  image-rendering: pixelated;
+  zoom: 4;
+}
+
+.tile-display__row {
+  line-height: 0;
+}
+
+.tile-display__cell {
+  background: url(../images/poketiles.png);
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  line-height: 0;
+}
