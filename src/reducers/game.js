@@ -4,16 +4,17 @@
  * src/container/App.js accordingly.
  */
 
-import flatMap from '../game/flatMap.json';
-import { getObjectByName, canWalkTo, getFacingTalker } from '../lib/Tiled';
+import maps from '../game/maps';
+import { getObjectByName, canWalkTo, getFacingTalker, isPortalAtPosition, getPortalAtPosition, getPortalToMap } from '../lib/Tiled';
 
-const player = getObjectByName('Player')(flatMap);
+const player = getObjectByName('Player')(maps.lounge);
 const initialState = {
-  x: Math.floor(player.x / flatMap.tilewidth),
-  y: Math.floor(player.y / flatMap.tileheight),
+  x: Math.floor(player.x / maps.lounge.tilewidth),
+  y: Math.floor(player.y / maps.lounge.tileheight),
   acting: 0,
   showTextIndex: null,
-  facing: 'south'
+  facing: 'south',
+  map: 'lounge'
 };
 
 let movementToFacing = movement => {
@@ -43,19 +44,23 @@ module.exports = function(state = initialState, action) {
         y: nextState.y + action.movement.y
       };
 
-      if (canWalkTo(targetPosition)(flatMap)) {
+      if (isPortalAtPosition(maps[nextState.map])(targetPosition)) {
+        let currentMap = nextState.map;
+        let nextMap = getPortalAtPosition(maps[currentMap])(targetPosition).properties.portalTo;
+        let {x, y} = getPortalToMap(maps[nextMap])(currentMap);
+        nextState.map = nextMap;
+        nextState.x = x/16;
+        nextState.y = y/16;
+      } else if (canWalkTo(targetPosition)(maps[nextState.map])) {
         Object.assign(nextState, targetPosition);
       }
 
-      Object.assign(nextState, {
-        facing: movementToFacing(action.movement),
-        acting: false
-      });
+      nextState.facing = movementToFacing(action.movement);
 
       return nextState;
     } break;
     case 'ACT': {
-      let talker = getFacingTalker(flatMap)({x: nextState.x, y: nextState.y})(nextState.facing);
+      let talker = getFacingTalker(maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
 
       if (nextState.acting) {
         nextState.acting = false;

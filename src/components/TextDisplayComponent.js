@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import flatMap from '../game/flatMap.json';
+import maps from '../game/maps';
 import { getFacingTalker } from '../lib/Tiled';
 import TypingAnimationComponent from './TypingAnimationComponent';
 
@@ -9,7 +9,7 @@ require('styles/TextDisplay.css');
 
 class TextDisplayComponent extends React.Component {
   talker() {
-    return getFacingTalker(flatMap)({x: this.props.game.x, y: this.props.game.y})(this.props.game.facing);
+    return getFacingTalker(maps[this.props.game.map])({x: this.props.game.x, y: this.props.game.y})(this.props.game.facing);
   }
 
   text() {

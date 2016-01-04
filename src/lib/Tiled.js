@@ -34,6 +34,11 @@ export let getThingsByLayerAndType = layerName => objectType => map => {
 export let getObjectByName = getThingByLayerAndName('Objects');
 export let getObjectsByType = getThingsByLayerAndType('Objects');
 export let getTalkers = getThingsByLayer('Talkers');
+export let getPortals = getThingsByLayer('Portals');
+
+export let getPortalToMap = map => mapName => {
+  return getPortals(map).find((portal) => portal.properties.portalTo == mapName);
+};
 
 export let objectCovers = object => position => {
   return (
@@ -78,4 +83,14 @@ export let getFacingTalker = map => position => facing => {
 
 export let isFacingTalker = map => position => facing => {
   return !!getFacingTalker(map)(position)(facing);
+};
+
+export let getPortalAtPosition = map => position => {
+  return getPortals(map).find((portal) => {
+    return objectCovers(portal)(position);
+  });
+};
+
+export let isPortalAtPosition = map => position => {
+  return !!getPortalAtPosition(map)(position);
 };

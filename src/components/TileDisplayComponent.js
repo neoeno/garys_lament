@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import flatMap from '../game/flatMap.json';
+import maps from '../game/maps';
 import { layerRows, tileNumberToOffset, getLayerByName } from '../lib/Tiled';
 
 require('styles/TileDisplay.css');
@@ -10,7 +10,7 @@ let offsetToBackgroundPosition = (offset) => `-${offset.x}px -${offset.y}px`;
 
 class TileDisplayComponent extends React.Component {
   background() {
-    return layerRows(getLayerByName('Background')(flatMap)).map((row, i) => {
+    return layerRows(getLayerByName('Background')(maps[this.props.game.map])).map((row, i) => {
       let cells = row.map((cellValue, i2) => {
         return (<span key={i2}>{this.imageCell(cellValue)}</span>);
       });
@@ -24,7 +24,7 @@ class TileDisplayComponent extends React.Component {
         className="tile-display__cell"
         style={{backgroundPosition:
           offsetToBackgroundPosition(
-            tileNumberToOffset(flatMap.tilesets[0])(cellValue)
+            tileNumberToOffset(maps[this.props.game.map].tilesets[0])(cellValue)
           )
         }} />
     );
