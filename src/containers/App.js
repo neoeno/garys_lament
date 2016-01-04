@@ -36,7 +36,8 @@ function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
   const actions = {
     move: require('../actions/game/move.js'),
-    act: require('../actions/game/act.js')
+    act: require('../actions/game/act.js'),
+    actFinished: require('../actions/game/actFinished.js')
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

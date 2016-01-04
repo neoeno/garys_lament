@@ -12,6 +12,7 @@ const initialState = {
   x: Math.floor(player.x / flatMap.tilewidth),
   y: Math.floor(player.y / flatMap.tileheight),
   acting: 0,
+  showTextIndex: null,
   facing: 'south'
 };
 
@@ -35,6 +36,8 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'MOVE': {
+      if (nextState.showTextIndex !== null) { return state; }
+
       let targetPosition = {
         x: nextState.x + action.movement.x,
         y: nextState.y + action.movement.y
@@ -54,11 +57,22 @@ module.exports = function(state = initialState, action) {
     case 'ACT': {
       let talker = getFacingTalker(flatMap)({x: nextState.x, y: nextState.y})(nextState.facing);
 
-      if (talker && talker.properties.text.split('//').length > nextState.acting) {
-        nextState.acting = nextState.acting + 1;
+      if (nextState.acting) {
+        nextState.acting = false;
       } else {
-        nextState.acting = 0;
+        if (talker && talker.properties.text.split('//').length > nextState.showTextIndex) {
+          nextState.acting = true;
+          nextState.showTextIndex = nextState.showTextIndex + 1;
+        } else {
+          nextState.acting = false;
+          nextState.showTextIndex = null;
+        }
       }
+
+      return nextState;
+    } break;
+    case 'ACT_FINISHED': {
+      nextState.acting = false;
       return nextState;
     } break;
     default: {

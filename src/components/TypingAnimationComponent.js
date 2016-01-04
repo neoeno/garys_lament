@@ -30,6 +30,7 @@ class TypingAnimationComponent extends React.Component {
   tick() {
     if (this.state.characterLimit >= this.props.text.length) {
       window.clearInterval(this.state.ticker);
+      this.props.onAnimationFinish();
     }
 
     this.setState({
@@ -37,10 +38,15 @@ class TypingAnimationComponent extends React.Component {
     });
   }
 
+  textPortion() {
+    if (!this.props.animate) { return this.props.text; }
+    return this.props.text.substr(0, this.state.characterLimit);
+  }
+
   render() {
     return (
       <div className="typing-animation">
-        {this.props.text.substr(0, this.state.characterLimit)}
+        {this.textPortion()}
       </div>
     );
   }
@@ -49,7 +55,9 @@ class TypingAnimationComponent extends React.Component {
 TypingAnimationComponent.displayName = 'TypingAnimationComponent';
 
 TypingAnimationComponent.propTypes = {
-  text: React.PropTypes.string.isRequired
+  text: React.PropTypes.string.isRequired,
+  animate: React.PropTypes.bool.isRequired,
+  onAnimationFinish: React.PropTypes.func.isRequired
 };
 
 export default TypingAnimationComponent;

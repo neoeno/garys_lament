@@ -13,14 +13,17 @@ class TextDisplayComponent extends React.Component {
   }
 
   text() {
-    return this.talker().properties.text.split('//')[this.props.game.acting - 1];
+    return this.talker().properties.text.split('//')[this.props.game.showTextIndex - 1];
   }
 
   render() {
-    if (!this.props.game.acting) { return (<div></div>); }
+    if (!this.props.game.showTextIndex) { return (<div></div>); }
     return (
       <div className="text-display">
-        <TypingAnimationComponent text={this.text()} />
+        <TypingAnimationComponent
+          text={this.text()}
+          animate={this.props.game.acting}
+          onAnimationFinish={this.props.onActFinished} />
       </div>
     );
   }
@@ -29,7 +32,8 @@ class TextDisplayComponent extends React.Component {
 TextDisplayComponent.displayName = 'TextDisplayComponent';
 
 TextDisplayComponent.propTypes = {
-  game: React.PropTypes.object
+  game: React.PropTypes.object.isRequired,
+  onActFinished: React.PropTypes.func.isRequired
 };
 
 export default TextDisplayComponent;
