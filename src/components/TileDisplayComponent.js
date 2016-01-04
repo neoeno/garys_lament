@@ -32,8 +32,8 @@ class TileDisplayComponent extends React.Component {
 
   tileDisplayOffset() {
     return {
-      left: `${80 - this.props.player.x * 16}px`,
-      top: `${80 - this.props.player.y * 16}px`
+      left: `${80 - this.props.game.x * 16}px`,
+      top: `${80 - this.props.game.y * 16}px`
     };
   }
 
@@ -49,7 +49,7 @@ class TileDisplayComponent extends React.Component {
 TileDisplayComponent.displayName = 'TileDisplayComponent';
 
 TileDisplayComponent.propTypes = {
-  player: React.PropTypes.object.isRequired
+  game: React.PropTypes.object.isRequired
 };
 
 export default TileDisplayComponent;

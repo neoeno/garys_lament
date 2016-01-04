@@ -6,14 +6,14 @@ require('styles/Player.css');
 
 class PlayerComponent extends React.Component {
   render() {
-    return (<div className={`player is-facing-${this.props.player.facing}`} />);
+    return (<div className={`player is-facing-${this.props.game.facing}`} />);
   }
 }
 
 PlayerComponent.displayName = 'PlayerComponent';
 
 PlayerComponent.propTypes = {
-  player: React.PropTypes.object.isRequired
+  game: React.PropTypes.object.isRequired
 };
 
 export default PlayerComponent;

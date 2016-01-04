@@ -14,8 +14,8 @@ import Main from '../components/Main';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions, player} = this.props;
-    return <Main actions={actions} player={player}/>;
+    const {actions, game} = this.props;
+    return <Main actions={actions} game={game}/>;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -25,18 +25,18 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  player: PropTypes.object.isRequired
+  game: PropTypes.object.isRequired
 };
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
-  const props = { player: state.player };
+  const props = { game: state.game };
   return props;
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
   const actions = {
-    movePlayer: require('../actions/player/movePlayer.js'),
-    act: require('../actions/player/act.js')
+    move: require('../actions/game/move.js'),
+    act: require('../actions/game/act.js')
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

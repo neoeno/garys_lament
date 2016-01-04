@@ -8,8 +8,8 @@ import key from 'key';
 import TileDisplayComponent from './TileDisplayComponent';
 import TextDisplayComponent from './TextDisplayComponent';
 import PlayerComponent from './PlayerComponent';
-import movePlayer from '../actions/player/movePlayer';
-import act from '../actions/player/act';
+import move from '../actions/game/move';
+import act from '../actions/game/act';
 
 class AppComponent extends React.Component {
   componentDidMount() {
@@ -24,13 +24,13 @@ class AppComponent extends React.Component {
   handleKeyDown(evt) {
     if (evt.repeat) { return; }
     if (key.is(key.code.arrow.up, evt.which)) {
-      this.props.dispatch(movePlayer({x: 0, y: -1}));
+      this.props.dispatch(move({x: 0, y: -1}));
     } else if (key.is(key.code.arrow.right, evt.which)) {
-      this.props.dispatch(movePlayer({x: 1, y: 0}));
+      this.props.dispatch(move({x: 1, y: 0}));
     } else if (key.is(key.code.arrow.down, evt.which)) {
-      this.props.dispatch(movePlayer({x: 0, y: 1}));
+      this.props.dispatch(move({x: 0, y: 1}));
     } else if (key.is(key.code.arrow.left, evt.which)) {
-      this.props.dispatch(movePlayer({x: -1, y: 0}));
+      this.props.dispatch(move({x: -1, y: 0}));
     } else if (key.is(key.code.special.space, evt.which) || key.is(key.code.special.enter, evt.which)) {
       this.props.dispatch(act());
     }
@@ -40,9 +40,9 @@ class AppComponent extends React.Component {
     return (
       <div className="game-frame__wrapper">
         <div className="game-frame">
-          <TileDisplayComponent player={this.props.player} />
-          <TextDisplayComponent player={this.props.player} />
-          <PlayerComponent player={this.props.player} />
+          <TileDisplayComponent game={this.props.game} />
+          <TextDisplayComponent game={this.props.game} />
+          <PlayerComponent game={this.props.game} />
         </div>
       </div>
     );
@@ -54,7 +54,7 @@ AppComponent.defaultProps = {
 
 function select(state) {
   return {
-    player: state.player
+    game: state.game
   };
 }
 

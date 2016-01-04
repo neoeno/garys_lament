@@ -34,7 +34,7 @@ module.exports = function(state = initialState, action) {
   let nextState = Object.assign({}, state);
 
   switch(action.type) {
-    case 'MOVE_PLAYER': {
+    case 'MOVE': {
       let targetPosition = {
         x: nextState.x + action.movement.x,
         y: nextState.y + action.movement.y

@@ -280,7 +280,7 @@
   </object>
   <object id="19" name="Bookcase" x="64" y="64" width="16" height="32">
    <properties>
-    <property name="text" value="Just a load of books..."/>
+    <property name="text" value="Just a load of books... // What a mess!"/>
    </properties>
   </object>
  </objectgroup>
