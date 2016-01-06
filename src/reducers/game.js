@@ -5,30 +5,17 @@
  */
 
 import maps from '../game/maps';
-import { getObjectByName, canWalkTo, getFacingTalker, isPortalAtPosition, getPortalAtPosition, getPortalToMap } from '../lib/Tiled';
+import { getObjectByName, canWalkTo, getFacingTalker, isPortalAtPosition } from '../lib/Tiled';
+import { isShowingModal, movePosition, followPortal, faceMovementDirection } from '../lib/Game';
 
 const player = getObjectByName('Player')(maps.lounge);
 const initialState = {
   x: Math.floor(player.x / maps.lounge.tilewidth),
   y: Math.floor(player.y / maps.lounge.tileheight),
-  acting: 0,
+  acting: false,
   showTextIndex: null,
   facing: 'south',
   map: 'lounge'
-};
-
-let movementToFacing = movement => {
-  if (movement.y == -1) {
-    return 'north';
-  } else if (movement.x == 1) {
-    return 'east';
-  } else if (movement.y == 1) {
-    return 'south';
-  } else if (movement.x == -1) {
-    return 'west';
-  } else {
-    return 'south';
-  }
 };
 
 module.exports = function(state = initialState, action) {
@@ -37,25 +24,17 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'MOVE': {
-      if (nextState.showTextIndex !== null) { return state; }
+      if (isShowingModal(state)) { return state; }
 
-      let targetPosition = {
-        x: nextState.x + action.movement.x,
-        y: nextState.y + action.movement.y
-      };
+      let targetPosition = movePosition(state)(action.movement);
 
       if (isPortalAtPosition(maps[nextState.map])(targetPosition)) {
-        let currentMap = nextState.map;
-        let nextMap = getPortalAtPosition(maps[currentMap])(targetPosition).properties.portalTo;
-        let {x, y} = getPortalToMap(maps[nextMap])(currentMap);
-        nextState.map = nextMap;
-        nextState.x = x/16;
-        nextState.y = y/16;
+        Object.assign(nextState, followPortal(maps)(state)(targetPosition));
       } else if (canWalkTo(targetPosition)(maps[nextState.map])) {
         Object.assign(nextState, targetPosition);
       }
 
-      nextState.facing = movementToFacing(action.movement);
+      Object.assign(nextState, faceMovementDirection(action.movement));
 
       return nextState;
     } break;
