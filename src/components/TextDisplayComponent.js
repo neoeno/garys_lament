@@ -13,16 +13,16 @@ class TextDisplayComponent extends React.Component {
   }
 
   text() {
-    return this.talker().properties.text.split('//')[this.props.game.showTextIndex - 1];
+    return this.talker().properties.text.split('//')[this.props.game.modalTextIndex];
   }
 
   render() {
-    if (!this.props.game.showTextIndex) { return (<div></div>); }
+    if (this.props.game.modalState == 'HIDDEN') { return (<div></div>); }
     return (
       <div className="text-display">
         <TypingAnimationComponent
           text={this.text()}
-          animate={this.props.game.acting}
+          animate={this.props.game.modalState == 'ANIMATING'}
           onAnimationFinish={this.props.onActFinished} />
       </div>
     );

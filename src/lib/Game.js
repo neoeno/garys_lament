@@ -1,7 +1,7 @@
 import { getPortalAtPosition, getPortalToMap } from './Tiled';
 
 export let isShowingModal = state => {
-  return state.showTextIndex !== null;
+  return state.modalState !== 'HIDDEN';
 };
 
 export let movePosition = ({x, y}) => movement => {
@@ -38,5 +38,21 @@ export let movementToFacing = movement => {
 export let faceMovementDirection = movement => {
   return {
     facing: movementToFacing(movement)
+  };
+};
+
+export let stepModalStateMachine = state => talker => {
+  switch (state.modalState) {
+    case 'HIDDEN': {
+      return { modalState: 'ANIMATING', modalTextIndex: 0 };
+    } case 'ANIMATING': {
+      return { modalState: 'HOLD' };
+    } case 'HOLD': {
+      if (talker.properties.text.split('//').length > state.modalTextIndex + 1) {
+        return { modalState: 'ANIMATING', modalTextIndex: state.modalTextIndex + 1 };
+      } else {
+        return { modalState: 'HIDDEN' };
+      }
+    }
   }
-}
+};

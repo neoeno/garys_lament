@@ -6,23 +6,24 @@
 
 import maps from '../game/maps';
 import { getObjectByName, canWalkTo, getFacingTalker, isPortalAtPosition } from '../lib/Tiled';
-import { isShowingModal, movePosition, followPortal, faceMovementDirection } from '../lib/Game';
+import { isShowingModal, movePosition, followPortal, faceMovementDirection, stepModalStateMachine } from '../lib/Game';
 
 const player = getObjectByName('Player')(maps.lounge);
 const initialState = {
   x: Math.floor(player.x / maps.lounge.tilewidth),
   y: Math.floor(player.y / maps.lounge.tileheight),
-  acting: false,
-  showTextIndex: null,
+  modalTextIndex: null,
   facing: 'south',
-  map: 'lounge'
+  map: 'lounge',
+  modalState: 'HIDDEN',
+  animateScreen: true
 };
 
 module.exports = function(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
   let nextState = Object.assign({}, state);
 
-  switch(action.type) {
+  switch (action.type) {
     case 'MOVE': {
       if (isShowingModal(state)) { return state; }
 
@@ -30,8 +31,10 @@ module.exports = function(state = initialState, action) {
 
       if (isPortalAtPosition(maps[nextState.map])(targetPosition)) {
         Object.assign(nextState, followPortal(maps)(state)(targetPosition));
+        nextState.animateScreen = false;
       } else if (canWalkTo(targetPosition)(maps[nextState.map])) {
         Object.assign(nextState, targetPosition);
+        nextState.animateScreen = true;
       }
 
       Object.assign(nextState, faceMovementDirection(action.movement));
@@ -40,23 +43,10 @@ module.exports = function(state = initialState, action) {
     } break;
     case 'ACT': {
       let talker = getFacingTalker(maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
+      if (!talker) { return state; }
 
-      if (nextState.acting) {
-        nextState.acting = false;
-      } else {
-        if (talker && talker.properties.text.split('//').length > nextState.showTextIndex) {
-          nextState.acting = true;
-          nextState.showTextIndex = nextState.showTextIndex + 1;
-        } else {
-          nextState.acting = false;
-          nextState.showTextIndex = null;
-        }
-      }
+      Object.assign(nextState, stepModalStateMachine(state)(talker));
 
-      return nextState;
-    } break;
-    case 'ACT_FINISHED': {
-      nextState.acting = false;
       return nextState;
     } break;
     default: {

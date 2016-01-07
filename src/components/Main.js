@@ -10,7 +10,6 @@ import TextDisplayComponent from './TextDisplayComponent';
 import PlayerComponent from './PlayerComponent';
 import move from '../actions/game/move';
 import act from '../actions/game/act';
-import actFinished from '../actions/game/actFinished';
 
 class AppComponent extends React.Component {
   componentDidMount() {
@@ -43,7 +42,7 @@ class AppComponent extends React.Component {
         <div className="game-frame">
           <TileDisplayComponent game={this.props.game} />
           <TextDisplayComponent game={this.props.game} onActFinished={() => {
-            this.props.dispatch(actFinished());
+            this.props.dispatch(act());
           }} />
           <PlayerComponent game={this.props.game} />
         </div>

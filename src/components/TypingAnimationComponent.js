@@ -18,12 +18,15 @@ class TypingAnimationComponent extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.text != this.props.text) {
-      window.clearInterval(this.state.ticker);
-      this.setState({
-        characterLimit: 0,
-        ticker: window.setInterval(this.tick.bind(this), 25)
-      });
+    if (prevProps.animate != this.props.animate) {
+      if (this.props.animate) {
+        this.setState({
+          characterLimit: 0,
+          ticker: window.setInterval(this.tick.bind(this), 25)
+        });
+      } else {
+        window.clearInterval(this.state.ticker);
+      }
     }
   }
 
