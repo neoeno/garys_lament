@@ -1,7 +1,11 @@
-import { getPortalAtPosition, getPortalToMap } from './Tiled';
+import { getPortalToMap } from './Tiled';
 
 export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';
+};
+
+export let isTeleporting = state => {
+  return state.screenTransitionState !== 'SHOW';
 };
 
 export let movePosition = ({x, y}) => movement => {
@@ -11,9 +15,9 @@ export let movePosition = ({x, y}) => movement => {
   };
 };
 
-export let followPortal = maps => state => position => {
-  let nextMap = getPortalAtPosition(maps[state.map])(position).properties.portalTo;
-  let {x, y} = getPortalToMap(maps[nextMap])(state.map);
+export let followPortal = maps => currentMap => portal => {
+  let nextMap = portal.properties.portalTo;
+  let {x, y} = getPortalToMap(maps[nextMap])(currentMap);
   return {
     map: nextMap,
     x: x/16,

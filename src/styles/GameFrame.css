@@ -9,10 +9,21 @@
   overflow: hidden;
 }
 
+.game-frame.is-fade-out {
+  animation: fadeOut 0.8s steps(3, end);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
 .game-frame__wrapper {
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
 }

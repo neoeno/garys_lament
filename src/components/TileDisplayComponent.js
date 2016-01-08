@@ -33,7 +33,8 @@ class TileDisplayComponent extends React.Component {
   tileDisplayOffset() {
     return {
       left: `${80 - this.props.game.x * 16}px`,
-      top: `${80 - this.props.game.y * 16}px`
+      top: `${80 - this.props.game.y * 16}px`,
+      animation: this.props.game.disableMovementTweening ? 'none' : ''
     };
   }
 

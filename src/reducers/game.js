@@ -5,10 +5,10 @@
  */
 
 import maps from '../game/maps';
-import { getObjectByName, canWalkTo, getFacingTalker, isPortalAtPosition } from '../lib/Tiled';
-import { isShowingModal, movePosition, followPortal, faceMovementDirection, stepModalStateMachine } from '../lib/Game';
+import * as Tiled from '../lib/Tiled';
+import * as Game from '../lib/Game';
 
-const player = getObjectByName('Player')(maps.lounge);
+const player = Tiled.getObjectByName('Player')(maps.lounge);
 const initialState = {
   x: Math.floor(player.x / maps.lounge.tilewidth),
   y: Math.floor(player.y / maps.lounge.tileheight),
@@ -16,7 +16,8 @@ const initialState = {
   facing: 'south',
   map: 'lounge',
   modalState: 'HIDDEN',
-  animateScreen: true
+  screenTransitionState: 'SHOW',
+  disableMovementTweening: false
 };
 
 module.exports = function(state = initialState, action) {
@@ -25,28 +26,36 @@ module.exports = function(state = initialState, action) {
 
   switch (action.type) {
     case 'MOVE': {
-      if (isShowingModal(state)) { return state; }
+      let targetPosition = Game.movePosition(state)(action.movement);
 
-      let targetPosition = movePosition(state)(action.movement);
-
-      if (isPortalAtPosition(maps[nextState.map])(targetPosition)) {
-        Object.assign(nextState, followPortal(maps)(state)(targetPosition));
-        nextState.animateScreen = false;
-      } else if (canWalkTo(targetPosition)(maps[nextState.map])) {
+      if (Tiled.canWalkTo(targetPosition)(maps[nextState.map])) {
         Object.assign(nextState, targetPosition);
-        nextState.animateScreen = true;
       }
 
-      Object.assign(nextState, faceMovementDirection(action.movement));
+      Object.assign(nextState, Game.faceMovementDirection(action.movement));
+      nextState.disableMovementTweening = false;
 
       return nextState;
     } break;
+    case 'TELEPORT': {
+      Object.assign(nextState, Game.followPortal(maps)(state.map)(action.portal));
+      return nextState;
+    } break;
     case 'ACT': {
-      let talker = getFacingTalker(maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
+      let talker = Tiled.getFacingTalker(maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
       if (!talker) { return state; }
 
-      Object.assign(nextState, stepModalStateMachine(state)(talker));
+      Object.assign(nextState, Game.stepModalStateMachine(state)(talker));
+      nextState.disableMovementTweening = true;
 
+      return nextState;
+    } break;
+    case 'FADE_OUT': {
+      Object.assign(nextState, {screenTransitionState: 'FADE_OUT'});
+      return nextState;
+    } break;
+    case 'FADE_IN': {
+      Object.assign(nextState, {screenTransitionState: 'SHOW'});
       return nextState;
     } break;
     default: {
