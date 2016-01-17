@@ -11,7 +11,7 @@
 }
 
 .tile-display__cell {
-  background: url(../images/poketiles.png);
+  background: url(../images/mytiles.png);
   display: inline-block;
   height: 16px;
   width: 16px;

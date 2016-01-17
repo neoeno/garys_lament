@@ -1,7 +1,7 @@
 { "height":16,
  "layers":[
         {
-         "data":[615, 615, 615, 615, 615, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 744, 745, 668, 668, 796, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 782, 783, 668, 668, 834, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 668, 668, 668, 668, 1049, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 668, 668, 668, 668, 975, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 668, 668, 668, 668, 1013, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 668, 668, 668, 668, 668, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 796, 797, 798, 668, 1049, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160, 1160],
+         "data":[2, 2, 33, 2, 33, 3, 3, 2, 33, 2, 2, 2, 33, 3, 3, 3, 4, 24, 18, 18, 7, 3, 3, 6, 6, 6, 6, 6, 32, 3, 3, 3, 8, 23, 18, 18, 10, 3, 3, 6, 6, 6, 29, 27, 25, 3, 3, 3, 18, 18, 18, 18, 18, 21, 21, 6, 6, 6, 30, 28, 26, 3, 3, 3, 18, 18, 18, 18, 12, 3, 3, 6, 6, 6, 6, 6, 31, 3, 3, 3, 18, 18, 18, 18, 13, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 18, 18, 18, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7, 14, 15, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
          "height":16,
          "name":"Background",
          "opacity":1,
@@ -10,10 +10,10 @@
          "width":16,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
-         "height":32,
+         "height":0,
          "name":"Objects",
          "objects":[
                 {
@@ -30,7 +30,7 @@
                  "width":16,
                  "x":16,
                  "y":80
-                },
+                }, 
                 {
                  "height":128,
                  "id":6,
@@ -45,7 +45,7 @@
                  "width":80,
                  "x":0,
                  "y":0
-                },
+                }, 
                 {
                  "height":32,
                  "id":7,
@@ -60,7 +60,7 @@
                  "width":16,
                  "x":64,
                  "y":16
-                },
+                }, 
                 {
                  "height":32,
                  "id":9,
@@ -75,7 +75,7 @@
                  "width":16,
                  "x":64,
                  "y":64
-                },
+                }, 
                 {
                  "height":16,
                  "id":11,
@@ -90,7 +90,7 @@
                  "width":48,
                  "x":0,
                  "y":112
-                },
+                }, 
                 {
                  "height":32,
                  "id":12,
@@ -105,7 +105,7 @@
                  "width":16,
                  "x":0,
                  "y":16
-                },
+                }, 
                 {
                  "height":16,
                  "id":14,
@@ -120,17 +120,92 @@
                  "width":80,
                  "x":0,
                  "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":24,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Room",
+                 "visible":true,
+                 "width":32,
+                 "x":80,
+                 "y":48
+                }, 
+                {
+                 "height":64,
+                 "id":25,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Room",
+                 "visible":true,
+                 "width":96,
+                 "x":112,
+                 "y":16
+                }, 
+                {
+                 "height":32,
+                 "id":26,
+                 "name":"Bed",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":48,
+                 "x":160,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":27,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":28,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":16
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":32,
+         "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
-         "height":32,
+         "height":0,
          "name":"Talkers",
          "objects":[
                 {
@@ -147,14 +222,14 @@
                  "width":16,
                  "x":0,
                  "y":16
-                },
+                }, 
                 {
                  "height":32,
                  "id":19,
                  "name":"Bookcase",
                  "properties":
                     {
-                     "text":"Just a load of books... \/\/ What a mess!"
+                     "text":"...it struck me mainly by its lack of naturalness, a sort of act against nature, and there fore artificial and absurd. \/\/\nWalking, sitting, lying down, going up or down, all the actions of the body now seemed to me to have a necessity of their own and therefore a naturalness, but copulation, on the contrary, seemed an extravagant exertion for which the human body was not made and to which it could not adapt itself without effort and fatigue."
                     },
                  "rotation":0,
                  "type":"",
@@ -162,42 +237,87 @@
                  "width":16,
                  "x":64,
                  "y":64
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "width":32,
-         "x":0,
-         "y":0
-        },
-        {
-         "draworder":"topdown",
-         "height":16,
-         "name":"Portals",
-         "objects":[
+                }, 
                 {
                  "height":16,
-                 "id":20,
+                 "id":22,
                  "name":"",
                  "properties":
                     {
-                     "portalTo":"bedroom"
+                     "text":"New match on Tinder...\/\/No message."
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":64,
-                 "y":48
+                 "x":16,
+                 "y":112
+                }, 
+                {
+                 "height":32,
+                 "id":29,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"You should change your sheets."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":160,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":30,
+                 "name":"Shakespeare Tower",
+                 "properties":
+                    {
+                     "text":"Shakespeare tower looks grey and confronting. \/\/ You see a window with four large pieces of paper stuck to the walls. \/\/ You imagine they are interior design plans, for a renovation."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":16,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":31,
+                 "name":"Shakespeare House 2",
+                 "properties":
+                    {
+                     "text":"You look up. Every floor has a little yellow light illuminating the stairwell. \/\/ They go up for 20 or so floors. \/\/ After that they are obscured by the building. It's getting dark."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":16,
+         "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":0,
+         "name":"Portals",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":0,
          "x":0,
          "y":0
         }],
- "nextobjectid":22,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "properties":
     {
@@ -208,17 +328,17 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/Downloads\/poketiles.png",
-         "imageheight":656,
-         "imagewidth":608,
+         "image":"..\/images\/mytiles.png",
+         "imageheight":80,
+         "imagewidth":128,
          "margin":0,
-         "name":"poketiles",
+         "name":"mytiles",
          "properties":
             {
 
             },
          "spacing":0,
-         "tilecount":1558,
+         "tilecount":40,
          "tileheight":16,
          "tilewidth":16
         }],
