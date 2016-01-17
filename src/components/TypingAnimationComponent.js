@@ -5,7 +5,7 @@ import * as Text from '../lib/Text';
 
 require('styles/TypingAnimation.css');
 
-let LINE_HEIGHT = 18;
+let LINE_HEIGHT = 14;
 
 class TypingAnimationComponent extends React.Component {
   constructor() {
@@ -54,7 +54,7 @@ class TypingAnimationComponent extends React.Component {
   }
 
   textOffset() {
-    return Math.max(0, this.textPortion().split('\n').length - 3) * -LINE_HEIGHT;
+    return Math.max(0, this.textPortion().split('\n').length - 4) * -LINE_HEIGHT;
   }
 
   render() {

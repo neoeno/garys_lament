@@ -3,14 +3,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  line-height: 1.8;
+  line-height: 1.6;
   height: 48px;
   background: white;
   color: black;
   padding: 18px;
   zoom: 0.5;
   font-family: "Pokemon GB", monospace;
-  font-size: 10px;
+  font-size: 8px;
 
   border-image-slice: 16 16 16 16;
   border-image-width: 16px 16px 16px 16px;
