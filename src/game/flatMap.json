@@ -1,7 +1,7 @@
 { "height":16,
  "layers":[
         {
-         "data":[2, 2, 33, 2, 33, 3, 3, 2, 33, 2, 2, 2, 33, 3, 3, 3, 4, 24, 18, 18, 7, 3, 3, 6, 6, 6, 6, 6, 32, 3, 3, 3, 8, 23, 18, 18, 10, 3, 3, 6, 6, 6, 29, 27, 25, 3, 3, 3, 18, 18, 18, 18, 18, 21, 21, 6, 6, 6, 30, 28, 26, 3, 3, 3, 18, 18, 18, 18, 12, 3, 3, 6, 6, 6, 6, 6, 31, 3, 3, 3, 18, 18, 18, 18, 13, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 18, 18, 18, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7, 14, 15, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+         "data":[2, 2, 33, 2, 33, 3, 3, 2, 33, 2, 2, 2, 33, 3, 3, 3, 4, 24, 18, 18, 35, 3, 3, 6, 6, 6, 6, 6, 32, 3, 3, 3, 8, 23, 18, 18, 10, 3, 3, 6, 6, 6, 29, 27, 25, 3, 3, 3, 18, 18, 18, 18, 18, 21, 21, 6, 6, 6, 30, 28, 26, 3, 3, 3, 18, 18, 18, 18, 12, 3, 3, 6, 6, 6, 6, 6, 31, 3, 3, 3, 18, 18, 18, 18, 13, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 18, 18, 18, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7, 14, 34, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
          "height":16,
          "name":"Background",
          "opacity":1,
@@ -224,7 +224,7 @@
                  "y":16
                 }, 
                 {
-                 "height":32,
+                 "height":16,
                  "id":19,
                  "name":"Bookcase",
                  "properties":
@@ -241,10 +241,10 @@
                 {
                  "height":16,
                  "id":22,
-                 "name":"",
+                 "name":"Phone",
                  "properties":
                     {
-                     "text":"New match on Tinder...\/\/No message."
+                     "text":"You recently changed your tinder to - Gender: Female - Looking for: Women. \/\/ The quality of the profiles dramatically improved, but no one talks to you, still. \/\/ Strangely, you feel more fearful than before. \/\/ Oh! A new match!"
                     },
                  "rotation":0,
                  "type":"",
@@ -259,7 +259,7 @@
                  "name":"Bed",
                  "properties":
                     {
-                     "text":"You should change your sheets."
+                     "text":"You have been sleeping on four pillows so the blood doesn't flow into your head and make your wisdom tooth swell. \/\/ You should change your sheets."
                     },
                  "rotation":0,
                  "type":"",
@@ -327,6 +327,66 @@
                  "width":16,
                  "x":192,
                  "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":36,
+                 "name":"Coffee",
+                 "properties":
+                    {
+                     "text":"Coffee's getting cold. \/\/ Better drink up, you're late for work."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":32,
+                 "y":112
+                }, 
+                {
+                 "height":16,
+                 "id":38,
+                 "name":"Bedroom window",
+                 "properties":
+                    {
+                     "text":"It's January, but the flowers are already blooming. \/\/ You think some of the new shoots might be daffodils, but you've not lived here long enough to know for sure. \/\/ You hope they will be OK. They shouldn't be out. The earth is changing."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":96,
+                 "x":112,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":40,
+                 "name":"Bookcase 2",
+                 "properties":
+                    {
+                     "text":"You pick out a book at random. \/\/ Companies are subject to capitalism, but within companies exist other sorts of societies. \/\/ Authoritarian, fascist, socialist, even further capitalist societies develop inside. \/\/ Living in the society confers certain benefits, just like the state. Universal basic income already exists in almost every company. \/\/ However, unlike the state \u2014 our society has a complex and rigorous citizenship test, and exile is common."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":80
+                }, 
+                {
+                 "height":32,
+                 "id":42,
+                 "name":"Desk Notebook",
+                 "properties":
+                    {
+                     "text":"at the start of the Grahek book he distinguishes two kinds of pain that we all know intuitively: \/\/ that sharp, immediate pain you might feel if you step on a pin; \/\/ and that duller pain you might feel if you have some sort of injury. \/\/ and, he says, the 'point' of the first kind of pain is to tell you to get your hand away from that flame \u2014 to avoid injury.  \/\/ and the second kind of pain is to get you to protect it, keep it still, to promote healing. \/\/ the first kind of pain makes you move, the second kind of pain makes you still."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":16
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -347,7 +407,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":36,
+ "nextobjectid":43,
  "orientation":"orthogonal",
  "properties":
     {
