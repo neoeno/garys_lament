@@ -1,2 +1,10 @@
 .typing-animation {
+  height: 100%;
+  overflow: hidden;
+}
+
+.typing-animation__lines {
+  transition: top 0.05s;
+  position: relative;
+  white-space: pre-line;
 }

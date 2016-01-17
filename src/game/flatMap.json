@@ -198,7 +198,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
@@ -229,7 +229,7 @@
                  "name":"Bookcase",
                  "properties":
                     {
-                     "text":"...it struck me mainly by its lack of naturalness, a sort of act against nature, and there fore artificial and absurd. \/\/\nWalking, sitting, lying down, going up or down, all the actions of the body now seemed to me to have a necessity of their own and therefore a naturalness, but copulation, on the contrary, seemed an extravagant exertion for which the human body was not made and to which it could not adapt itself without effort and fatigue."
+                     "text":"This book has a page marked... \/\/ ...it struck me mainly by its lack of naturalness, a sort of act against nature, and therefore artificial and absurd. \/\/ Walking, sitting, lying down, going up or down, all the actions of the body now seemed to me to have a necessity of their own... \/\/ ...and therefore a naturalness, but copulation, on the contrary, seemed an extravagant exertion... \/\/ ...for which the human body was not made and to which it could not adapt itself without effort and fatigue."
                     },
                  "rotation":0,
                  "type":"",
@@ -256,7 +256,7 @@
                 {
                  "height":32,
                  "id":29,
-                 "name":"",
+                 "name":"Bed",
                  "properties":
                     {
                      "text":"You should change your sheets."
@@ -297,6 +297,36 @@
                  "width":16,
                  "x":48,
                  "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":33,
+                 "name":"Bedside table",
+                 "properties":
+                    {
+                     "text":"A phone charger. A book on Louis Theremin...  \/\/ In the twenty or so pages you have read, Robert Moog tells the story of when he fixed Clara Rockmore's Theremin. \/\/ She was the first to truly play Louis' instrument. Some say the instrument was made for her. \/\/ But she lived in America, and when Theremin returned to Russia her instrument went unrepaired for years. \/\/ After numerous attempts in which Rockmore insisted the instrument was still not right, Moog repaired the Theremin... \/\/ She played Summertime with tears in her eyes... \/\/ 'I was afraid I would never be able to play my instrument again'"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":16
+                }, 
+                {
+                 "height":16,
+                 "id":34,
+                 "name":"Bedside Table 2",
+                 "properties":
+                    {
+                     "text":"You have left your vibrator out."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -317,7 +347,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":33,
+ "nextobjectid":36,
  "orientation":"orthogonal",
  "properties":
     {

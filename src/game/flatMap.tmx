@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="36">
  <tileset firstgid="1" name="mytiles" tilewidth="16" tileheight="16" tilecount="40">
   <image source="../images/mytiles.png" width="128" height="80"/>
  </tileset>
@@ -263,7 +263,7 @@
    <tile gid="3"/>
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="5" name="Player" x="16" y="80" width="16" height="16"/>
   <object id="6" name="Flat" type="Room" x="0" y="0" width="80" height="128"/>
   <object id="7" type="Furniture" x="64" y="16" width="16" height="32"/>
@@ -285,8 +285,7 @@
   </object>
   <object id="19" name="Bookcase" x="64" y="64" width="16" height="32">
    <properties>
-    <property name="text">...it struck me mainly by its lack of naturalness, a sort of act against nature, and there fore artificial and absurd. //
-Walking, sitting, lying down, going up or down, all the actions of the body now seemed to me to have a necessity of their own and therefore a naturalness, but copulation, on the contrary, seemed an extravagant exertion for which the human body was not made and to which it could not adapt itself without effort and fatigue.</property>
+    <property name="text" value="This book has a page marked... // ...it struck me mainly by its lack of naturalness, a sort of act against nature, and therefore artificial and absurd. // Walking, sitting, lying down, going up or down, all the actions of the body now seemed to me to have a necessity of their own... // ...and therefore a naturalness, but copulation, on the contrary, seemed an extravagant exertion... // ...for which the human body was not made and to which it could not adapt itself without effort and fatigue."/>
    </properties>
   </object>
   <object id="22" x="16" y="112" width="16" height="16">
@@ -294,7 +293,7 @@ Walking, sitting, lying down, going up or down, all the actions of the body now 
     <property name="text" value="New match on Tinder...//No message."/>
    </properties>
   </object>
-  <object id="29" x="160" y="32" width="48" height="32">
+  <object id="29" name="Bed" x="160" y="32" width="48" height="32">
    <properties>
     <property name="text" value="You should change your sheets."/>
    </properties>
@@ -307,6 +306,16 @@ Walking, sitting, lying down, going up or down, all the actions of the body now 
   <object id="31" name="Shakespeare House 2" x="48" y="0" width="16" height="16">
    <properties>
     <property name="text" value="You look up. Every floor has a little yellow light illuminating the stairwell. // They go up for 20 or so floors. // After that they are obscured by the building. It's getting dark."/>
+   </properties>
+  </object>
+  <object id="33" name="Bedside table" x="192" y="16" width="16" height="16">
+   <properties>
+    <property name="text" value="A phone charger. A book on Louis Theremin...  // In the twenty or so pages you have read, Robert Moog tells the story of when he fixed Clara Rockmore's Theremin. // She was the first to truly play Louis' instrument. Some say the instrument was made for her. // But she lived in America, and when Theremin returned to Russia her instrument went unrepaired for years. // After numerous attempts in which Rockmore insisted the instrument was still not right, Moog repaired the Theremin... // She played Summertime with tears in her eyes... // 'I was afraid I would never be able to play my instrument again'"/>
+   </properties>
+  </object>
+  <object id="34" name="Bedside Table 2" x="192" y="64" width="16" height="16">
+   <properties>
+    <property name="text" value="You have left your vibrator out."/>
    </properties>
   </object>
  </objectgroup>

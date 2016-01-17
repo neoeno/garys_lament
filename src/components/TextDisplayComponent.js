@@ -4,6 +4,7 @@ import React from 'react';
 import maps from '../game/maps';
 import { getFacingTalker } from '../lib/Tiled';
 import TypingAnimationComponent from './TypingAnimationComponent';
+import * as Text from '../lib/Text';
 
 require('styles/TextDisplay.css');
 
@@ -13,7 +14,7 @@ class TextDisplayComponent extends React.Component {
   }
 
   text() {
-    return this.talker().properties.text.split('//')[this.props.game.modalTextIndex];
+    return Text.toParagraphs(this.talker().properties.text)[this.props.game.modalTextIndex];
   }
 
   render() {

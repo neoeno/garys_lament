@@ -1,8 +1,11 @@
 'use strict';
 
 import React from 'react';
+import * as Text from '../lib/Text';
 
 require('styles/TypingAnimation.css');
+
+let LINE_HEIGHT = 18;
 
 class TypingAnimationComponent extends React.Component {
   constructor() {
@@ -31,7 +34,7 @@ class TypingAnimationComponent extends React.Component {
   }
 
   tick() {
-    if (this.state.characterLimit >= this.props.text.length) {
+    if (this.state.characterLimit >= this.splitText().length) {
       window.clearInterval(this.state.ticker);
       this.props.onAnimationFinish();
     }
@@ -41,15 +44,25 @@ class TypingAnimationComponent extends React.Component {
     });
   }
 
+  splitText() {
+    return Text.wrap(this.props.text);
+  }
+
   textPortion() {
-    if (!this.props.animate) { return this.props.text; }
-    return this.props.text.substr(0, this.state.characterLimit);
+    if (!this.props.animate) { return this.splitText(); }
+    return this.splitText().substr(0, this.state.characterLimit);
+  }
+
+  textOffset() {
+    return Math.max(0, this.textPortion().split('\n').length - 3) * -LINE_HEIGHT;
   }
 
   render() {
     return (
       <div className="typing-animation">
-        {this.textPortion()}
+        <div className="typing-animation__lines" style={{top: this.textOffset()}}>
+          {this.textPortion()}
+        </div>
       </div>
     );
   }

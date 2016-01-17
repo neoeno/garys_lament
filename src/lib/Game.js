@@ -1,4 +1,5 @@
 import { getPortalToMap } from './Tiled';
+import * as Text from './Text';
 
 export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';
@@ -52,7 +53,7 @@ export let stepModalStateMachine = state => talker => {
     } case 'ANIMATING': {
       return { modalState: 'HOLD' };
     } case 'HOLD': {
-      if (talker.properties.text.split('//').length > state.modalTextIndex + 1) {
+      if (Text.noParagraphs(talker.properties.text) > state.modalTextIndex + 1) {
         return { modalState: 'ANIMATING', modalTextIndex: state.modalTextIndex + 1 };
       } else {
         return { modalState: 'HIDDEN' };
