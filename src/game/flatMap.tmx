@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="43">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="47">
  <tileset firstgid="1" name="mytiles" tilewidth="16" tileheight="16" tilecount="40">
   <image source="../images/mytiles.png" width="128" height="80"/>
  </tileset>
@@ -28,7 +28,7 @@
    <tile gid="35"/>
    <tile gid="3"/>
    <tile gid="3"/>
-   <tile gid="6"/>
+   <tile gid="38"/>
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="6"/>
@@ -44,7 +44,7 @@
    <tile gid="10"/>
    <tile gid="3"/>
    <tile gid="3"/>
-   <tile gid="6"/>
+   <tile gid="39"/>
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="29"/>
@@ -73,7 +73,7 @@
    <tile gid="18"/>
    <tile gid="18"/>
    <tile gid="18"/>
-   <tile gid="12"/>
+   <tile gid="36"/>
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="6"/>
@@ -89,7 +89,7 @@
    <tile gid="18"/>
    <tile gid="18"/>
    <tile gid="18"/>
-   <tile gid="13"/>
+   <tile gid="37"/>
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="3"/>
@@ -276,11 +276,12 @@
   <object id="26" name="Bed" type="Furniture" x="160" y="32" width="48" height="32"/>
   <object id="27" type="Furniture" x="192" y="64" width="16" height="16"/>
   <object id="28" type="Furniture" x="192" y="16" width="16" height="16"/>
+  <object id="44" type="Furniture" x="112" y="16" width="16" height="32"/>
  </objectgroup>
- <objectgroup name="Talkers">
+ <objectgroup name="Talkers" visible="0">
   <object id="17" name="e" x="0" y="16" width="16" height="16">
    <properties>
-    <property name="text" value="Hi! My name is e! I'm really tired today."/>
+    <property name="text" value="e is reading the Wikipedia article on Scottish Argentines. // e: 'Frequently, Scottish Argentines are wrongly referred to as English.' ugh aren’t we all, scottish argentines"/>
    </properties>
   </object>
   <object id="19" name="Bookcase" x="64" y="64" width="16" height="16">
@@ -335,9 +336,14 @@
   </object>
   <object id="42" name="Desk Notebook" x="64" y="16" width="16" height="32">
    <properties>
-    <property name="text" value="at the start of the Grahek book he distinguishes two kinds of pain that we all know intuitively: // that sharp, immediate pain you might feel if you step on a pin; // and that duller pain you might feel if you have some sort of injury. // and, he says, the 'point' of the first kind of pain is to tell you to get your hand away from that flame — to avoid injury.  // and the second kind of pain is to get you to protect it, keep it still, to promote healing. // the first kind of pain makes you move, the second kind of pain makes you still."/>
+    <property name="text" value="at the start of the Grahek book he distinguishes two kinds of pain that we all know intuitively: // that sharp, immediate pain you might feel if you step on a pin; // and that duller pain you might feel if you have some sort of injury. // and, he says, the 'point' of the first kind of pain is to tell you to get your hand away from that flame — to avoid injury.  // and the second kind of pain is to get you to protect it, keep it still, to promote healing. // the first kind of pain makes you move // the second kind of pain makes you still."/>
+   </properties>
+  </object>
+  <object id="45" name="Vanity" x="112" y="16" width="16" height="32">
+   <properties>
+    <property name="text" value="You look into the mirror. // You fix your hair."/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Portals"/>
+ <objectgroup name="Portals" visible="0"/>
 </map>

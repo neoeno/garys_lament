@@ -1,7 +1,7 @@
 { "height":16,
  "layers":[
         {
-         "data":[2, 2, 33, 2, 33, 3, 3, 2, 33, 2, 2, 2, 33, 3, 3, 3, 4, 24, 18, 18, 35, 3, 3, 6, 6, 6, 6, 6, 32, 3, 3, 3, 8, 23, 18, 18, 10, 3, 3, 6, 6, 6, 29, 27, 25, 3, 3, 3, 18, 18, 18, 18, 18, 21, 21, 6, 6, 6, 30, 28, 26, 3, 3, 3, 18, 18, 18, 18, 12, 3, 3, 6, 6, 6, 6, 6, 31, 3, 3, 3, 18, 18, 18, 18, 13, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 18, 18, 18, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7, 14, 34, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+         "data":[2, 2, 33, 2, 33, 3, 3, 2, 33, 2, 2, 2, 33, 3, 3, 3, 4, 24, 18, 18, 35, 3, 3, 38, 6, 6, 6, 6, 32, 3, 3, 3, 8, 23, 18, 18, 10, 3, 3, 39, 6, 6, 29, 27, 25, 3, 3, 3, 18, 18, 18, 18, 18, 21, 21, 6, 6, 6, 30, 28, 26, 3, 3, 3, 18, 18, 18, 18, 36, 3, 3, 6, 6, 6, 6, 6, 31, 3, 3, 3, 18, 18, 18, 18, 37, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 18, 18, 18, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7, 14, 34, 18, 18, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
          "height":16,
          "name":"Background",
          "opacity":1,
@@ -195,6 +195,21 @@
                  "width":16,
                  "x":192,
                  "y":16
+                }, 
+                {
+                 "height":32,
+                 "id":44,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":16
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -214,7 +229,7 @@
                  "name":"e",
                  "properties":
                     {
-                     "text":"Hi! My name is e! I'm really tired today."
+                     "text":"e is reading the Wikipedia article on Scottish Argentines. \/\/ e: 'Frequently, Scottish Argentines are wrongly referred to as English.' ugh aren\u2019t we all, scottish argentines"
                     },
                  "rotation":0,
                  "type":"",
@@ -379,7 +394,7 @@
                  "name":"Desk Notebook",
                  "properties":
                     {
-                     "text":"at the start of the Grahek book he distinguishes two kinds of pain that we all know intuitively: \/\/ that sharp, immediate pain you might feel if you step on a pin; \/\/ and that duller pain you might feel if you have some sort of injury. \/\/ and, he says, the 'point' of the first kind of pain is to tell you to get your hand away from that flame \u2014 to avoid injury.  \/\/ and the second kind of pain is to get you to protect it, keep it still, to promote healing. \/\/ the first kind of pain makes you move, the second kind of pain makes you still."
+                     "text":"at the start of the Grahek book he distinguishes two kinds of pain that we all know intuitively: \/\/ that sharp, immediate pain you might feel if you step on a pin; \/\/ and that duller pain you might feel if you have some sort of injury. \/\/ and, he says, the 'point' of the first kind of pain is to tell you to get your hand away from that flame \u2014 to avoid injury.  \/\/ and the second kind of pain is to get you to protect it, keep it still, to promote healing. \/\/ the first kind of pain makes you move \/\/ the second kind of pain makes you still."
                     },
                  "rotation":0,
                  "type":"",
@@ -387,10 +402,25 @@
                  "width":16,
                  "x":64,
                  "y":16
+                }, 
+                {
+                 "height":32,
+                 "id":45,
+                 "name":"Vanity",
+                 "properties":
+                    {
+                     "text":"You look into the mirror. \/\/ You fix your hair."
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":16
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
@@ -402,12 +432,12 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
         }],
- "nextobjectid":43,
+ "nextobjectid":47,
  "orientation":"orthogonal",
  "properties":
     {
