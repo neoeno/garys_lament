@@ -20,11 +20,14 @@ import maps from '../game/maps';
 class AppComponent extends React.Component {
   componentDidMount() {
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
     window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keyup', this.handleKeyUp);
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keyup', this.handleKeyUp);
   }
 
   handleKeyDown(evt) {
@@ -34,17 +37,28 @@ class AppComponent extends React.Component {
       if (Game.isShowingModal(this.props.game)) { return; }
       if (Game.isTeleporting(this.props.game)) { return; }
       let movement = UI.keyToMovement(evt.which);
-      this.props.dispatch(move(movement));
-      if (Tiled.isPortalAtPosition(maps[this.props.game.map])(this.props.game)) {
-        this.props.dispatch(fadeOut());
-        window.setTimeout(() => {
-          this.props.dispatch(teleport(Tiled.getPortalAtPosition(maps[this.props.game.map])(this.props.game)));
-        }, 800);
-        window.setTimeout(() => {
-          this.props.dispatch(fadeIn());
-        }, 1200);
-      }
+      clearInterval(this.repeatTimer);
+      this.repeatTimer = window.setInterval(() => this.sendMovement(movement), 200);
+      this.sendMovement(movement);
     }
+  }
+
+  sendMovement(movement) {
+    this.props.dispatch(move(movement));
+    if (Tiled.isPortalAtPosition(maps[this.props.game.map])(this.props.game)) {
+      this.props.dispatch(fadeOut());
+      window.setTimeout(() => {
+        this.props.dispatch(teleport(Tiled.getPortalAtPosition(maps[this.props.game.map])(this.props.game)));
+      }, 800);
+      window.setTimeout(() => {
+        this.props.dispatch(fadeIn());
+      }, 1200);
+    }
+  }
+
+  handleKeyUp() {
+    if (!this.repeatTimer) { return; }
+    clearInterval(this.repeatTimer);
   }
 
   render() {

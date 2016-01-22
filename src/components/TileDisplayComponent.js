@@ -30,17 +30,22 @@ class TileDisplayComponent extends React.Component {
     );
   }
 
-  tileDisplayOffset() {
-    return {
-      left: `${80 - this.props.game.x * 16}px`,
-      top: `${80 - this.props.game.y * 16}px`,
-      animation: this.props.game.disableMovementTweening ? 'none' : ''
-    };
+  componentDidMount() {
+    this.updateTileDisplayTransform();
+  }
+
+  componentDidUpdate(prevProps) {
+    if ((prevProps.game.x === this.props.game.x) && (prevProps.game.y === this.props.game.y)) { return; }
+    this.updateTileDisplayTransform();
+  }
+
+  updateTileDisplayTransform() {
+    this.refs.tileDisplay.style.transform = `translate3d(${80 - this.props.game.x * 16}px, ${80 - this.props.game.y * 16}px, 0px)`;
   }
 
   render() {
     return (
-      <div className="tile-display" style={this.tileDisplayOffset()}>
+      <div ref="tileDisplay" className="tile-display">
         {this.background()}
       </div>
     );
