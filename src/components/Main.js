@@ -21,8 +21,6 @@ class AppComponent extends React.Component {
   componentDidMount() {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
-    window.addEventListener('keydown', this.handleKeyDown);
-    window.addEventListener('keyup', this.handleKeyUp);
   }
 
   componentWillUnmount() {
