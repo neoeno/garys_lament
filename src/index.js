@@ -7,7 +7,7 @@ import * as UIObserver from './lib/UIObserver';
 
 const store = configureStore();
 
-UIObserver.observe(window);
+UIObserver.observe(window)(store.dispatch);
 
 render(
   <Provider store={store}>

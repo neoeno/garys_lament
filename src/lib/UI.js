@@ -22,3 +22,17 @@ export let keyToMovement = keycode => {
     return {x: -1, y: 0};
   }
 };
+
+export let keyStateToMovement = keyState => {
+  if (keyState[key.code.arrow.up.code]) {
+    return {x: 0, y: -1};
+  } else if (keyState[key.code.arrow.right.code]) {
+    return {x: 1, y: 0};
+  } else if (keyState[key.code.arrow.down.code]) {
+    return {x: 0, y: 1};
+  } else if (keyState[key.code.arrow.left.code]) {
+    return {x: -1, y: 0};
+  } else {
+    return {x: 0, y: 0};
+  }
+};
