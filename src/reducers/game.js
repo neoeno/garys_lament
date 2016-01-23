@@ -17,7 +17,8 @@ const initialState = {
   map: 'lounge',
   modalState: 'HIDDEN',
   screenTransitionState: 'SHOW',
-  disableMovementTweening: false
+  disableMovementTweening: false,
+  walking: false
 };
 
 module.exports = function(state = initialState, action) {
@@ -33,6 +34,7 @@ module.exports = function(state = initialState, action) {
       }
 
       Object.assign(nextState, Game.faceMovementDirection(action.movement));
+      Object.assign(nextState, Game.walkingStatus(action.movement));
       nextState.disableMovementTweening = false;
 
       return nextState;

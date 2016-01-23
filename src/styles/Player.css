@@ -11,14 +11,62 @@
   background-position: -16px 0px;
 }
 
+.player.is-facing-north.is-walking {
+  animation: walkingNorth 0.4s steps(1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes walkingNorth {
+  0%   { background-position: -64px 0px; }
+  50%  { background-position: -16px 0px; }
+  100% { background-position: -64px 0px; }
+}
+
 .player.is-facing-east {
   background-position: -96px 0px;
+}
+
+.player.is-facing-east.is-walking {
+  background-position: -112px 0px;
+}
+
+.player.is-facing-east.is-walking {
+  animation: walkingEast 0.4s steps(1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes walkingEast {
+  0%   { background-position: -112px 0px; }
+  50%  { background-position: -96px 0px; }
+  100% { background-position: -112px 0px; }
 }
 
 .player.is-facing-south {
   background-position: -0px 0px;
 }
 
+.player.is-facing-south.is-walking {
+  animation: walkingSouth 0.4s steps(1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes walkingSouth {
+  0%   { background-position: -48px 0px; }
+  50%  { background-position: -0px 0px; }
+  100% { background-position: -48px 0px; }
+}
+
 .player.is-facing-west {
   background-position: -32px 0px;
+}
+
+.player.is-facing-west.is-walking {
+  animation: walkingWest 0.4s steps(1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes walkingWest {
+  0%   { background-position: -80px 0px; }
+  50%  { background-position: -32px 0px; }
+  100% { background-position: -80px 0px; }
 }

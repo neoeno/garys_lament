@@ -6,7 +6,7 @@ require('styles/Player.css');
 
 class PlayerComponent extends React.Component {
   render() {
-    return (<div className={`player is-facing-${this.props.game.facing}`} />);
+    return (<div className={`player is-facing-${this.props.game.facing} ${this.props.game.walking ? 'is-walking' : ''}`} />);
   }
 }
 

@@ -35,15 +35,22 @@ export let movementToFacing = movement => {
     return 'south';
   } else if (movement.x == -1) {
     return 'west';
-  } else {
-    return 'south';
   }
 };
 
 export let faceMovementDirection = movement => {
+  if (movement.x == 0 && movement.y == 0) { return {}; }
   return {
     facing: movementToFacing(movement)
   };
+};
+
+export let walkingStatus = movement => {
+  if (movement.x == 0 && movement.y == 0) {
+    return {walking: false};
+  } else {
+    return {walking: true};
+  }
 };
 
 export let stepModalStateMachine = state => talker => {
