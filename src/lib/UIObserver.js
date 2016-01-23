@@ -6,7 +6,10 @@ import act from '../actions/game/act';
 
 Rx.Observable.prototype.repeatAtInterval = function(interval) {
   return this
-    .map((item) => Rx.Observable.timer(0, interval).map(() => item))
+    .map((item) => {
+      if (item) { return Rx.Observable.timer(0, interval).map(() => item); }
+      else { return Rx.Observable.just(item); }
+    })
     .switch();
 };
 
@@ -24,14 +27,17 @@ export let observe = dom => dispatch => {
     [ARROWS.left.code]: 0
   };
 
-  let eventStreamForKeyCode = eventName => keyCode => {
+  let arrayify = (a) => Array.isArray(a) ? a : [a];
+
+  let eventStreamForKeyCode = eventName => keyCodes => {
     return Rx.Observable
       .fromEvent(dom, eventName)
+      .filter((evt) => !evt.repeat)
       .pluck('keyCode')
-      .filter(code => code === keyCode);
+      .filter(code => arrayify(keyCodes).indexOf(code) !== -1);
   };
 
-  let keyStatus = keyCode => {
+  let keyStateStream = keyCode => {
     return eventStreamForKeyCode('keydown')(keyCode)
       .map(() => 1)
       .merge(eventStreamForKeyCode('keyup')(keyCode)
@@ -39,32 +45,35 @@ export let observe = dom => dispatch => {
       .distinctUntilChanged();
   };
 
-  let keyDowns = keyCodes => {
-    let keyDown = keyCode => keyStatus(keyCode).filter((a) => a).map(() => keyCode);
+  let keysStatusStream = keys => {
+    return eventStreamForKeyCode('keydown')(keys)
+      .map((code) => ({[code]: 1}))
+      .throttle(400)
+      .merge(
+        eventStreamForKeyCode('keyup')(keys)
+          .map((code) => ({[code]: 0})))
+      .scan((memo, o) => Object.assign(memo, o), arrowStatus);
+  };
+
+  let keyDownStream = keyCodes => {
+    let keyDown = keyCode => keyStateStream(keyCode).filter((a) => a).map(() => keyCode);
     return keyCodes
       .reduce((observable, keyCode) => observable.merge(keyDown(keyCode)), keyDown(keyCodes.pop()));
   };
 
-  let keyStatusObject = keyCode => {
-    return keyStatus(keyCode)
-      .map(status => ({[keyCode]: status}));
-  };
-
-  let activeArrowKeyStream = keyStatusObject(ARROWS.up.code)
-    .merge(keyStatusObject(ARROWS.right.code))
-    .merge(keyStatusObject(ARROWS.down.code))
-    .merge(keyStatusObject(ARROWS.left.code))
-    .scan((memo, o) => Object.assign(memo, o), arrowStatus)
-    .combineLatest(keyDowns([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code]))
-    .map(([status, lastKeyDown]) => status[lastKeyDown] ? lastKeyDown : null)
+  let activeArrowKeyStream = keyDownStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code])
+    .combineLatest(keysStatusStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code]))
+    .map(([lastKeyDown, status]) => status[lastKeyDown] ? lastKeyDown : null)
+    .distinctUntilChanged()
     .repeatAtInterval(400);
 
-  let actionKeyStateStream = keyStatus(ACTIONS.space.code)
-    .merge(keyStatus(ACTIONS.enter.code))
+  let actionKeyStateStream = keyStateStream(ACTIONS.space.code)
+    .merge(keyStateStream(ACTIONS.enter.code))
     .distinctUntilChanged()
     .filter((status) => status);
 
-  activeArrowKeyStream.subscribe((controlsStatus) => console.log((controlsStatus)));
+  activeArrowKeyStream.subscribe((controlsStatus) => console.log('arrows', controlsStatus));
   activeArrowKeyStream.subscribe((controlsStatus) => dispatch(movementControlsChange(controlsStatus)));
+  actionKeyStateStream.subscribe((controlsStatus) => console.log('action', controlsStatus));
   actionKeyStateStream.subscribe((controlsStatus) => dispatch(act(controlsStatus)));
 };
