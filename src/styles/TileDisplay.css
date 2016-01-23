@@ -4,7 +4,7 @@
   width: 100%;
   height: 100%;
   transform: translate3d(0px, 0px, 0px);
-  transition: transform 0.25s linear;
+  transition: transform 0.45s linear;
 }
 
 .tile-display__row {
