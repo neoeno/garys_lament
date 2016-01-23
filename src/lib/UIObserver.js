@@ -4,15 +4,6 @@ import Rx from 'rx';
 import movementControlsChange from '../actions/game/movementControlsChange';
 import act from '../actions/game/act';
 
-Rx.Observable.prototype.repeatAtInterval = function(interval) {
-  return this
-    .map((item) => {
-      if (item) { return Rx.Observable.timer(0, interval).map(() => item); }
-      else { return Rx.Observable.just(item); }
-    })
-    .switch();
-};
-
 const ARROWS = key.code.arrow;
 const ACTIONS = {
   space: key.code.special.space,
@@ -48,7 +39,6 @@ export let observe = dom => dispatch => {
   let keysStatusStream = keys => {
     return eventStreamForKeyCode('keydown')(keys)
       .map((code) => ({[code]: 1}))
-      .throttle(400)
       .merge(
         eventStreamForKeyCode('keyup')(keys)
           .map((code) => ({[code]: 0})))
@@ -61,19 +51,35 @@ export let observe = dom => dispatch => {
       .reduce((observable, keyCode) => observable.merge(keyDown(keyCode)), keyDown(keyCodes.pop()));
   };
 
-  let activeArrowKeyStream = keyDownStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code])
-    .combineLatest(keysStatusStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code]))
-    .map(([lastKeyDown, status]) => status[lastKeyDown] ? lastKeyDown : null)
-    .distinctUntilChanged()
-    .repeatAtInterval(400);
-
   let actionKeyStateStream = keyStateStream(ACTIONS.space.code)
     .merge(keyStateStream(ACTIONS.enter.code))
     .distinctUntilChanged()
     .filter((status) => status);
 
-  activeArrowKeyStream.subscribe((controlsStatus) => console.log('arrows', controlsStatus));
-  activeArrowKeyStream.subscribe((controlsStatus) => dispatch(movementControlsChange(controlsStatus)));
   actionKeyStateStream.subscribe((controlsStatus) => console.log('action', controlsStatus));
   actionKeyStateStream.subscribe((controlsStatus) => dispatch(act(controlsStatus)));
+
+  let arrowStateStream = keyDownStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code])
+    .combineLatest(keysStatusStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code]));
+
+  // This bit is ugly as hell but my Rx abilities aren't enough to conver it yet
+  // We'll get there. It does have the correct behaviour (almost) now, though.
+
+  let intervalID = null;
+  let lastKey = null;
+  let doTheThing = () => {
+    dispatch(movementControlsChange(lastKey));
+    if (!lastKey) {
+      window.clearInterval(intervalID);
+      intervalID = null;
+    }
+  };
+  arrowStateStream.subscribe((state) => {
+    let key = state[1][state[0]] ? state[0] : null;
+    lastKey = key;
+    if (intervalID) { return; }
+    if (key === null) { return; }
+    doTheThing();
+    intervalID = window.setInterval(doTheThing, 400);
+  });
 };
