@@ -6,7 +6,7 @@
   "main": "",
   "scripts": {
     "clean": "rimraf dist/*",
-    "copy": "copyfiles -f ./src/index.html ./src/game.html ./src/favicon.ico ./dist && mkdir -p ./dist/images && cp -a ./src/images/fonts ./dist/images",
+    "copy": "copyfiles -f ./src/index.html ./src/game.html ./src/opengraph.png ./src/favicon.ico ./dist && mkdir -p ./dist/images && cp -a ./src/images/fonts ./dist/images",
     "dist": "npm run copy & webpack --env=dist",
     "lint": "eslint ./src",
     "posttest": "npm run lint",
