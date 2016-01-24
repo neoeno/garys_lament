@@ -56,7 +56,6 @@ export let observe = dom => dispatch => {
     .distinctUntilChanged()
     .filter((status) => status);
 
-  actionKeyStateStream.subscribe((controlsStatus) => console.log('action', controlsStatus));
   actionKeyStateStream.subscribe((controlsStatus) => dispatch(act(controlsStatus)));
 
   let arrowStateStream = keyDownStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code])
@@ -80,6 +79,6 @@ export let observe = dom => dispatch => {
     if (intervalID) { return; }
     if (key === null) { return; }
     doTheThing();
-    intervalID = window.setInterval(doTheThing, 400);
+    intervalID = window.setInterval(doTheThing, 250);
   });
 };
