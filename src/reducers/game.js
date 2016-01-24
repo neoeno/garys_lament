@@ -49,6 +49,7 @@ module.exports = function(state = initialState, action) {
 
       Object.assign(nextState, Game.stepModalStateMachine(state)(talker));
       nextState.disableMovementTweening = true;
+      nextState.walking = false;
 
       return nextState;
     } break;
