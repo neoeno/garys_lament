@@ -9,6 +9,10 @@ export let isTeleporting = state => {
   return state.screenTransitionState !== 'SHOW';
 };
 
+export let isWalking = state => {
+  return !!state.walking;
+};
+
 export let movePosition = ({x, y}) => movement => {
   return {
     x: x + movement.x,

@@ -64,21 +64,26 @@ export let observe = dom => dispatch => {
   // This bit is ugly as hell but my Rx abilities aren't enough to conver it yet
   // We'll get there. It does have the correct behaviour (almost) now, though.
 
-  let intervalID = null;
+  let sendMovements = true;
   let lastKey = null;
   let doTheThing = () => {
-    dispatch(movementControlsChange(lastKey));
-    if (!lastKey) {
-      window.clearInterval(intervalID);
-      intervalID = null;
+    if (lastKey === null) {
+      sendMovements = true;
+      dispatch(movementControlsChange(lastKey));
+    } else {
+      sendMovements = false;
+      dispatch(movementControlsChange(lastKey));
     }
   };
+
   arrowStateStream.subscribe((state) => {
     let key = state[1][state[0]] ? state[0] : null;
     lastKey = key;
-    if (intervalID) { return; }
-    if (key === null) { return; }
+    if (!sendMovements) { return; }
     doTheThing();
-    intervalID = window.setInterval(doTheThing, 250);
   });
+
+  return {
+    requestMovement: doTheThing
+  };
 };

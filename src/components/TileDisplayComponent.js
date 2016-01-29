@@ -30,22 +30,13 @@ class TileDisplayComponent extends React.Component {
     );
   }
 
-  componentDidMount() {
-    this.updateTileDisplayTransform();
-  }
-
-  componentDidUpdate(prevProps) {
-    if ((prevProps.game.x === this.props.game.x) && (prevProps.game.y === this.props.game.y)) { return; }
-    this.updateTileDisplayTransform();
-  }
-
-  updateTileDisplayTransform() {
-    this.refs.tileDisplay.style.transform = `translate3d(${80 - this.props.game.x * 16}px, ${80 - this.props.game.y * 16}px, 0px)`;
+  shouldComponentUpdate(nextProps) {
+    return this.props.game.map != nextProps.game.map;
   }
 
   render() {
     return (
-      <div ref="tileDisplay" className="tile-display">
+      <div className="tile-display">
         {this.background()}
       </div>
     );

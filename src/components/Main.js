@@ -5,28 +5,15 @@ require('styles/GameFrame.css');
 import React from 'react';
 import { connect } from 'react-redux';
 import TileDisplayComponent from './TileDisplayComponent';
+import PositionShiftComponent from './PositionShiftComponent';
 import TextDisplayComponent from './TextDisplayComponent';
 import PlayerComponent from './PlayerComponent';
-import move from '../actions/game/move';
 import act from '../actions/game/act';
-import teleport from '../actions/game/teleport';
-import fadeOut from '../actions/game/fadeOut';
-import fadeIn from '../actions/game/fadeIn';
-import * as Tiled from '../lib/Tiled';
-import maps from '../game/maps';
+import * as UIObserver from '../lib/UIObserver';
 
 class AppComponent extends React.Component {
-  sendMovement(movement) {
-    this.props.dispatch(move(movement));
-    if (Tiled.isPortalAtPosition(maps[this.props.game.map])(this.props.game)) {
-      this.props.dispatch(fadeOut());
-      window.setTimeout(() => {
-        this.props.dispatch(teleport(Tiled.getPortalAtPosition(maps[this.props.game.map])(this.props.game)));
-      }, 800);
-      window.setTimeout(() => {
-        this.props.dispatch(fadeIn());
-      }, 1200);
-    }
+  componentWillMount() {
+    this.observer = UIObserver.observe(window)(this.props.dispatch);
   }
 
   render() {
@@ -34,7 +21,9 @@ class AppComponent extends React.Component {
     return (
       <div className="game-frame__wrapper">
         <div className={`game-frame ${gameFrameClass}`}>
-          <TileDisplayComponent game={this.props.game} />
+          <PositionShiftComponent game={this.props.game} onMovementFinished={this.observer.requestMovement}>
+            <TileDisplayComponent game={this.props.game} />
+          </PositionShiftComponent>
           <TextDisplayComponent game={this.props.game} onActFinished={() => {
             this.props.dispatch(act());
           }} />
