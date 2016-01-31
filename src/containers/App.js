@@ -40,7 +40,8 @@ function mapDispatchToProps(dispatch) {
     teleport: require('../actions/game/teleport.js'),
     fadeOut: require('../actions/game/fadeOut.js'),
     fadeIn: require('../actions/game/fadeIn.js'),
-    movementControlsChange: require('../actions/game/movementControlsChange.js')
+    movementControlsChange: require('../actions/game/movementControlsChange.js'),
+    movementFinished: require('../actions/game/movementFinished.js')
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

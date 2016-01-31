@@ -13,6 +13,10 @@ export let isWalking = state => {
   return !!state.walking;
 };
 
+export let isMoving = state => {
+  return !!state.moving;
+};
+
 export let movePosition = ({x, y}) => movement => {
   return {
     x: x + movement.x,
@@ -54,6 +58,14 @@ export let walkingStatus = movement => {
     return {walking: false};
   } else {
     return {walking: true};
+  }
+};
+
+export let movingStatus = movement => {
+  if (movement.x == 0 && movement.y == 0) {
+    return {moving: false};
+  } else {
+    return {moving: true};
   }
 };
 

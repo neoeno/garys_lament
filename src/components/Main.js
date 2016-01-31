@@ -9,19 +9,17 @@ import PositionShiftComponent from './PositionShiftComponent';
 import TextDisplayComponent from './TextDisplayComponent';
 import PlayerComponent from './PlayerComponent';
 import act from '../actions/game/act';
-import * as UIObserver from '../lib/UIObserver';
+import movementFinished from '../actions/game/movementFinished';
 
 class AppComponent extends React.Component {
-  componentWillMount() {
-    this.observer = UIObserver.observe(window)(this.props.dispatch);
-  }
-
   render() {
     let gameFrameClass = {'FADE_OUT': 'is-fade-out', 'SHOW': ''}[this.props.game.screenTransitionState];
     return (
       <div className="game-frame__wrapper">
         <div className={`game-frame ${gameFrameClass}`}>
-          <PositionShiftComponent game={this.props.game} onMovementFinished={this.observer.requestMovement}>
+          <PositionShiftComponent game={this.props.game} onMovementFinished={() => {
+            this.props.dispatch(movementFinished());
+          }}>
             <TileDisplayComponent game={this.props.game} />
           </PositionShiftComponent>
           <TextDisplayComponent game={this.props.game} onActFinished={() => {
