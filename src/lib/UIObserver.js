@@ -2,6 +2,7 @@ import key from 'key';
 import Rx from 'rx';
 
 import movementControlsChange from '../actions/game/movementControlsChange';
+import triggerMovement from '../actions/game/triggerMovement';
 import act from '../actions/game/act';
 
 const ARROWS = key.code.arrow;
@@ -67,5 +68,6 @@ export let observe = dom => dispatch => {
   arrowStateStream.subscribe((state) => {
     let key = state[1][state[0]] ? state[0] : null;
     dispatch(movementControlsChange(key));
+    dispatch(triggerMovement());
   });
 };

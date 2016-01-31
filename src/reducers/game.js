@@ -28,55 +28,25 @@ module.exports = function(state = initialState, action) {
   let nextState = Object.assign({}, state);
 
   switch (action.type) {
-    case 'MOVE': {
-      let targetPosition = Game.movePosition(state)(action.movement);
-
-      if (Tiled.canWalkTo(targetPosition)(maps[nextState.map])) {
-        Object.assign(nextState, targetPosition);
-      }
-
-      Object.assign(nextState, Game.faceMovementDirection(action.movement));
-      Object.assign(nextState, Game.walkingStatus(action.movement));
-      Object.assign(nextState, Game.movingStatus(action.movement));
-      nextState.disableMovementTweening = false;
-
-      return nextState;
-    } break;
     case 'MOVEMENT_CONTROLS_CHANGE': {
       nextState.movementKeyPressed = action.keyState;
-
-      if (Game.isShowingModal(state)) { return nextState; }
-      if (Game.isTeleporting(state)) { return nextState; }
-      if (Game.isMoving(state)) { return nextState; }
-
-      nextState.moving = false;
-
-      let movement = UI.activeKeyToMovement(action.keyState);
-
-      Object.assign(nextState, Game.faceMovementDirection(movement));
-      Object.assign(nextState, Game.walkingStatus(movement));
-
-      let targetPosition = Game.movePosition(state)(movement);
-
-      if (Tiled.canWalkTo(targetPosition)(maps[nextState.map])) {
-        Object.assign(nextState, Game.movingStatus(movement));
-        Object.assign(nextState, targetPosition);
-      }
-
       return nextState;
     } break;
     case 'MOVEMENT_FINISHED': {
       nextState.moving = false;
+      return nextState;
+    } break;
+    case 'TRIGGER_MOVEMENT': {
+      if (Game.isShowingModal(nextState)) { return nextState; }
+      if (Game.isTeleporting(nextState)) { return nextState; }
+      if (Game.isMoving(nextState)) { return nextState; }
 
-      if (Game.isShowingModal(state)) { return nextState; }
-      if (Game.isTeleporting(state)) { return nextState; }
-
-      let movement = UI.activeKeyToMovement(state.movementKeyPressed);
+      let movement = UI.activeKeyToMovement(nextState.movementKeyPressed);
 
       Object.assign(nextState, Game.faceMovementDirection(movement));
       Object.assign(nextState, Game.walkingStatus(movement));
 
-      let targetPosition = Game.movePosition(state)(movement);
+      let targetPosition = Game.movePosition(nextState)(movement);
 
       if (Tiled.canWalkTo(targetPosition)(maps[nextState.map])) {
         Object.assign(nextState, Game.movingStatus(movement));

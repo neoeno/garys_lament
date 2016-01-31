@@ -10,6 +10,7 @@ import TextDisplayComponent from './TextDisplayComponent';
 import PlayerComponent from './PlayerComponent';
 import act from '../actions/game/act';
 import movementFinished from '../actions/game/movementFinished';
+import triggerMovement from '../actions/game/triggerMovement';
 
 class AppComponent extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class AppComponent extends React.Component {
         <div className={`game-frame ${gameFrameClass}`}>
           <PositionShiftComponent game={this.props.game} onMovementFinished={() => {
             this.props.dispatch(movementFinished());
+            this.props.dispatch(triggerMovement());
           }}>
             <TileDisplayComponent game={this.props.game} />
           </PositionShiftComponent>
