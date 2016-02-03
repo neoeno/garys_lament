@@ -8,3 +8,15 @@ export let toParagraphs = text => text.split('//');
 
 export let noLines = text => toLines(text).length;
 export let noParagraphs = text => toParagraphs(text).length;
+
+export let textMachines = {
+  sequence: text => state => {
+    let nextState = state === null ? 0 : state + 1;
+    return {
+      nextState,
+      text: text.sequence[nextState]
+    };
+  }
+};
+
+export let makeTextMachine = text => textMachines[text.type](text);

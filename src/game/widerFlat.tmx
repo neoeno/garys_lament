@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="16" tileheight="16" nextobjectid="52">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="16" tileheight="16" nextobjectid="53">
  <tileset firstgid="1" name="mytiles" tilewidth="16" tileheight="16" tilecount="56">
   <image source="../images/mytiles.png" width="128" height="112"/>
  </tileset>
@@ -541,74 +541,80 @@
  <objectgroup name="Talkers">
   <object id="17" name="e" x="0" y="16" width="16" height="16">
    <properties>
-    <property name="text" value="e is reading the Wikipedia article on Scottish Argentines. // e: 'Frequently, Scottish Argentines are wrongly referred to as English.' ugh aren’t we all, scottish argentines"/>
+    <property name="text" value="lounge-e"/>
    </properties>
   </object>
   <object id="19" name="Bookcase" x="64" y="64" width="16" height="16">
    <properties>
-    <property name="text" value="This book has a page marked... // ...it struck me mainly by its lack of naturalness, a sort of act against nature, and therefore artificial and absurd. // Walking, sitting, lying down, going up or down, all the actions of the body now seemed to me to have a necessity of their own... // ...and therefore a naturalness, but copulation, on the contrary, seemed an extravagant exertion... // ...for which the human body was not made and to which it could not adapt itself without effort and fatigue."/>
+    <property name="text" value="lounge-bookcase-top"/>
    </properties>
   </object>
   <object id="22" name="Phone" x="16" y="112" width="16" height="16">
    <properties>
-    <property name="text" value="You recently changed your tinder to - Gender: Female - Looking for: Women. // The quality of the profiles dramatically improved, but no one talks to you, still. // Strangely, you feel more fearful than before. // Oh! A new match!"/>
+    <property name="text" value="lounge-phone"/>
    </properties>
   </object>
   <object id="29" name="Bed" x="160" y="32" width="48" height="32">
    <properties>
-    <property name="text" value="You have been sleeping on four pillows so the blood doesn't flow into your head and make your wisdom tooth swell. // You should change your sheets."/>
+    <property name="text" value="bedroom-bed"/>
    </properties>
   </object>
   <object id="30" name="Shakespeare Tower" x="16" y="0" width="32" height="16">
    <properties>
-    <property name="text" value="Shakespeare tower looks grey and confronting. // You see a window with four large pieces of paper stuck to the walls. // You imagine they are interior design plans, for a renovation."/>
+    <property name="text" value="lounge-window-left"/>
    </properties>
   </object>
   <object id="31" name="Shakespeare House 2" x="48" y="0" width="16" height="16">
    <properties>
-    <property name="text" value="You look up. Every floor has a little yellow light illuminating the stairwell. // They go up for 20 or so floors. // After that they are obscured by the building. It's getting dark."/>
+    <property name="text" value="lounge-window-right"/>
    </properties>
   </object>
   <object id="33" name="Bedside table" x="192" y="16" width="16" height="16">
    <properties>
-    <property name="text" value="A phone charger. A book on Louis Theremin...  // In the twenty or so pages you have read, Robert Moog tells the story of when he fixed Clara Rockmore's Theremin. // She was the first to truly play Louis' instrument. Some say the instrument was made for her. // But she lived in America, and when Theremin returned to Russia her instrument went unrepaired for years. // After numerous attempts in which Rockmore insisted the instrument was still not right, Moog repaired the Theremin... // She played Summertime with tears in her eyes... // 'I was afraid I would never be able to play my instrument again'"/>
+    <property name="text" value="bedroom-table-top"/>
    </properties>
   </object>
   <object id="34" name="Bedside Table 2" x="192" y="64" width="16" height="16">
    <properties>
-    <property name="text" value="You have left your vibrator out."/>
+    <property name="text" value="bedroom-table-bottom"/>
    </properties>
   </object>
   <object id="36" name="Coffee" x="32" y="112" width="16" height="16">
    <properties>
-    <property name="text" value="Coffee's getting cold. // Better drink up, you're late for work."/>
+    <property name="text" value="lounge-coffee"/>
    </properties>
   </object>
   <object id="38" name="Bedroom window" x="112" y="0" width="96" height="16">
    <properties>
-    <property name="text" value="It's January, but the flowers are already blooming. // You think some of the new shoots might be daffodils, but you've not lived here long enough to know for sure. // You hope they will be OK. They shouldn't be out. The earth is changing."/>
+    <property name="text" value="bedroom-window"/>
    </properties>
   </object>
   <object id="40" name="Bookcase 2" x="64" y="80" width="16" height="16">
    <properties>
-    <property name="text" value="You pick out a book at random. // Companies are subject to capitalism, but within companies exist other sorts of societies. // Authoritarian, fascist, socialist, even further capitalist societies develop inside. // Living in the society confers certain benefits, just like the state. Universal basic income already exists in almost every company. // However, unlike the state — our society has a complex and rigorous citizenship test, and exile is common."/>
+    <property name="text" value="lounge-bookcase-bottom"/>
    </properties>
   </object>
   <object id="42" name="Desk Notebook" x="64" y="16" width="16" height="32">
    <properties>
-    <property name="text" value="at the start of the Grahek book he distinguishes two kinds of pain that we all know intuitively: // that sharp, immediate pain you might feel if you step on a pin; // and that duller pain you might feel if you have some sort of injury. // and, he says, the 'point' of the first kind of pain is to tell you to get your hand away from that flame — to avoid injury.  // and the second kind of pain is to get you to protect it, keep it still, to promote healing. // the first kind of pain makes you move // the second kind of pain makes you still."/>
+    <property name="text" value="lounge-desk"/>
    </properties>
   </object>
   <object id="45" name="Vanity" x="112" y="16" width="16" height="32">
    <properties>
-    <property name="text" value="You look into the mirror. // You fix your hair."/>
+    <property name="text" value="bedroom-vanity"/>
    </properties>
   </object>
   <object id="51" name="Neighbour Door" x="96" y="160" width="16" height="16">
    <properties>
-    <property name="text" value="There is a small window above your neighbours' door. //Inside, on a ledge, are three books, cut into the letters 'P', '&amp;', and 'B'. "/>
+    <property name="text" value="neighbour-door"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Portals"/>
+ <objectgroup name="Portals">
+  <object id="52" name="Something" x="240" y="144" width="16" height="16">
+   <properties>
+    <property name="portalTo" value="bedroom"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

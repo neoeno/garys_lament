@@ -5,15 +5,18 @@
  */
 
 import maps from '../game/maps';
+import texts from '../game/texts';
 import * as Tiled from '../lib/Tiled';
 import * as Game from '../lib/Game';
 import * as UI from '../lib/UI';
+import * as Text from '../lib/Text';
 
 const player = Tiled.getObjectByName('Player')(maps.lounge);
 const initialState = {
   x: Math.floor(player.x / maps.lounge.tilewidth),
   y: Math.floor(player.y / maps.lounge.tileheight),
-  modalTextIndex: null,
+  modalText: null,
+  modalTextState: null,
   facing: 'south',
   map: 'lounge',
   modalState: 'HIDDEN',
@@ -62,8 +65,10 @@ module.exports = function(state = initialState, action) {
     case 'ACT': {
       let talker = Tiled.getFacingTalker(maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
       if (!talker) { return state; }
+      let text = texts[nextState.map][talker.properties.text];
+      let textMachine = Text.makeTextMachine(text);
 
-      Object.assign(nextState, Game.stepModalStateMachine(state)(talker));
+      Object.assign(nextState, Game.stepModalStateMachine(state)(textMachine));
       nextState.disableMovementTweening = true;
       nextState.walking = false;
 
