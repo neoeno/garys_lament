@@ -4,6 +4,8 @@ require('styles/GameFrame.css');
 
 import React from 'react';
 import { connect } from 'react-redux';
+
+import scheduler from '../lib/scheduler';
 import TileDisplayComponent from './TileDisplayComponent';
 import PositionShiftComponent from './PositionShiftComponent';
 import TextDisplayComponent from './TextDisplayComponent';
@@ -13,19 +15,35 @@ import movementFinished from '../actions/game/movementFinished';
 import triggerMovement from '../actions/game/triggerMovement';
 
 class AppComponent extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (prevProps.game.screenTransitionState == this.props.game.screenTransitionState) { return; }
+    if (this.props.game.screenTransitionState === 'FADE_OUT') {
+      scheduler
+        .first(         () => this.refs.fadeOutTarget.style.opacity = 0.66)
+        .wait(400).then(() => this.refs.fadeOutTarget.style.opacity = 0.33)
+        .wait(400).then(() => this.refs.fadeOutTarget.style.opacity = 0.00)
+        .wait(400).then(() => window.sequencer.dispatch({type: 'END_FADE_OUT'}));
+    } else if (this.props.game.screenTransitionState === 'FADE_IN') {
+      scheduler
+        .first(         () => this.refs.fadeOutTarget.style.opacity = 0.33)
+        .wait(400).then(() => this.refs.fadeOutTarget.style.opacity = 0.66)
+        .wait(400).then(() => this.refs.fadeOutTarget.style.opacity = 1.00)
+        .wait(400).then(() => window.sequencer.dispatch({type: 'END_FADE_IN'}));
+    }
+  }
+
   render() {
-    let gameFrameClass = {'FADE_OUT': 'is-fade-out', 'SHOW': ''}[this.props.game.screenTransitionState];
     return (
       <div className="game-frame__wrapper">
-        <div className={`game-frame ${gameFrameClass}`}>
+        <div ref="fadeOutTarget" className="game-frame">
           <PositionShiftComponent game={this.props.game} onMovementFinished={() => {
-            this.props.dispatch(movementFinished());
-            this.props.dispatch(triggerMovement());
+            window.sequencer.dispatch(movementFinished());
+            window.sequencer.dispatch(triggerMovement());
           }}>
             <TileDisplayComponent game={this.props.game} />
           </PositionShiftComponent>
           <TextDisplayComponent game={this.props.game} onActFinished={() => {
-            this.props.dispatch(act());
+            window.sequencer.dispatch(act());
           }} />
           <PlayerComponent game={this.props.game} />
         </div>

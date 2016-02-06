@@ -23,23 +23,6 @@ export let movePosition = ({x, y}) => movement => {
   };
 };
 
-export let followPortal = maps => state => movement => {
-  let targetPosition = movePosition(state)(movement);
-  let portal = Tiled.getPortalAtPosition(maps[state.map])(targetPosition);
-  let nextMap = portal.properties.portalTo;
-  let newPosition = Tiled.pixelPositionToTilePosition(Tiled.getPortalToMap(maps[nextMap])(state.map));
-
-  if (!Tiled.canWalkTo(newPosition)(maps[nextMap])) {
-    newPosition = movePosition(newPosition)(movement);
-  }
-
-  return {
-    map: nextMap,
-    x: newPosition.x,
-    y: newPosition.y
-  };
-};
-
 export let movementToFacing = movement => {
   if (movement.y == -1) {
     return 'north';

@@ -136,7 +136,9 @@
                  "name":"",
                  "properties":
                     {
-                     "portalTo":"lounge"
+                     "facing":"west",
+                     "map":"lounge",
+                     "position":"14, 9"
                     },
                  "rotation":0,
                  "type":"",

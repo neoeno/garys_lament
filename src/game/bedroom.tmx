@@ -40,7 +40,9 @@
  <objectgroup name="Portals">
   <object id="5" x="0" y="48" width="16" height="16">
    <properties>
-    <property name="portalTo" value="lounge"/>
+    <property name="facing" value="west"/>
+    <property name="map" value="lounge"/>
+    <property name="position" value="14, 9"/>
    </properties>
   </object>
  </objectgroup>

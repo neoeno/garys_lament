@@ -511,7 +511,9 @@
                  "name":"Something",
                  "properties":
                     {
-                     "portalTo":"bedroom"
+                     "facing":"east",
+                     "map":"bedroom",
+                     "position":"1,3"
                     },
                  "rotation":0,
                  "type":"",

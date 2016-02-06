@@ -613,7 +613,9 @@
  <objectgroup name="Portals">
   <object id="52" name="Something" x="240" y="144" width="16" height="16">
    <properties>
-    <property name="portalTo" value="bedroom"/>
+    <property name="facing" value="east"/>
+    <property name="map" value="bedroom"/>
+    <property name="position" value="1,3"/>
    </properties>
   </object>
  </objectgroup>

@@ -21,7 +21,6 @@ const initialState = {
   map: 'lounge',
   modalState: 'HIDDEN',
   screenTransitionState: 'SHOW',
-  disableMovementTweening: false,
   walking: false,
   moving: false
 };
@@ -35,44 +34,6 @@ module.exports = function(state = initialState, action) {
       nextState.movementKeyPressed = action.keyState;
       return nextState;
     } break;
-    case 'MOVEMENT_FINISHED': {
-      nextState.moving = false;
-
-      // if (Tiled.isPortalAtPosition(maps[nextState.map])(nextState)) {
-      //   let portal = Tiled.getPortalAtPosition(maps[nextState.map])(nextState);
-      //   Object.assign(nextState, Game.followPortal(maps)(state.map)(portal));
-      // }
-
-      return nextState;
-    } break;
-    case 'TRIGGER_MOVEMENT': {
-      if (Game.isShowingModal(nextState)) { return nextState; }
-      if (Game.isTeleporting(nextState)) { return nextState; }
-      if (Game.isMoving(nextState)) { return nextState; }
-
-      let movement = UI.activeKeyToMovement(nextState.movementKeyPressed);
-
-      Object.assign(nextState, Game.faceMovementDirection(movement));
-      Object.assign(nextState, Game.walkingStatus(movement));
-
-      let targetPosition = Game.movePosition(nextState)(movement);
-
-      if (Tiled.canWalkTo(targetPosition)(maps[nextState.map])) {
-        Object.assign(nextState, Game.movingStatus(movement));
-        Object.assign(nextState, targetPosition);
-      } else if (Game.movementToFacing(movement) !== 'north') {
-        // ^ if we're moving north we let the walk happen first
-        if (Tiled.isPortalAtPosition(maps[nextState.map])(targetPosition)) {
-          Object.assign(nextState, Game.followPortal(maps)(nextState)(movement));
-        }
-      }
-
-      return nextState;
-    } break;
-    case 'TELEPORT': {
-      Object.assign(nextState, Game.followPortal(maps)(state.map)(action.portal));
-      return nextState;
-    } break;
     case 'ACT': {
       let talker = Tiled.getFacingTalker(maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
       if (!talker) { return state; }
@@ -80,17 +41,48 @@ module.exports = function(state = initialState, action) {
       let textMachine = Text.makeTextMachine(text);
 
       Object.assign(nextState, Game.stepModalStateMachine(state)(textMachine));
-      nextState.disableMovementTweening = true;
       nextState.walking = false;
 
       return nextState;
     } break;
-    case 'FADE_OUT': {
+    case 'BEGIN_FADE_OUT': {
       Object.assign(nextState, {screenTransitionState: 'FADE_OUT'});
       return nextState;
     } break;
-    case 'FADE_IN': {
+    case 'END_FADE_OUT': {
+      Object.assign(nextState, {screenTransitionState: 'HIDE'});
+      return nextState;
+    } break;
+    case 'BEGIN_FADE_IN': {
+      Object.assign(nextState, {screenTransitionState: 'FADE_IN'});
+      return nextState;
+    } break;
+    case 'END_FADE_IN': {
       Object.assign(nextState, {screenTransitionState: 'SHOW'});
+      return nextState;
+    } break;
+    case 'FACE_DIRECTION': {
+      Object.assign(nextState, action.direction);
+      return nextState;
+    } break;
+    case 'SET_WALKING_STATUS': {
+      Object.assign(nextState, action.status);
+      return nextState;
+    } break;
+    case 'SET_MOVING_STATUS': {
+      Object.assign(nextState, action.status);
+      return nextState;
+    } break;
+    case 'BEGIN_MOVE_TO': {
+      Object.assign(nextState, action.position);
+      return nextState;
+    } break;
+    case 'CHANGE_MAP': {
+      nextState.map = action.map;
+      return nextState;
+    } break;
+    case 'CHANGE_POSITION': {
+      Object.assign(nextState, action.position);
       return nextState;
     } break;
     default: {
