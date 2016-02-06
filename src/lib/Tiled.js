@@ -94,3 +94,10 @@ export let getPortalAtPosition = map => position => {
 export let isPortalAtPosition = map => position => {
   return !!getPortalAtPosition(map)(position);
 };
+
+export let pixelPositionToTilePosition = ({x, y}) => {
+  return {
+    x: Math.floor(x/16),
+    y: Math.floor(y/16)
+  };
+};

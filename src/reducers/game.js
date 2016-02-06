@@ -37,6 +37,12 @@ module.exports = function(state = initialState, action) {
     } break;
     case 'MOVEMENT_FINISHED': {
       nextState.moving = false;
+
+      // if (Tiled.isPortalAtPosition(maps[nextState.map])(nextState)) {
+      //   let portal = Tiled.getPortalAtPosition(maps[nextState.map])(nextState);
+      //   Object.assign(nextState, Game.followPortal(maps)(state.map)(portal));
+      // }
+
       return nextState;
     } break;
     case 'TRIGGER_MOVEMENT': {
@@ -54,6 +60,11 @@ module.exports = function(state = initialState, action) {
       if (Tiled.canWalkTo(targetPosition)(maps[nextState.map])) {
         Object.assign(nextState, Game.movingStatus(movement));
         Object.assign(nextState, targetPosition);
+      } else if (Game.movementToFacing(movement) !== 'north') {
+        // ^ if we're moving north we let the walk happen first
+        if (Tiled.isPortalAtPosition(maps[nextState.map])(targetPosition)) {
+          Object.assign(nextState, Game.followPortal(maps)(nextState)(movement));
+        }
       }
 
       return nextState;

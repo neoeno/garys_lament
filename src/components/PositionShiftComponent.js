@@ -9,7 +9,11 @@ class PositionShiftComponent extends React.Component {
 
   componentDidUpdate(prevProps) {
     if ((prevProps.game.x === this.props.game.x) && (prevProps.game.y === this.props.game.y)) { return; }
-    this.updateTileDisplayTransform(prevProps.game, this.props.game);
+    if (prevProps.game.map !== this.props.game.map) {
+      this.transform(this.props.game);
+    } else {
+      this.updateTileDisplayTransform(prevProps.game, this.props.game);
+    }
   }
 
   transform({x, y}) {

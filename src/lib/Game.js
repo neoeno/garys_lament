@@ -1,4 +1,4 @@
-import { getPortalToMap } from './Tiled';
+import * as Tiled from './Tiled';
 
 export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';
@@ -23,13 +23,20 @@ export let movePosition = ({x, y}) => movement => {
   };
 };
 
-export let followPortal = maps => currentMap => portal => {
+export let followPortal = maps => state => movement => {
+  let targetPosition = movePosition(state)(movement);
+  let portal = Tiled.getPortalAtPosition(maps[state.map])(targetPosition);
   let nextMap = portal.properties.portalTo;
-  let {x, y} = getPortalToMap(maps[nextMap])(currentMap);
+  let newPosition = Tiled.pixelPositionToTilePosition(Tiled.getPortalToMap(maps[nextMap])(state.map));
+
+  if (!Tiled.canWalkTo(newPosition)(maps[nextMap])) {
+    newPosition = movePosition(newPosition)(movement);
+  }
+
   return {
     map: nextMap,
-    x: x/16,
-    y: y/16
+    x: newPosition.x,
+    y: newPosition.y
   };
 };
 
