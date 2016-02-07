@@ -85,3 +85,6 @@ export let stepModalStateMachine = state => textMachine => {
     }
   }
 };
+
+export let isMovingBlocked = state => (
+  isShowingModal(state) || isTeleporting(state) || isMoving(state));
