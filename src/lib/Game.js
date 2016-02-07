@@ -1,5 +1,3 @@
-import * as Tiled from './Tiled';
-
 export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';
 };
@@ -21,6 +19,18 @@ export let movePosition = ({x, y}) => movement => {
     x: x + movement.x,
     y: y + movement.y
   };
+};
+
+export let facingToMovement = facing => {
+  if (facing == 'north') {
+    return {y: -1, x: 0};
+  } else if (facing == 'east') {
+    return {y: 0, x: 1};
+  } else if (facing == 'south') {
+    return {y: 1, x: 0};
+  } else if (facing == 'west') {
+    return {y: 0, x: -1};
+  }
 };
 
 export let movementToFacing = movement => {

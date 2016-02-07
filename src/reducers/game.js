@@ -8,7 +8,6 @@ import maps from '../game/maps';
 import texts from '../game/texts';
 import * as Tiled from '../lib/Tiled';
 import * as Game from '../lib/Game';
-import * as UI from '../lib/UI';
 import * as Text from '../lib/Text';
 
 const player = Tiled.getObjectByName('Player')(maps.lounge);

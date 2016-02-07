@@ -3,15 +3,8 @@ import * as UI from '../lib/UI';
 import * as Tiled from '../lib/Tiled';
 import maps from '../game/maps';
 import { isMatch } from 'lodash';
+import * as actions from '../actions/game';
 
-let faceDirection = direction => ({type: 'FACE_DIRECTION', direction});
-let setWalkingStatus = status => ({type: 'SET_WALKING_STATUS', status});
-let beginMoveTo = position => ({type: 'BEGIN_MOVE_TO', position});
-let setMovingStatus = status => ({type: 'SET_MOVING_STATUS', status});
-let changeMap = map => ({type: 'CHANGE_MAP', map});
-let changePosition = position => ({type: 'CHANGE_POSITION', position});
-let beginFadeOut = () => ({type: 'BEGIN_FADE_OUT'});
-let beginFadeIn = () => ({type: 'BEGIN_FADE_IN'});
 
 let isMovingBlocked = state => (
   Game.isShowingModal(state) || Game.isTeleporting(state) || Game.isMoving(state));
@@ -28,49 +21,67 @@ let storePromise = store => match => {
 };
 
 let fadeOut = store => {
-  store.dispatch(beginFadeOut());
+  store.dispatch(actions.beginFadeOut());
   return storePromise(store)({screenTransitionState: 'HIDE'});
 };
 
-let movementIntentSequence = async (store) => {
+let fadeIn = store => {
+  store.dispatch(actions.beginFadeIn());
+  return storePromise(store)({screenTransitionState: 'SHOW'});
+};
+
+let movementIntentSequence = (store) => async () => {
   let state = store.getState().game;
   if (isMovingBlocked(state)) { return; }
 
   let movement = UI.activeKeyToMovement(state.movementKeyPressed);
   let targetPosition = Game.movePosition(state)(movement);
 
-  store.dispatch(faceDirection(Game.faceMovementDirection(movement)));
-  store.dispatch(setWalkingStatus(Game.walkingStatus(movement)));
+  store.dispatch(actions.faceDirection(Game.faceMovementDirection(movement)));
+  store.dispatch(actions.setWalkingStatus(Game.walkingStatus(movement)));
 
   if (Tiled.canWalkTo(targetPosition)(maps[state.map])) {
-    store.dispatch(setMovingStatus(Game.movingStatus(movement)));
-    store.dispatch(beginMoveTo(targetPosition));
+    store.dispatch(actions.setMovingStatus(Game.movingStatus(movement)));
+    store.dispatch(actions.beginMoveTo(targetPosition));
   } else if (Tiled.isPortalAtPosition(maps[state.map])(targetPosition)) {
     let portal = Tiled.getPortalAtPosition(maps[state.map])(targetPosition);
     let [x, y] = portal.properties.position.split(',').map(s => parseInt(s));
 
     await fadeOut(store);
-    store.dispatch(changeMap(portal.properties.map));
-    store.dispatch(changePosition({x, y}));
-    store.dispatch(faceDirection({facing: portal.properties.facing}));
-    store.dispatch(beginFadeIn());
+    store.dispatch(actions.changeMap(portal.properties.map));
+    store.dispatch(actions.changePosition({x, y}));
+    store.dispatch(actions.faceDirection({facing: portal.properties.facing}));
+    state = store.getState().game;
+
+    if (portal.properties.walk == 'true') {
+      store.dispatch(actions.setMovingStatus({moving: true}));
+      await fadeIn(store);
+      let secondaryMovement = Game.facingToMovement(portal.properties.facing);
+      let secondaryTargetPosition = Game.movePosition(state)(secondaryMovement);
+      store.dispatch(actions.beginMoveTo(secondaryTargetPosition));
+    } else {
+      await fadeIn(store);
+      store.dispatch(actions.triggerMovement());
+    }
   }
 };
 
+let intercepts = {
+  'TRIGGER_MOVEMENT': movementIntentSequence,
+  'MOVEMENT_FINISHED': store => () => store.dispatch(actions.setMovingStatus({moving: false}))
+};
+
 export default store => {
-  return {
+  let fakeStore = {
+    subscribe: store.subscribe,
+    getState: store.getState,
     dispatch: action => {
-      switch (action.type) {
-        case 'TRIGGER_MOVEMENT': {
-          movementIntentSequence(store);
-        } break;
-        case 'MOVEMENT_FINISHED': {
-          store.dispatch(setMovingStatus({moving: false}));
-        } break;
-        default: {
-          store.dispatch(action);
-        }
+      if (intercepts[action.type]) {
+        intercepts[action.type](fakeStore)(action);
+      } else {
+        store.dispatch(action);
       }
     }
   };
+  return fakeStore;
 };

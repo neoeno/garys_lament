@@ -138,7 +138,8 @@
                     {
                      "facing":"west",
                      "map":"lounge",
-                     "position":"14, 9"
+                     "position":"14, 9",
+                     "walk":"true"
                     },
                  "rotation":0,
                  "type":"",

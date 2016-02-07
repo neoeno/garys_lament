@@ -43,6 +43,7 @@
     <property name="facing" value="west"/>
     <property name="map" value="lounge"/>
     <property name="position" value="14, 9"/>
+    <property name="walk" value="true"/>
    </properties>
   </object>
  </objectgroup>

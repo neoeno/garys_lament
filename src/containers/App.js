@@ -34,16 +34,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
-  const actions = {
-    move: require('../actions/game/move.js'),
-    act: require('../actions/game/act.js'),
-    teleport: require('../actions/game/teleport.js'),
-    fadeOut: require('../actions/game/fadeOut.js'),
-    fadeIn: require('../actions/game/fadeIn.js'),
-    movementControlsChange: require('../actions/game/movementControlsChange.js'),
-    movementFinished: require('../actions/game/movementFinished.js'),
-    triggerMovement: require('../actions/game/triggerMovement.js')
-  };
+  const actions = require('../actions/game.js');
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }
