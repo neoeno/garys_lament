@@ -51,16 +51,17 @@ let movementIntentSequence = (store) => async () => {
     store.dispatch(actions.changeMap(portal.properties.map));
     store.dispatch(actions.changePosition({x, y}));
     store.dispatch(actions.faceDirection({facing: portal.properties.facing}));
+    store.dispatch(actions.setWalkingStatus({walking: false}));
     state = store.getState().game;
 
+    await fadeIn(store);
     if (portal.properties.walk == 'true') {
       store.dispatch(actions.setMovingStatus({moving: true}));
-      await fadeIn(store);
+      store.dispatch(actions.setWalkingStatus({walking: true}));
       let secondaryMovement = Game.facingToMovement(portal.properties.facing);
       let secondaryTargetPosition = Game.movePosition(state)(secondaryMovement);
       store.dispatch(actions.beginMoveTo(secondaryTargetPosition));
     } else {
-      await fadeIn(store);
       store.dispatch(actions.triggerMovement());
     }
   }
