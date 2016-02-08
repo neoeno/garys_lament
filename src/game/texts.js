@@ -1,3 +1,3 @@
-import lounge from './texts/widerFlat.json';
+import flat from './texts/flat.json';
 
-export default { lounge };
+export default { flat };

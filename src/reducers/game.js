@@ -10,14 +10,14 @@ import * as Tiled from '../lib/Tiled';
 import * as Game from '../lib/Game';
 import * as Text from '../lib/Text';
 
-const player = Tiled.getObjectByName('Player')(maps.lounge);
+const player = Tiled.getObjectByName('Player')(maps.flat);
 const initialState = {
-  x: Math.floor(player.x / maps.lounge.tilewidth),
-  y: Math.floor(player.y / maps.lounge.tileheight),
+  x: Math.floor(player.x / maps.flat.tilewidth),
+  y: Math.floor(player.y / maps.flat.tileheight),
   modalText: null,
   modalTextState: null,
   facing: 'south',
-  map: 'lounge',
+  map: 'flat',
   modalState: 'HIDDEN',
   screenTransitionState: 'SHOW',
   walking: false,

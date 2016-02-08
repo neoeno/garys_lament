@@ -1,4 +1,4 @@
-import bedroom from './bedroom.json';
-import lounge from './widerFlat.json';
+import flat from './maps/flat.json';
+import corridor from './maps/corridor.json';
 
-export default {bedroom, lounge};
+export default {flat, corridor};
