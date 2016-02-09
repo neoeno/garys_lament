@@ -84,6 +84,14 @@ module.exports = function(state = initialState, action) {
       Object.assign(nextState, action.position);
       return nextState;
     } break;
+    case 'ENABLE_CONTROLS': {
+      nextState.controlsDisabled = false;
+      return nextState;
+    } break;
+    case 'DISABLE_CONTROLS': {
+      nextState.controlsDisabled = true;
+      return nextState;
+    } break;
     default: {
       /* Return original state if no actions were consumed. */
       return state;

@@ -14,6 +14,10 @@ export let isMoving = state => {
   return !!state.moving;
 };
 
+export let isControlsDisabled = state => {
+  return !!state.controlsDisabled;
+};
+
 export let movePosition = ({x, y}) => movement => {
   return {
     x: x + movement.x,
@@ -87,4 +91,4 @@ export let stepModalStateMachine = state => textMachine => {
 };
 
 export let isMovingBlocked = state => (
-  isShowingModal(state) || isTeleporting(state) || isMoving(state));
+  isShowingModal(state) || isTeleporting(state) || isMoving(state) || isControlsDisabled(state));

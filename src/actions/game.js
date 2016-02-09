@@ -10,3 +10,5 @@ export let beginFadeOut =                 () => ({type: 'BEGIN_FADE_OUT'});
 export let beginFadeIn =                  () => ({type: 'BEGIN_FADE_IN'});
 export let triggerMovement =              () => ({type: 'TRIGGER_MOVEMENT'});
 export let act =                          () => ({type: 'ACT'});
+export let disableControls =              () => ({type: 'DISABLE_CONTROLS'});
+export let enableControls =               () => ({type: 'ENABLE_CONTROLS'});
