@@ -62,15 +62,15 @@ module.exports = function(state = initialState, action) {
       return nextState;
     } break;
     case 'FACE_DIRECTION': {
-      Object.assign(nextState, action.direction);
+      nextState.facing = action.direction;
       return nextState;
     } break;
     case 'SET_WALKING_STATUS': {
-      Object.assign(nextState, action.status);
+      nextState.walking = action.status;
       return nextState;
     } break;
     case 'SET_MOVING_STATUS': {
-      Object.assign(nextState, action.status);
+      nextState.moving = action.status;
       return nextState;
     } break;
     case 'SET_TWEEN_MOVEMENTS': {

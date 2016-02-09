@@ -38,7 +38,7 @@ class AppComponent extends React.Component {
         <div className="game-frame">
           <div ref="fadeOutTarget">
             <PositionShiftComponent game={this.props.game} onMovementFinished={() => {
-              window.sequencer.dispatch(actions.setMovingStatus({moving: false}));
+              window.sequencer.dispatch(actions.setMovingStatus(false));
               window.sequencer.dispatch(actions.triggerMovement());
             }}>
               <TileDisplayComponent game={this.props.game} />

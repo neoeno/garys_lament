@@ -10,8 +10,8 @@ export default (store) => () => {
   let movement = UI.activeKeyToMovement(state.movementKeyPressed);
 
   if (movement.x == 0 && movement.y == 0) {
-    store.dispatch(actions.setWalkingStatus({walking: false}));
-    store.dispatch(actions.setMovingStatus({moving: false}));
+    store.dispatch(actions.setWalkingStatus(false));
+    store.dispatch(actions.setMovingStatus(false));
   } else {
     movementSequence(store)(movement);
   }

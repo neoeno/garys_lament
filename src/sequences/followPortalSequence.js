@@ -13,7 +13,7 @@ let fadeIn = store => {
 };
 
 let moveTo = store => targetPosition => {
-  store.dispatch(actions.setMovingStatus({moving: true}));
+  store.dispatch(actions.setMovingStatus(true));
   store.dispatch(actions.beginMoveTo(targetPosition));
   return storePromise(store)({moving: false});
 };
@@ -26,16 +26,16 @@ export default (store) => async (portal) => {
   store.dispatch(actions.setTweenMovements(false));
   store.dispatch(actions.changePosition({x, y}));
   store.dispatch(actions.setTweenMovements(true));
-  store.dispatch(actions.faceDirection({facing: portal.properties.facing}));
-  store.dispatch(actions.setWalkingStatus({walking: false}));
+  store.dispatch(actions.faceDirection(portal.properties.facing));
+  store.dispatch(actions.setWalkingStatus(false));
   await fadeIn(store);
 
   let state = store.getState().game;
 
   if (portal.properties.walk == 'true') {
-    let secondaryMovement = Game.facingToMovement(portal.properties.facing);
+    let secondaryMovement = Game.directionToMovement(portal.properties.facing);
     let secondaryTargetPosition = Game.movePosition(state)(secondaryMovement);
-    store.dispatch(actions.setWalkingStatus({walking: true}));
+    store.dispatch(actions.setWalkingStatus(true));
     await moveTo(store)(secondaryTargetPosition);
   }
 };

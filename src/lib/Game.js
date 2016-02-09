@@ -2,10 +2,6 @@ export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';
 };
 
-export let isWalking = state => {
-  return !!state.walking;
-};
-
 export let isMoving = state => {
   return !!state.moving;
 };
@@ -21,7 +17,7 @@ export let movePosition = ({x, y}) => movement => {
   };
 };
 
-export let facingToMovement = facing => {
+export let directionToMovement = facing => {
   if (facing == 'north') {
     return {y: -1, x: 0};
   } else if (facing == 'east') {
@@ -33,7 +29,7 @@ export let facingToMovement = facing => {
   }
 };
 
-export let movementToFacing = movement => {
+export let movementToDirection = movement => {
   if (movement.y == -1) {
     return 'north';
   } else if (movement.x == 1) {
@@ -42,29 +38,6 @@ export let movementToFacing = movement => {
     return 'south';
   } else if (movement.x == -1) {
     return 'west';
-  }
-};
-
-export let faceMovementDirection = movement => {
-  if (movement.x == 0 && movement.y == 0) { return {}; }
-  return {
-    facing: movementToFacing(movement)
-  };
-};
-
-export let walkingStatus = movement => {
-  if (movement.x == 0 && movement.y == 0) {
-    return {walking: false};
-  } else {
-    return {walking: true};
-  }
-};
-
-export let movingStatus = movement => {
-  if (movement.x == 0 && movement.y == 0) {
-    return {moving: false};
-  } else {
-    return {moving: true};
   }
 };
 
