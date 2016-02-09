@@ -6,7 +6,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import scheduler from '../lib/scheduler';
-import TileDisplayComponent from './TileDisplayComponent';
+import BackgroundDisplayComponent from './BackgroundDisplayComponent';
 import PositionShiftComponent from './PositionShiftComponent';
 import TextDisplayComponent from './TextDisplayComponent';
 import PlayerComponent from './PlayerComponent';
@@ -41,7 +41,7 @@ class AppComponent extends React.Component {
               window.sequencer.dispatch(actions.setMovingStatus(false));
               window.sequencer.dispatch(actions.triggerMovement());
             }}>
-              <TileDisplayComponent game={this.props.game} />
+              <BackgroundDisplayComponent game={this.props.game} />
             </PositionShiftComponent>
             <TextDisplayComponent game={this.props.game} onActFinished={() => {
               window.sequencer.dispatch(actions.act());

@@ -1,0 +1,6 @@
+.layer {
+  position: absolute;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+}
