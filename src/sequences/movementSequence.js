@@ -3,13 +3,8 @@ import * as Tiled from '../lib/Tiled';
 import * as actions from '../actions/game';
 import maps from '../game/maps';
 import followPortalSequence from './followPortalSequence';
-import storePromise from '../lib/storePromise';
-
-let moveTo = store => targetPosition => {
-  store.dispatch(actions.setMovingStatus(true));
-  store.dispatch(actions.beginMoveTo(targetPosition));
-  return storePromise(store)({moving: false});
-};
+import { moveTo } from './followPortalSequence';
+// ^ shouldn't, but not sure where to collect these yet
 
 export default (store) => async (movement) => {
   let state = store.getState().game;

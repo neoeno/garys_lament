@@ -12,7 +12,7 @@ let fadeIn = store => {
   return storePromise(store)({screenTransitionState: 'SHOW'});
 };
 
-let moveTo = store => targetPosition => {
+export let moveTo = store => targetPosition => {
   store.dispatch(actions.setMovingStatus(true));
   store.dispatch(actions.beginMoveTo(targetPosition));
   return storePromise(store)({moving: false});
