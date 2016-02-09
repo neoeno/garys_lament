@@ -62,9 +62,6 @@ export let observe = dom => dispatch => {
   let arrowStateStream = keyDownStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code])
     .combineLatest(keysStatusStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code]));
 
-  // This bit is ugly as hell but my Rx abilities aren't enough to conver it yet
-  // We'll get there. It does have the correct behaviour (almost) now, though.
-
   arrowStateStream.subscribe((state) => {
     let key = state[1][state[0]] ? state[0] : null;
     dispatch(movementControlsChange(key));
