@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import * as Game from '../lib/Game';
 
 class PositionShiftComponent extends React.Component {
   componentDidMount() {
@@ -10,10 +9,10 @@ class PositionShiftComponent extends React.Component {
 
   componentDidUpdate(prevProps) {
     if ((prevProps.game.x === this.props.game.x) && (prevProps.game.y === this.props.game.y)) { return; }
-    if (Game.isTeleporting(this.props.game)) {
-      this.transform(this.props.game);
-    } else {
+    if (this.props.game.tweenMovements) {
       this.updateTileDisplayTransform(prevProps.game, this.props.game);
+    } else {
+      this.transform(this.props.game);
     }
   }
 

@@ -23,7 +23,9 @@ export default (store) => async (portal) => {
 
   await fadeOut(store);
   store.dispatch(actions.changeMap(portal.properties.map));
+  store.dispatch(actions.setTweenMovements(false));
   store.dispatch(actions.changePosition({x, y}));
+  store.dispatch(actions.setTweenMovements(true));
   store.dispatch(actions.faceDirection({facing: portal.properties.facing}));
   store.dispatch(actions.setWalkingStatus({walking: false}));
   await fadeIn(store);

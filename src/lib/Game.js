@@ -2,10 +2,6 @@ export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';
 };
 
-export let isTeleporting = state => {
-  return state.screenTransitionState !== 'SHOW';
-};
-
 export let isWalking = state => {
   return !!state.walking;
 };
@@ -91,4 +87,4 @@ export let stepModalStateMachine = state => textMachine => {
 };
 
 export let isMovingBlocked = state => (
-  isShowingModal(state) || isTeleporting(state) || isMoving(state) || isControlsDisabled(state));
+  isShowingModal(state) || isMoving(state) || isControlsDisabled(state));

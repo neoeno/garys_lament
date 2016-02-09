@@ -21,7 +21,8 @@ const initialState = {
   modalState: 'HIDDEN',
   screenTransitionState: 'SHOW',
   walking: false,
-  moving: false
+  moving: false,
+  tweenMovements: true
 };
 
 module.exports = function(state = initialState, action) {
@@ -70,6 +71,10 @@ module.exports = function(state = initialState, action) {
     } break;
     case 'SET_MOVING_STATUS': {
       Object.assign(nextState, action.status);
+      return nextState;
+    } break;
+    case 'SET_TWEEN_MOVEMENTS': {
+      nextState.tweenMovements = action.flag;
       return nextState;
     } break;
     case 'BEGIN_MOVE_TO': {

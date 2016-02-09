@@ -6,6 +6,7 @@ export let changeMap =                   map => ({type: 'CHANGE_MAP', map});
 export let changePosition =         position => ({type: 'CHANGE_POSITION', position});
 export let movementControlsChange = keyState => ({type: 'MOVEMENT_CONTROLS_CHANGE', keyState});
 export let followPortal =             portal => ({type: 'FOLLOW_PORTAL', portal});
+export let setTweenMovements =          flag => ({type: 'SET_TWEEN_MOVEMENTS', flag});
 export let beginFadeOut =                 () => ({type: 'BEGIN_FADE_OUT'});
 export let beginFadeIn =                  () => ({type: 'BEGIN_FADE_IN'});
 export let triggerMovement =              () => ({type: 'TRIGGER_MOVEMENT'});
