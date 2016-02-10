@@ -1,0 +1,9 @@
+{
+  "neighbour-door": {
+    "type": "sequence",
+    "sequence": [
+      "There is a small window above your neighbours' door.",
+      "Inside, on a ledge, are three books, cut into the letters 'P', '&', and 'B'. "
+    ]
+  }
+}

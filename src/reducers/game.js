@@ -10,14 +10,14 @@ import * as Tiled from '../lib/Tiled';
 import * as Game from '../lib/Game';
 import * as Text from '../lib/Text';
 
-const player = Tiled.getObjectByName('Player')(maps.flat);
+const player = Tiled.getObjectByName('Player')(maps.barbican__flat__bedroom);
 const initialState = {
-  x: Math.floor(player.x / maps.flat.tilewidth),
-  y: Math.floor(player.y / maps.flat.tileheight),
+  x: Math.floor(player.x / maps.barbican__flat__bedroom.tilewidth),
+  y: Math.floor(player.y / maps.barbican__flat__bedroom.tileheight),
   modalText: null,
   modalTextState: null,
   facing: 'south',
-  map: 'flat',
+  map: 'barbican__flat__bedroom',
   modalState: 'HIDDEN',
   screenTransitionState: 'SHOW',
   walking: false,

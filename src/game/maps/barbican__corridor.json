@@ -10,7 +10,7 @@
          "width":32,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
@@ -30,7 +30,7 @@
                  "width":448,
                  "x":0,
                  "y":16
-                },
+                }, 
                 {
                  "height":48,
                  "id":55,
@@ -52,7 +52,7 @@
          "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
@@ -79,7 +79,7 @@
          "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
@@ -92,8 +92,8 @@
                  "properties":
                     {
                      "facing":"north",
-                     "map":"flat",
-                     "position":"6,8"
+                     "map":"barbican__flat__lounge",
+                     "position":"4,9"
                     },
                  "rotation":0,
                  "type":"",
@@ -120,7 +120,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/images\/mytiles.png",
+         "image":"..\/..\/images\/mytiles.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
