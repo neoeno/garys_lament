@@ -1,9 +1,7 @@
 import key from 'key';
 import Rx from 'rx';
 
-import movementControlsChange from '../actions/game/movementControlsChange';
-import triggerMovement from '../actions/game/triggerMovement';
-import act from '../actions/game/act';
+import { movementControlsChange, triggerMovement, act } from '../actions/game';
 
 const ARROWS = key.code.arrow;
 const ACTIONS = {
