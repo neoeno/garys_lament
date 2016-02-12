@@ -124,7 +124,7 @@
                  "name":"Bed",
                  "properties":
                     {
-                     "text":"bedroom-bed"
+                     "text":"bed"
                     },
                  "rotation":0,
                  "type":"",
@@ -139,7 +139,7 @@
                  "name":"Bedside table",
                  "properties":
                     {
-                     "text":"bedroom-table-top"
+                     "text":"table-top"
                     },
                  "rotation":0,
                  "type":"",
@@ -154,7 +154,7 @@
                  "name":"Bedside Table 2",
                  "properties":
                     {
-                     "text":"bedroom-table-bottom"
+                     "text":"table-bottom"
                     },
                  "rotation":0,
                  "type":"",
@@ -169,7 +169,7 @@
                  "name":"Bedroom window",
                  "properties":
                     {
-                     "text":"bedroom-window"
+                     "text":"window"
                     },
                  "rotation":0,
                  "type":"",
@@ -184,7 +184,7 @@
                  "name":"Vanity",
                  "properties":
                     {
-                     "text":"bedroom-vanity"
+                     "text":"vanity"
                     },
                  "rotation":0,
                  "type":"",

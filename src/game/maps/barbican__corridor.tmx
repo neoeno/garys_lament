@@ -1,153 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="4" tilewidth="16" tileheight="16" nextobjectid="59">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="39" height="3" tilewidth="16" tileheight="16" nextobjectid="66">
  <tileset firstgid="1" name="mytiles" tilewidth="16" tileheight="16" tilecount="56">
   <image source="../../images/mytiles.png" width="128" height="112"/>
  </tileset>
- <layer name="Background" width="32" height="4">
-  <data>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="48"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="48"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="49"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="3"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="42"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="42"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="41"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-   <tile gid="3"/>
-  </data>
- </layer>
+ <imagelayer name="Background">
+  <image source="../../images/maps/barbican__corridor.png"/>
+ </imagelayer>
  <objectgroup name="Objects">
-  <object id="50" type="Room" x="0" y="16" width="448" height="16"/>
-  <object id="55" type="Room" x="448" y="0" width="48" height="48"/>
+  <object id="50" type="Room" x="16" y="16" width="592" height="16"/>
  </objectgroup>
  <objectgroup name="Talkers">
-  <object id="51" name="Neighbour Door" x="96" y="32" width="16" height="16">
+  <object id="60" x="80" y="0" width="16" height="16">
    <properties>
-    <property name="text" value="neighbour-door"/>
+    <property name="text" value="door-1"/>
+   </properties>
+  </object>
+  <object id="61" x="176" y="0" width="16" height="16">
+   <properties>
+    <property name="text" value="door-2"/>
+   </properties>
+  </object>
+  <object id="62" x="240" y="0" width="16" height="16">
+   <properties>
+    <property name="text" value="door-3"/>
+   </properties>
+  </object>
+  <object id="63" x="336" y="0" width="16" height="16">
+   <properties>
+    <property name="text" value="door-4"/>
+   </properties>
+  </object>
+  <object id="64" x="400" y="0" width="16" height="16">
+   <properties>
+    <property name="text" value="door-5"/>
+   </properties>
+  </object>
+  <object id="65" x="560" y="0" width="16" height="16">
+   <properties>
+    <property name="text" value="door-7"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup name="Portals">
-  <object id="56" name="My flat" x="96" y="0" width="16" height="16">
+  <object id="56" name="My flat" x="496" y="0" width="16" height="16">
    <properties>
     <property name="facing" value="north"/>
     <property name="map" value="barbican__flat__lounge"/>

@@ -1,12 +1,12 @@
 {
-  "flat-e": {
+  "e": {
     "type": "sequence",
     "sequence": [
       "e is reading the Wikipedia article on Scottish Argentines.",
       "e: 'Frequently, Scottish Argentines are wrongly referred to as English.' ugh aren’t we all, scottish argentines"
     ]
   },
-  "flat-window-left": {
+  "window-left": {
     "type": "sequence",
     "sequence": [
       "Shakespeare tower looks grey and confronting.",
@@ -14,7 +14,7 @@
       "You imagine they are interior design plans, for a renovation."
     ]
   },
-  "flat-window-right": {
+  "window-right": {
     "type": "sequence",
     "sequence": [
       "You look up. Every floor has a little yellow light illuminating the stairwell.",
@@ -22,7 +22,7 @@
       "After that they are obscured by the building. It's getting dark."
     ]
   },
-  "flat-desk": {
+  "desk": {
     "type": "sequence",
     "sequence": [
       "at the start of the Grahek book he distinguishes two kinds of pain that we all know intuitively:",
@@ -34,7 +34,7 @@
       "the second kind of pain makes you still."
     ]
   },
-  "flat-phone": {
+  "phone": {
     "type": "sequence",
     "sequence": [
       "You recently changed your tinder to - Gender: Female - Looking for: Women.",
@@ -43,14 +43,14 @@
       "Oh! A new match!"
     ]
   },
-  "flat-coffee": {
+  "coffee": {
     "type": "sequence",
     "sequence": [
       "Coffee's getting cold.",
       "Better drink up, you're late for work."
     ]
   },
-  "flat-bookcase-top": {
+  "bookcase-top": {
     "type": "sequence",
     "sequence": [
       "This book has a page marked...",
@@ -60,7 +60,7 @@
       "...for which the human body was not made and to which it could not adapt itself without effort and fatigue."
     ]
   },
-  "flat-bookcase-bottom": {
+  "bookcase-bottom": {
     "type": "sequence",
     "sequence": [
       "You pick out a book at random.",

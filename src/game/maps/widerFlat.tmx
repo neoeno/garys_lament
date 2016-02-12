@@ -542,67 +542,67 @@
  <objectgroup name="Talkers">
   <object id="17" name="e" x="0" y="16" width="16" height="16">
    <properties>
-    <property name="text" value="flat-e"/>
+    <property name="text" value="e"/>
    </properties>
   </object>
   <object id="19" name="Bookcase" x="64" y="64" width="16" height="16">
    <properties>
-    <property name="text" value="flat-bookcase-top"/>
+    <property name="text" value="bookcase-top"/>
    </properties>
   </object>
   <object id="22" name="Phone" x="16" y="112" width="16" height="16">
    <properties>
-    <property name="text" value="flat-phone"/>
+    <property name="text" value="phone"/>
    </properties>
   </object>
   <object id="29" name="Bed" x="160" y="32" width="48" height="32">
    <properties>
-    <property name="text" value="bedroom-bed"/>
+    <property name="text" value="bed"/>
    </properties>
   </object>
   <object id="30" name="Shakespeare Tower" x="16" y="0" width="32" height="16">
    <properties>
-    <property name="text" value="flat-window-left"/>
+    <property name="text" value="window-left"/>
    </properties>
   </object>
   <object id="31" name="Shakespeare House 2" x="48" y="0" width="16" height="16">
    <properties>
-    <property name="text" value="flat-window-right"/>
+    <property name="text" value="window-right"/>
    </properties>
   </object>
   <object id="33" name="Bedside table" x="192" y="16" width="16" height="16">
    <properties>
-    <property name="text" value="bedroom-table-top"/>
+    <property name="text" value="table-top"/>
    </properties>
   </object>
   <object id="34" name="Bedside Table 2" x="192" y="64" width="16" height="16">
    <properties>
-    <property name="text" value="bedroom-table-bottom"/>
+    <property name="text" value="table-bottom"/>
    </properties>
   </object>
   <object id="36" name="Coffee" x="32" y="112" width="16" height="16">
    <properties>
-    <property name="text" value="flat-coffee"/>
+    <property name="text" value="coffee"/>
    </properties>
   </object>
   <object id="38" name="Bedroom window" x="112" y="0" width="96" height="16">
    <properties>
-    <property name="text" value="bedroom-window"/>
+    <property name="text" value="window"/>
    </properties>
   </object>
   <object id="40" name="Bookcase 2" x="64" y="80" width="16" height="16">
    <properties>
-    <property name="text" value="flat-bookcase-bottom"/>
+    <property name="text" value="bookcase-bottom"/>
    </properties>
   </object>
   <object id="42" name="Desk Notebook" x="64" y="16" width="16" height="32">
    <properties>
-    <property name="text" value="flat-desk"/>
+    <property name="text" value="desk"/>
    </properties>
   </object>
   <object id="45" name="Vanity" x="112" y="16" width="16" height="32">
    <properties>
-    <property name="text" value="bedroom-vanity"/>
+    <property name="text" value="vanity"/>
    </properties>
   </object>
   <object id="51" name="Neighbour Door" x="96" y="160" width="16" height="16">

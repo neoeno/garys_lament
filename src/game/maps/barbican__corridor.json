@@ -1,13 +1,13 @@
-{ "height":4,
+{ "height":3,
  "layers":[
         {
-         "data":[49, 49, 49, 49, 49, 49, 48, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 48, 49, 49, 49, 49, 49, 49, 49, 6, 6, 6, 3, 41, 41, 41, 41, 41, 41, 42, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 42, 41, 41, 41, 41, 41, 41, 41, 6, 6, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 6, 6, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-         "height":4,
+         "height":0,
+         "image":"..\/..\/images\/maps\/barbican__corridor.png",
          "name":"Background",
          "opacity":1,
-         "type":"tilelayer",
+         "type":"imagelayer",
          "visible":true,
-         "width":32,
+         "width":0,
          "x":0,
          "y":0
         }, 
@@ -27,24 +27,9 @@
                  "rotation":0,
                  "type":"Room",
                  "visible":true,
-                 "width":448,
-                 "x":0,
+                 "width":592,
+                 "x":16,
                  "y":16
-                }, 
-                {
-                 "height":48,
-                 "id":55,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"Room",
-                 "visible":true,
-                 "width":48,
-                 "x":448,
-                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -60,18 +45,93 @@
          "objects":[
                 {
                  "height":16,
-                 "id":51,
-                 "name":"Neighbour Door",
+                 "id":60,
+                 "name":"",
                  "properties":
                     {
-                     "text":"neighbour-door"
+                     "text":"door-1"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":96,
-                 "y":32
+                 "x":80,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":61,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"door-2"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":62,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"door-3"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":240,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":63,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"door-4"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":336,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":64,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"door-5"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":400,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":65,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"door-7"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":560,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -99,7 +159,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":96,
+                 "x":496,
                  "y":0
                 }],
          "opacity":1,
@@ -109,7 +169,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":59,
+ "nextobjectid":66,
  "orientation":"orthogonal",
  "properties":
     {
@@ -136,5 +196,5 @@
         }],
  "tilewidth":16,
  "version":1,
- "width":32
+ "width":39
 }

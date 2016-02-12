@@ -109,7 +109,7 @@
                  "name":"e",
                  "properties":
                     {
-                     "text":"flat-e"
+                     "text":"e"
                     },
                  "rotation":0,
                  "type":"",
@@ -124,7 +124,7 @@
                  "name":"Bookcase",
                  "properties":
                     {
-                     "text":"flat-bookcase-top"
+                     "text":"bookcase-top"
                     },
                  "rotation":0,
                  "type":"",
@@ -139,7 +139,7 @@
                  "name":"Phone",
                  "properties":
                     {
-                     "text":"flat-phone"
+                     "text":"phone"
                     },
                  "rotation":0,
                  "type":"",
@@ -154,7 +154,7 @@
                  "name":"Shakespeare Tower",
                  "properties":
                     {
-                     "text":"flat-window-left"
+                     "text":"window-left"
                     },
                  "rotation":0,
                  "type":"",
@@ -169,7 +169,7 @@
                  "name":"Shakespeare House 2",
                  "properties":
                     {
-                     "text":"flat-window-right"
+                     "text":"window-right"
                     },
                  "rotation":0,
                  "type":"",
@@ -184,7 +184,7 @@
                  "name":"Coffee",
                  "properties":
                     {
-                     "text":"flat-coffee"
+                     "text":"coffee"
                     },
                  "rotation":0,
                  "type":"",
@@ -199,7 +199,7 @@
                  "name":"Bookcase 2",
                  "properties":
                     {
-                     "text":"flat-bookcase-bottom"
+                     "text":"bookcase-bottom"
                     },
                  "rotation":0,
                  "type":"",
@@ -214,7 +214,7 @@
                  "name":"Desk Notebook",
                  "properties":
                     {
-                     "text":"flat-desk"
+                     "text":"desk"
                     },
                  "rotation":0,
                  "type":"",
@@ -260,7 +260,7 @@
                     {
                      "facing":"south",
                      "map":"barbican__corridor",
-                     "position":"6,0",
+                     "position":"31,0",
                      "walk":"true"
                     },
                  "rotation":0,

@@ -1,12 +1,12 @@
 {
-  "bedroom-vanity": {
+  "vanity": {
     "type": "sequence",
     "sequence": [
       "You look into the mirror.",
       "You fix your hair."
     ]
   },
-  "bedroom-window": {
+  "window": {
     "type": "sequence",
     "sequence": [
       "It's January, but the flowers are already blooming.",
@@ -14,7 +14,7 @@
       "You hope they will be OK. They shouldn't be out. The earth is changing."
     ]
   },
-  "bedroom-table-top": {
+  "table-top": {
     "type": "sequence",
     "sequence": [
       "A phone charger. A book on Louis Theremin... ",
@@ -26,13 +26,13 @@
       "'I was afraid I would never be able to play my instrument again'"
     ]
   },
-  "bedroom-table-bottom": {
+  "table-bottom": {
     "type": "sequence",
     "sequence": [
       "You have left your vibrator out."
     ]
   },
-  "bedroom-bed": {
+  "bed": {
     "type": "sequence",
     "sequence": [
       "You have been sleeping on four pillows so the blood doesn't flow into your head and make your wisdom tooth swell.",
