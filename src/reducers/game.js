@@ -4,19 +4,21 @@
  * src/container/App.js accordingly.
  */
 
-import maps from '../game/maps';
-import texts from '../game/texts';
+import episodes from '../game/episodes';
 import * as Tiled from '../lib/Tiled';
 import * as Game from '../lib/Game';
 import * as Text from '../lib/Text';
 
-const player = Tiled.getObjectByName('Player')(maps.barbican__flat__bedroom);
+const tmpGetEpisode = () => window.location.search.substr(1) || 'flat_1';
+
+const player = Tiled.getObjectByName('Player')(episodes.flat_1.maps.barbican__flat__bedroom);
 const initialState = {
-  x: Math.floor(player.x / maps.barbican__flat__bedroom.tilewidth),
-  y: Math.floor(player.y / maps.barbican__flat__bedroom.tileheight),
+  x: Math.floor(player.x / episodes.flat_1.maps.barbican__flat__bedroom.tilewidth),
+  y: Math.floor(player.y / episodes.flat_1.maps.barbican__flat__bedroom.tileheight),
   modalText: null,
   modalTextState: null,
   facing: 'south',
+  episode: tmpGetEpisode(),
   map: 'barbican__flat__bedroom',
   modalState: 'HIDDEN',
   screenTransitionState: 'SHOW',
@@ -35,9 +37,9 @@ module.exports = function(state = initialState, action) {
       return nextState;
     } break;
     case 'ACT': {
-      let talker = Tiled.getFacingTalker(maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
+      let talker = Tiled.getFacingTalker(episodes[nextState.episode].maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
       if (!talker) { return state; }
-      let text = texts[nextState.map][talker.properties.text];
+      let text = episodes[nextState.episode].texts[nextState.map][talker.properties.text];
       let textMachine = Text.makeTextMachine(text);
 
       Object.assign(nextState, Game.stepModalStateMachine(state)(textMachine));
