@@ -1,8 +1,8 @@
-{ "height":11,
+{ "height":6,
  "layers":[
         {
          "height":0,
-         "image":"..\/..\/..\/..\/images\/episodes\/flat_1\/maps\/barbican__flat__lounge.png",
+         "image":"..\/..\/..\/..\/images\/episodes\/flat_2\/maps\/barbican__flat__bedroom.png",
          "name":"Background",
          "opacity":1,
          "type":"imagelayer",
@@ -10,16 +10,16 @@
          "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
          "name":"Objects",
          "objects":[
                 {
-                 "height":144,
-                 "id":6,
-                 "name":"Flat",
+                 "height":80,
+                 "id":25,
+                 "name":"",
                  "properties":
                     {
 
@@ -28,43 +28,13 @@
                  "type":"Room",
                  "visible":true,
                  "width":96,
-                 "x":0,
+                 "x":16,
                  "y":16
-                },
+                }, 
                 {
                  "height":32,
-                 "id":7,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"Furniture",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":16
-                },
-                {
-                 "height":32,
-                 "id":9,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"Furniture",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":96
-                },
-                {
-                 "height":16,
-                 "id":11,
-                 "name":"",
+                 "id":26,
+                 "name":"Bed",
                  "properties":
                     {
 
@@ -73,12 +43,12 @@
                  "type":"Furniture",
                  "visible":true,
                  "width":48,
-                 "x":0,
-                 "y":96
-                },
+                 "x":64,
+                 "y":32
+                }, 
                 {
-                 "height":32,
-                 "id":12,
+                 "height":16,
+                 "id":27,
                  "name":"",
                  "properties":
                     {
@@ -88,8 +58,53 @@
                  "type":"Furniture",
                  "visible":true,
                  "width":16,
-                 "x":0,
+                 "x":96,
+                 "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":28,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
                  "y":16
+                }, 
+                {
+                 "height":32,
+                 "id":44,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Furniture",
+                 "visible":true,
+                 "width":16,
+                 "x":16,
+                 "y":16
+                }, 
+                {
+                 "height":16,
+                 "id":59,
+                 "name":"Player",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -97,153 +112,49 @@
          "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
          "name":"Talkers",
          "objects":[
                 {
-                 "height":16,
-                 "id":17,
-                 "name":"e",
-                 "properties":
-                    {
-                     "text":"e"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":0,
-                 "y":16
-                },
-                {
-                 "height":16,
-                 "id":19,
-                 "name":"Bookcase",
-                 "properties":
-                    {
-                     "text":"bookcase-top"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":96
-                },
-                {
-                 "height":16,
-                 "id":22,
-                 "name":"Phone",
-                 "properties":
-                    {
-                     "text":"phone"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":16,
-                 "y":96
-                },
-                {
-                 "height":16,
-                 "id":30,
-                 "name":"Shakespeare Tower",
-                 "properties":
-                    {
-                     "text":"window-left"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":0,
-                 "y":0
-                },
-                {
-                 "height":16,
-                 "id":31,
-                 "name":"Shakespeare House 2",
-                 "properties":
-                    {
-                     "text":"window-right"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":48,
-                 "y":0
-                },
-                {
-                 "height":16,
-                 "id":36,
-                 "name":"Coffee",
-                 "properties":
-                    {
-                     "text":"coffee"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":32,
-                 "y":96
-                },
-                {
-                 "height":16,
-                 "id":40,
-                 "name":"Bookcase 2",
-                 "properties":
-                    {
-                     "text":"bookcase-bottom"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":112
-                },
-                {
                  "height":32,
-                 "id":42,
-                 "name":"Desk Notebook",
+                 "id":29,
+                 "name":"Bed",
                  "properties":
                     {
-                     "text":"desk"
+                     "text":"bed"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":64,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":33,
+                 "name":"Bedside table",
+                 "properties":
+                    {
+                     "text":"table-top"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":80,
+                 "x":96,
                  "y":16
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "width":0,
-         "x":0,
-         "y":0
-        },
-        {
-         "draworder":"topdown",
-         "height":0,
-         "name":"Portals",
-         "objects":[
+                }, 
                 {
                  "height":16,
-                 "id":59,
-                 "name":"To Bedroom",
+                 "id":34,
+                 "name":"Bedside Table 2",
                  "properties":
                     {
-                     "facing":"east",
-                     "map":"barbican__flat__bedroom",
-                     "position":"1,4"
+                     "text":"table-bottom"
                     },
                  "rotation":0,
                  "type":"",
@@ -251,24 +162,65 @@
                  "width":16,
                  "x":96,
                  "y":64
-                },
+                }, 
                 {
                  "height":16,
-                 "id":60,
-                 "name":"To Corridor",
+                 "id":38,
+                 "name":"Bedroom window",
                  "properties":
                     {
-                     "facing":"south",
-                     "map":"barbican__corridor",
-                     "position":"31,0",
-                     "walk":"true"
+                     "text":"window"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32,
-                 "x":48,
-                 "y":160
+                 "width":96,
+                 "x":16,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":45,
+                 "name":"Vanity",
+                 "properties":
+                    {
+                     "text":"vanity"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":16,
+                 "y":16
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":0,
+         "name":"Portals",
+         "objects":[
+                {
+                 "height":16,
+                 "id":60,
+                 "name":"To Lounge",
+                 "properties":
+                    {
+                     "facing":"west",
+                     "map":"barbican__flat__lounge",
+                     "position":"5,4"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":0,
+                 "y":64
                 }],
          "opacity":1,
          "properties":

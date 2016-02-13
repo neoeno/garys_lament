@@ -2,7 +2,7 @@
  "layers":[
         {
          "height":0,
-         "image":"..\/..\/images\/maps\/barbican__corridor.png",
+         "image":"..\/..\/..\/..\/images\/episodes\/flat_2\/maps\/barbican__corridor.png",
          "name":"Background",
          "opacity":1,
          "type":"imagelayer",
@@ -10,7 +10,7 @@
          "width":0,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "height":0,
@@ -37,7 +37,7 @@
          "width":0,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "height":0,
@@ -57,7 +57,7 @@
                  "width":16,
                  "x":80,
                  "y":0
-                }, 
+                },
                 {
                  "height":16,
                  "id":61,
@@ -72,7 +72,7 @@
                  "width":16,
                  "x":176,
                  "y":0
-                }, 
+                },
                 {
                  "height":16,
                  "id":62,
@@ -87,7 +87,7 @@
                  "width":16,
                  "x":240,
                  "y":0
-                }, 
+                },
                 {
                  "height":16,
                  "id":63,
@@ -102,7 +102,7 @@
                  "width":16,
                  "x":336,
                  "y":0
-                }, 
+                },
                 {
                  "height":16,
                  "id":64,
@@ -117,7 +117,7 @@
                  "width":16,
                  "x":400,
                  "y":0
-                }, 
+                },
                 {
                  "height":16,
                  "id":65,
@@ -139,7 +139,7 @@
          "width":0,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "height":0,
@@ -180,7 +180,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/images\/mytiles.png",
+         "image":"..\/..\/..\/..\/images\/mytiles.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,

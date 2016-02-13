@@ -4,7 +4,7 @@
   <image source="../../../../images/mytiles.png" width="128" height="112"/>
  </tileset>
  <imagelayer name="Background">
-  <image source="../../../../images/episodes/flat_1/maps/barbican__flat__lounge.png"/>
+  <image source="../../../../images/episodes/flat_2/maps/barbican__flat__lounge.png"/>
  </imagelayer>
  <objectgroup name="Objects">
   <object id="6" name="Flat" type="Room" x="0" y="16" width="96" height="144"/>
@@ -67,6 +67,14 @@
     <property name="facing" value="east"/>
     <property name="map" value="barbican__flat__bedroom"/>
     <property name="position" value="1,4"/>
+   </properties>
+  </object>
+  <object id="60" name="To Corridor" x="48" y="160" width="32" height="16">
+   <properties>
+    <property name="facing" value="south"/>
+    <property name="map" value="barbican__corridor"/>
+    <property name="position" value="31,0"/>
+    <property name="walk" value="true"/>
    </properties>
   </object>
  </objectgroup>

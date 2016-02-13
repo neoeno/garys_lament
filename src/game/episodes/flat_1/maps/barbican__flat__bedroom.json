@@ -2,7 +2,7 @@
  "layers":[
         {
          "height":0,
-         "image":"..\/..\/images\/maps\/barbican__flat__bedroom.png",
+         "image":"..\/..\/..\/..\/images\/episodes\/flat_1\/maps\/barbican__flat__bedroom.png",
          "name":"Background",
          "opacity":1,
          "type":"imagelayer",
@@ -247,7 +247,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/images\/mytiles.png",
+         "image":"..\/..\/..\/..\/images\/mytiles.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,

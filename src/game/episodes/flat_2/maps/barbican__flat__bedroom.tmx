@@ -4,7 +4,7 @@
   <image source="../../../../images/mytiles.png" width="128" height="112"/>
  </tileset>
  <imagelayer name="Background">
-  <image source="../../../../images/episodes/flat_1/maps/barbican__flat__bedroom.png"/>
+  <image source="../../../../images/episodes/flat_2/maps/barbican__flat__bedroom.png"/>
  </imagelayer>
  <objectgroup name="Objects">
   <object id="25" type="Room" x="16" y="16" width="96" height="80"/>
