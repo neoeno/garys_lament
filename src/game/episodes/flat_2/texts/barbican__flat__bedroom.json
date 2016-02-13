@@ -3,40 +3,56 @@
     "type": "sequence",
     "sequence": [
       "You look into the mirror.",
-      "You fix your hair."
+      "There is a smudge of black grease on your chin from your new foil razor. Ugh.",
+      "You clean it off. You hope it stops doing that soon."
     ]
   },
   "window": {
     "type": "sequence",
     "sequence": [
-      "It's January, but the flowers are already blooming.",
-      "You think some of the new shoots might be daffodils, but you've not lived here long enough to know for sure.",
-      "You hope they will be OK. They shouldn't be out. The earth is changing."
+      "The shoots are doing well. No flowers yet though. They must have realised it's not time yet.",
+      "They're just prepared. That's good.",
+      "Maybe plants are smarter than we thought. They want to be out early to take advantage of the warmth we have made.",
+      "Maybe this was their plan all along. Feed us until we ruin the planet and spread them to other worlds."
     ]
   },
   "table-top": {
     "type": "sequence",
     "sequence": [
-      "A phone charger. A book on Louis Theremin... ",
-      "In the twenty or so pages you have read, Robert Moog tells the story of when he fixed Clara Rockmore's Theremin.",
-      "She was the first to truly play Louis' instrument. Some say the instrument was made for her.",
-      "But she lived in America, and when Theremin returned to Russia her instrument went unrepaired for years.",
-      "After numerous attempts in which Rockmore insisted the instrument was still not right, Moog repaired the Theremin...",
-      "She played Summertime with tears in her eyes...",
-      "'I was afraid I would never be able to play my instrument again'"
+      "The radio is playing some old radio programme about a barrister.",
+      "One of the barristers is a woman. She is arguing against hiring another woman barrister.",
+      "She says one is surely enough."
     ]
   },
   "table-bottom": {
     "type": "sequence",
     "sequence": [
-      "You have left your vibrator out."
+      "This table is very dusty.",
+      "You never sleep on this side, so you never notice.",
+      "Other people do though. Your flat is getting dirty. You will yourself to clean it."
     ]
   },
   "bed": {
     "type": "sequence",
     "sequence": [
-      "You have been sleeping on four pillows so the blood doesn't flow into your head and make your wisdom tooth swell.",
-      "You should change your sheets."
+      "We make beds very comfortable because we spend a long time there."
+    ]
+  },
+  "plaster": {
+    "type": "sequence",
+    "sequence": [
+      "There is a plaster stuck to the floor here. It has been there for weeks.",
+      "Since Shan came to stay, you think. You remember them having some foot complaint. It must have come off.",
+      "You leave it there for now. It's under control."
+    ]
+  },
+  "mess": {
+    "type": "sequence",
+    "sequence": [
+      "We're caretakers of the spaces we live in. You're not a very good one right now.",
+      "This usually happens when you're depressed. Are you depressed?",
+      "You could just put these clothes away. It would only take a minute. Why aren't you doing it?",
+      "You have no answer."
     ]
   }
 }

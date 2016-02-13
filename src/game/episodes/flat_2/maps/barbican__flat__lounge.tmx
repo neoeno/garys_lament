@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="11" tilewidth="16" tileheight="16" nextobjectid="61">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="11" tilewidth="16" tileheight="16" nextobjectid="63">
  <tileset firstgid="1" name="mytiles" tilewidth="16" tileheight="16" tilecount="56">
   <image source="../../../../images/mytiles.png" width="128" height="112"/>
  </tileset>
@@ -14,17 +14,12 @@
   <object id="12" type="Furniture" x="0" y="16" width="16" height="32"/>
  </objectgroup>
  <objectgroup name="Talkers">
-  <object id="17" name="e" x="0" y="16" width="16" height="16">
-   <properties>
-    <property name="text" value="e"/>
-   </properties>
-  </object>
   <object id="19" name="Bookcase" x="80" y="96" width="16" height="16">
    <properties>
     <property name="text" value="bookcase-top"/>
    </properties>
   </object>
-  <object id="22" name="Phone" x="16" y="96" width="16" height="16">
+  <object id="22" name="Phone" x="32" y="96" width="16" height="16">
    <properties>
     <property name="text" value="phone"/>
    </properties>
@@ -39,7 +34,7 @@
     <property name="text" value="window-right"/>
    </properties>
   </object>
-  <object id="36" name="Coffee" x="32" y="96" width="16" height="16">
+  <object id="36" name="Coffee" x="0" y="48" width="16" height="16">
    <properties>
     <property name="text" value="coffee"/>
    </properties>

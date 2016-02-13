@@ -192,6 +192,36 @@
                  "width":16,
                  "x":16,
                  "y":16
+                }, 
+                {
+                 "height":16,
+                 "id":61,
+                 "name":"Mess",
+                 "properties":
+                    {
+                     "text":"mess"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":32,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":62,
+                 "name":"Plaster",
+                 "properties":
+                    {
+                     "text":"plaster"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -236,7 +266,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":61,
+ "nextobjectid":63,
  "orientation":"orthogonal",
  "properties":
     {
