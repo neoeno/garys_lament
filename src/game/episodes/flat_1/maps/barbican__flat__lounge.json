@@ -10,7 +10,7 @@
          "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
@@ -30,7 +30,7 @@
                  "width":96,
                  "x":0,
                  "y":16
-                },
+                }, 
                 {
                  "height":32,
                  "id":7,
@@ -45,7 +45,7 @@
                  "width":16,
                  "x":80,
                  "y":16
-                },
+                }, 
                 {
                  "height":32,
                  "id":9,
@@ -60,7 +60,7 @@
                  "width":16,
                  "x":80,
                  "y":96
-                },
+                }, 
                 {
                  "height":16,
                  "id":11,
@@ -75,7 +75,7 @@
                  "width":48,
                  "x":0,
                  "y":96
-                },
+                }, 
                 {
                  "height":32,
                  "id":12,
@@ -97,7 +97,7 @@
          "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
@@ -117,7 +117,7 @@
                  "width":16,
                  "x":0,
                  "y":16
-                },
+                }, 
                 {
                  "height":16,
                  "id":19,
@@ -132,7 +132,7 @@
                  "width":16,
                  "x":80,
                  "y":96
-                },
+                }, 
                 {
                  "height":16,
                  "id":22,
@@ -147,7 +147,7 @@
                  "width":16,
                  "x":16,
                  "y":96
-                },
+                }, 
                 {
                  "height":16,
                  "id":30,
@@ -162,7 +162,7 @@
                  "width":48,
                  "x":0,
                  "y":0
-                },
+                }, 
                 {
                  "height":16,
                  "id":31,
@@ -177,7 +177,7 @@
                  "width":48,
                  "x":48,
                  "y":0
-                },
+                }, 
                 {
                  "height":16,
                  "id":36,
@@ -192,7 +192,7 @@
                  "width":16,
                  "x":32,
                  "y":96
-                },
+                }, 
                 {
                  "height":16,
                  "id":40,
@@ -207,7 +207,7 @@
                  "width":16,
                  "x":80,
                  "y":112
-                },
+                }, 
                 {
                  "height":32,
                  "id":42,
@@ -229,7 +229,7 @@
          "width":0,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "height":0,
@@ -251,24 +251,6 @@
                  "width":16,
                  "x":96,
                  "y":64
-                },
-                {
-                 "height":16,
-                 "id":60,
-                 "name":"To Corridor",
-                 "properties":
-                    {
-                     "facing":"south",
-                     "map":"barbican__corridor",
-                     "position":"31,0",
-                     "walk":"true"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":48,
-                 "y":160
                 }],
          "opacity":1,
          "properties":
