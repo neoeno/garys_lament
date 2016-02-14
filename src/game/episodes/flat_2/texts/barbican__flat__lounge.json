@@ -2,8 +2,8 @@
   "window-left": {
     "type": "sequence",
     "sequence": [
-      "You watch a man in high-vis and a helmet near one of the further off terraces.",
-      "He looks up suddenly and holds his head like something fell on him.",
+      "You watch a man in high-vis and a helmet near one of the farther off terraces.",
+      "He is looking up and holding his head.",
       "Then he looks at the floor and picks something up, examines it, shows it to an interested passer-by.",
       "Lucky escape."
     ]
@@ -11,7 +11,8 @@
   "window-right": {
     "type": "sequence",
     "sequence": [
-      "There are no seagulls here. You're getting paranoid about dying young again."
+      "There are no seagulls here.",
+      "You're getting scared about dying young again."
     ]
   },
   "desk": {
@@ -25,15 +26,14 @@
   "phone": {
     "type": "sequence",
     "sequence": [
-      "You have started sending a single gif to everyone you match with on tinder, even going back through all your old matches.",
-      "You try to make the gifs relate to their profile, if they have one.",
-      "You're talking to quite a lot of people now. It's OK."
+      "You have started sending a gif to everyone you match with on tinder.",
+      "You try to make the gifs relate to their profile. You're talking to quite a lot of people now. It's OK."
     ]
   },
   "coffee": {
     "type": "sequence",
     "sequence": [
-      "There is dust in your coffee."
+      "There is an eyelash in your coffee."
     ]
   },
   "bookcase-top": {
@@ -48,7 +48,7 @@
   "bookcase-bottom": {
     "type": "sequence",
     "sequence": [
-      "You pick out a book at random.",
+      "You pick out a book at random...",
       "There is a virgin forest in each; a snowfield where even the print of birds' feet is unknown.",
       "Here we go alone, and like it better so.",
       "Always to have sympathy, always to be accompanied, always to be understood would be intolerable."
