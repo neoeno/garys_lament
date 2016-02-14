@@ -3,7 +3,6 @@
 import React from 'react';
 import episodes from '../game/episodes';
 import { getLayerByName } from '../lib/Tiled';
-import ImageLayerDisplayComponent from './ImageLayerDisplayComponent';
 import TileLayerDisplayComponent from './TileLayerDisplayComponent';
 
 require('styles/Layer.css');
@@ -15,7 +14,7 @@ class BackgroundDisplayComponent extends React.Component {
 
   background() {
     if (this.layer().type == 'imagelayer') {
-      return (<ImageLayerDisplayComponent layer={this.layer()} />);
+      return (<img src={episodes[this.props.game.episode].images[this.props.game.map]} />);
     } else {
       return (<TileLayerDisplayComponent layer={this.layer()} tileset={episodes[this.props.game.episode].maps[this.props.game.map].tilesets[0]} />);
     }
