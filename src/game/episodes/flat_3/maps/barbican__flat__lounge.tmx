@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="11" tilewidth="16" tileheight="16" nextobjectid="63">
+ <tileset firstgid="1" name="mytiles" tilewidth="16" tileheight="16" tilecount="56">
+  <image source="../../../../images/mytiles.png" width="128" height="112"/>
+ </tileset>
+ <imagelayer name="Background">
+  <image source="../../../../images/episodes/flat_3/maps/barbican__flat__lounge.png"/>
+ </imagelayer>
+ <objectgroup name="Objects">
+  <object id="6" name="Flat" type="Room" x="0" y="16" width="96" height="144"/>
+  <object id="7" type="Furniture" x="80" y="16" width="16" height="32"/>
+  <object id="9" type="Furniture" x="80" y="96" width="16" height="32"/>
+  <object id="11" type="Furniture" x="0" y="96" width="48" height="16"/>
+  <object id="12" type="Furniture" x="0" y="16" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="Talkers">
+  <object id="19" name="Bookcase" x="80" y="96" width="16" height="16">
+   <properties>
+    <property name="text" value="bookcase-top"/>
+   </properties>
+  </object>
+  <object id="22" name="Phone" x="32" y="96" width="16" height="16">
+   <properties>
+    <property name="text" value="phone"/>
+   </properties>
+  </object>
+  <object id="30" name="Shakespeare Tower" x="0" y="0" width="48" height="16">
+   <properties>
+    <property name="text" value="window-left"/>
+   </properties>
+  </object>
+  <object id="31" name="Shakespeare House 2" x="48" y="0" width="48" height="16">
+   <properties>
+    <property name="text" value="window-right"/>
+   </properties>
+  </object>
+  <object id="36" name="Coffee" x="0" y="48" width="16" height="16">
+   <properties>
+    <property name="text" value="coffee"/>
+   </properties>
+  </object>
+  <object id="40" name="Bookcase 2" x="80" y="112" width="16" height="16">
+   <properties>
+    <property name="text" value="bookcase-bottom"/>
+   </properties>
+  </object>
+  <object id="42" name="Desk Notebook" x="80" y="16" width="16" height="32">
+   <properties>
+    <property name="text" value="desk"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Portals">
+  <properties>
+   <property name="facing" value="south"/>
+   <property name="map" value="corridor"/>
+   <property name="position" value="6,0"/>
+   <property name="walk" value="true"/>
+  </properties>
+  <object id="59" name="To Bedroom" x="96" y="64" width="16" height="16">
+   <properties>
+    <property name="facing" value="east"/>
+    <property name="map" value="barbican__flat__bedroom"/>
+    <property name="position" value="1,4"/>
+   </properties>
+  </object>
+  <object id="60" name="To Corridor" x="48" y="160" width="32" height="16">
+   <properties>
+    <property name="facing" value="south"/>
+    <property name="map" value="barbican__corridor"/>
+    <property name="position" value="31,0"/>
+    <property name="walk" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
