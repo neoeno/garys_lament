@@ -12,7 +12,7 @@ const sequencer = configureSequencer(store);
 window.sequencer = sequencer;
 
 UIObserver.observe(window)(sequencer.dispatch);
-setInterval(() => sequencer.dispatch(tick()), 100);
+setInterval(() => sequencer.dispatch(tick()), 16);
 
 render(
   <Provider store={store}>

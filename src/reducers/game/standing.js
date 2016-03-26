@@ -7,18 +7,21 @@ import * as Text from '../../lib/Text';
 export default function(nextState, action) {
   switch (action.type) {
     case 'TICK': {
-      return processMovement(nextState);
-    } break;
-    case 'ACT': {
-      let talker = Tiled.getFacingTalker(episodes[nextState.episode].maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
-      if (!talker) { return nextState; }
-      let text = episodes[nextState.episode].texts[nextState.map][talker.properties.text];
-      let textMachine = Text.makeTextMachine(text);
+      if (nextState.actKeyPressed) {
+        nextState.actKeyPressed = false;
+        
+        let talker = Tiled.getFacingTalker(episodes[nextState.episode].maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
+        if (!talker) { return nextState; }
+        let text = episodes[nextState.episode].texts[nextState.map][talker.properties.text];
+        let textMachine = Text.makeTextMachine(text);
 
-      Object.assign(nextState, Game.stepModalStateMachine(nextState)(textMachine));
-      nextState.gameState = 'ACTING';
+        Object.assign(nextState, Game.stepModalStateMachine(nextState)(textMachine));
+        Object.assign(nextState, Game.transitionGameState('ACTING'));
 
-      return nextState;
+        return nextState;
+      } else {
+        return processMovement(nextState);
+      }
     } break;
     default: {
       return nextState;

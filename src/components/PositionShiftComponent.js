@@ -7,10 +7,9 @@ class PositionShiftComponent extends React.Component {
     this.transform(this.props.game);
   }
 
-  componentDidUpdate(prevProps) {
-    if ((prevProps.game.x === this.props.game.x) && (prevProps.game.y === this.props.game.y)) { return; }
-    if (this.props.game.tweenMovements) {
-      this.updateTileDisplayTransform(prevProps.game, this.props.game);
+  componentDidUpdate() {
+    if (this.props.game.gameState == 'WALKING') {
+      this.updateTileDisplayTransform(this.props.game.movingFromPosition, this.props.game);
     } else {
       this.transform(this.props.game);
     }
@@ -21,22 +20,11 @@ class PositionShiftComponent extends React.Component {
   }
 
   updateTileDisplayTransform(from, to) {
-    let startTime = performance.now();
-    let step = (now) => {
-      let progress = Math.max(0, Math.min(1, (now - startTime) / 250));
-      this.transform({
-        x: from.x + (progress * (to.x - from.x)),
-        y: from.y + (progress * (to.y - from.y))
-      });
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        this.props.onMovementFinished();
-      }
-    };
-
-    window.requestAnimationFrame(step);
-
+    let progress = this.props.game.gameStateTick / 16;
+    this.transform({
+      x: from.x + (progress * (to.x - from.x)),
+      y: from.y + (progress * (to.y - from.y))
+    });
   }
 
   render() {
@@ -51,8 +39,7 @@ class PositionShiftComponent extends React.Component {
 PositionShiftComponent.displayName = 'PositionShiftComponent';
 
 PositionShiftComponent.propTypes = {
-  game: React.PropTypes.object.isRequired,
-  onMovementFinished: React.PropTypes.func.isRequired
+  game: React.PropTypes.object.isRequired
 };
 
 export default PositionShiftComponent;

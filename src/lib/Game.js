@@ -1,3 +1,16 @@
+export let transitionGameState = newGameState => {
+  return {
+    gameState: newGameState,
+    gameStateTick: 0
+  };
+};
+
+export let tickGameState = state => {
+  return {
+    gameStateTick: state.gameStateTick + 1
+  };
+};
+
 export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';
 };
