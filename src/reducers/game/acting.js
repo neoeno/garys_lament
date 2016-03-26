@@ -8,7 +8,7 @@ export default function(nextState, action) {
     case 'TICK': {
       if (nextState.actKeyPressed) {
         nextState.actKeyPressed = false;
-        
+
         let talker = Tiled.getFacingTalker(episodes[nextState.episode].maps[nextState.map])({x: nextState.x, y: nextState.y})(nextState.facing);
         if (!talker) { return nextState; }
         let text = episodes[nextState.episode].texts[nextState.map][talker.properties.text];
@@ -16,9 +16,7 @@ export default function(nextState, action) {
 
         Object.assign(nextState, Game.stepModalStateMachine(nextState)(textMachine));
         if (nextState.modalState == 'HIDDEN') {
-          Object.assign(nextState, Game.transitionGameState('STANDING'));
-        } else {
-          Object.assign(nextState, Game.transitionGameState('ACTING'));
+          Object.assign(nextState, Game.popState(nextState));
         }
       }
 

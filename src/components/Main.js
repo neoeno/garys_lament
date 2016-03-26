@@ -10,10 +10,11 @@ import PositionShiftComponent from './PositionShiftComponent';
 import TextDisplayComponent from './TextDisplayComponent';
 import PlayerComponent from './PlayerComponent';
 import * as actions from '../actions/game';
+import * as Game from '../lib/Game';
 
 class AppComponent extends React.Component {
   getOpacity() {
-    if (this.props.game.gameState == 'TELEPORTING') {
+    if (Game.activeState(this.props.game) == 'TELEPORTING') {
       return [
         1.00,
         0.75,0.75,0.75,0.75,0.75,0.75,

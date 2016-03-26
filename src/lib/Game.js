@@ -1,15 +1,14 @@
-export let transitionGameState = newGameState => {
-  return {
-    gameState: newGameState,
-    gameStateTick: 0
-  };
-};
-
 export let tickGameState = state => {
   return {
     gameStateTick: state.gameStateTick + 1
   };
 };
+
+export let activeState = state => state.gameState[0];
+
+export let pushState = ({gameState}) => newState => ({gameState: [newState, ...gameState], gameStateTick: 0});
+
+export let popState = ({gameState}) => ({gameState: gameState.slice(1), gameStateTick: 0});
 
 export let isShowingModal = state => {
   return state.modalState !== 'HIDDEN';

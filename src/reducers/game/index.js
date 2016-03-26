@@ -17,7 +17,7 @@ const tmpGetEpisode = () => window.location.search.substr(1) || 'flat_1';
 
 const player = Tiled.getObjectByName('Player')(episodes.flat_1.maps.barbican__flat__bedroom);
 const initialState = {
-  gameState: 'STANDING',
+  gameState: ['STANDING'],
   gameStateTick: 0,
   x: Math.floor(player.x / episodes.flat_1.maps.barbican__flat__bedroom.tilewidth),
   y: Math.floor(player.y / episodes.flat_1.maps.barbican__flat__bedroom.tileheight),
@@ -27,10 +27,7 @@ const initialState = {
   episode: tmpGetEpisode(),
   map: 'barbican__flat__bedroom',
   modalState: 'HIDDEN',
-  screenTransitionState: 'SHOW',
   walking: false,
-  moving: false,
-  tweenMovements: true,
   teleportingViaPortal: null
 };
 
@@ -42,7 +39,7 @@ module.exports = function(state = initialState, action) {
     case 'TICK': {
       Object.assign(nextState, Game.tickGameState(nextState));
 
-      switch (state.gameState) {
+      switch (Game.activeState(state)) {
         case 'STANDING': {
           return standingReducer(nextState, action);
         } break;
