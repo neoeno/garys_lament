@@ -5,7 +5,6 @@ require('styles/GameFrame.css');
 import React from 'react';
 import { connect } from 'react-redux';
 
-import scheduler from '../lib/scheduler';
 import BackgroundDisplayComponent from './BackgroundDisplayComponent';
 import PositionShiftComponent from './PositionShiftComponent';
 import TextDisplayComponent from './TextDisplayComponent';
@@ -13,22 +12,20 @@ import PlayerComponent from './PlayerComponent';
 import * as actions from '../actions/game';
 
 class AppComponent extends React.Component {
-  componentDidUpdate(prevProps) {
-    if (prevProps.game.screenTransitionState == this.props.game.screenTransitionState) { return; }
-    if (this.props.game.screenTransitionState === 'FADE_OUT') {
-      scheduler
-        .first(         () => this.refs.fadeOutTarget.style.opacity = 0.75)
-        .wait(100).then(() => this.refs.fadeOutTarget.style.opacity = 0.50)
-        .wait(100).then(() => this.refs.fadeOutTarget.style.opacity = 0.25)
-        .wait(100).then(() => this.refs.fadeOutTarget.style.opacity = 0.00)
-        .then(() => window.sequencer.dispatch({type: 'END_FADE_OUT'}));
-    } else if (this.props.game.screenTransitionState === 'FADE_IN') {
-      scheduler
-        .first(         () => this.refs.fadeOutTarget.style.opacity = 0.25)
-        .wait(100).then(() => this.refs.fadeOutTarget.style.opacity = 0.50)
-        .wait(100).then(() => this.refs.fadeOutTarget.style.opacity = 0.75)
-        .wait(100).then(() => this.refs.fadeOutTarget.style.opacity = 1.00)
-        .then(() => window.sequencer.dispatch({type: 'END_FADE_IN'}));
+  getOpacity() {
+    if (this.props.game.gameState == 'TELEPORTING') {
+      return [
+        1.00,
+        0.75,0.75,0.75,0.75,0.75,0.75,
+        0.50,0.50,0.50,0.50,0.50,0.50,
+        0.25,0.25,0.25,0.25,0.25,0.25,
+        0.00,0.00,0.00,0.00,0.00,0.00,
+        0.25,0.25,0.25,0.25,0.25,0.25,
+        0.50,0.50,0.50,0.50,0.50,0.50,
+        0.75,0.75,0.75,0.75,0.75,0.75,
+        1.00][this.props.game.gameStateTick];
+    } else {
+      return 1;
     }
   }
 
@@ -36,10 +33,8 @@ class AppComponent extends React.Component {
     return (
       <div className="game-frame__wrapper">
         <div className="game-frame">
-          <div ref="fadeOutTarget">
-            <PositionShiftComponent game={this.props.game} onMovementFinished={() => {
-              window.sequencer.dispatch(actions.finishWalking());
-            }}>
+          <div style={{opacity: this.getOpacity()}}>
+            <PositionShiftComponent game={this.props.game}>
               <BackgroundDisplayComponent game={this.props.game} />
             </PositionShiftComponent>
             <TextDisplayComponent game={this.props.game} onActFinished={() => {
