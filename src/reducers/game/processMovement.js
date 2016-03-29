@@ -17,6 +17,7 @@ let followPortal = nextState => portal => {
 
 export default function(nextState) {
   let movement = UI.activeKeyToMovement(nextState.movementKeyPressed);
+  
   if (movement.x == 0 && movement.y == 0) {
     nextState.walking = false;
   } else {
@@ -31,8 +32,6 @@ export default function(nextState) {
       if (Game.movementToDirection(movement) == 'north') {
         Object.assign(nextState, moveTo(nextState)(targetPosition));
       }
-
-
 
     } else if (Tiled.canWalkTo(targetPosition)(episodes[nextState.episode].maps[nextState.map])) {
       Object.assign(nextState, moveTo(nextState)(targetPosition));

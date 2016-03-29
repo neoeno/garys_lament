@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import * as Text from '../lib/Text';
 
 require('styles/TypingAnimation.css');
 
