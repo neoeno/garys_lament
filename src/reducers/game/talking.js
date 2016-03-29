@@ -25,8 +25,8 @@ export default function(nextState) {
     }
   }
 
-  if (nextState.actKeyPressed) {
-    nextState.actKeyPressed = false;
+  if (nextState.interactKeyPressed) {
+    nextState.interactKeyPressed = false;
 
     Object.assign(nextState, modalAct(nextState));
 

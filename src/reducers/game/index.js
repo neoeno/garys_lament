@@ -6,7 +6,7 @@
 
 import standingReducer from './standing';
 import walkingReducer from './walking';
-import actingReducer from './acting';
+import talkingReducer from './talking';
 import teleportingReducer from './teleporting';
 
 import episodes from '../../game/episodes';
@@ -46,8 +46,8 @@ module.exports = function(state = initialState, action) {
         case 'WALKING': {
           return walkingReducer(nextState, action);
         } break;
-        case 'ACTING': {
-          return actingReducer(nextState, action);
+        case 'TALKING': {
+          return talkingReducer(nextState, action);
         } break;
         case 'TELEPORTING': {
           return teleportingReducer(nextState, action);
@@ -61,8 +61,8 @@ module.exports = function(state = initialState, action) {
       nextState.movementKeyPressed = action.keyState;
       return nextState;
     } break;
-    case 'ACT': {
-      nextState.actKeyPressed = true;
+    case 'INTERACT': {
+      nextState.interactKeyPressed = true;
       return nextState;
     }
     default: {

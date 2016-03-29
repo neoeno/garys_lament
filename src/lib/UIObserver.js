@@ -1,7 +1,7 @@
 import key from 'key';
 import Rx from 'rx';
 
-import { movementControlsChange, act } from '../actions/game';
+import { movementControlsChange, interact } from '../actions/game';
 
 const ARROWS = key.code.arrow;
 const ACTIONS = {
@@ -55,7 +55,7 @@ export let observe = dom => dispatch => {
     .distinctUntilChanged()
     .filter((status) => status);
 
-  actionKeyStateStream.subscribe((controlsStatus) => dispatch(act(controlsStatus)));
+  actionKeyStateStream.subscribe((controlsStatus) => dispatch(interact(controlsStatus)));
 
   let arrowStateStream = keyDownStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code])
     .combineLatest(keysStatusStream([ARROWS.up.code, ARROWS.right.code, ARROWS.down.code, ARROWS.left.code]));
