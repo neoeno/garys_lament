@@ -16,8 +16,7 @@ class TextDisplayComponent extends React.Component {
       <div className="text-display">
         <TypingAnimationComponent
           text={this.text()}
-          animate={this.props.game.modalState == 'ANIMATING'}
-          onAnimationFinish={this.props.onActFinished} />
+          step={this.props.game.textStep} />
       </div>
     );
   }

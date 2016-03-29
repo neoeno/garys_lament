@@ -8,49 +8,12 @@ require('styles/TypingAnimation.css');
 let LINE_HEIGHT = 14;
 
 class TypingAnimationComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      characterLimit: 0,
-      ticker: window.setInterval(this.tick.bind(this), 25)
-    };
-  }
-
-  componentWillUnmount() {
-    window.clearInterval(this.state.ticker);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.animate != this.props.animate) {
-      if (this.props.animate) {
-        this.setState({
-          characterLimit: 0,
-          ticker: window.setInterval(this.tick.bind(this), 25)
-        });
-      } else {
-        window.clearInterval(this.state.ticker);
-      }
-    }
-  }
-
-  tick() {
-    if (this.state.characterLimit >= this.splitText().length) {
-      window.clearInterval(this.state.ticker);
-      this.props.onAnimationFinish();
-    }
-
-    this.setState({
-      characterLimit: this.state.characterLimit + 1
-    });
-  }
-
   splitText() {
-    return Text.wrap(this.props.text);
+    return this.props.text;
   }
 
   textPortion() {
-    if (!this.props.animate) { return this.splitText(); }
-    return this.splitText().substr(0, this.state.characterLimit);
+    return this.splitText().substr(0, this.props.step);
   }
 
   textOffset() {
@@ -72,8 +35,7 @@ TypingAnimationComponent.displayName = 'TypingAnimationComponent';
 
 TypingAnimationComponent.propTypes = {
   text: React.PropTypes.string.isRequired,
-  animate: React.PropTypes.bool.isRequired,
-  onAnimationFinish: React.PropTypes.func.isRequired
+  step: React.PropTypes.number.isRequired
 };
 
 export default TypingAnimationComponent;

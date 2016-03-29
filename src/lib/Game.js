@@ -53,23 +53,5 @@ export let movementToDirection = movement => {
   }
 };
 
-export let stepModalStateMachine = state => textMachine => {
-  switch (state.modalState) {
-    case 'HIDDEN': {
-      let {text, nextState} = textMachine(state.modalTextState);
-      return { modalState: 'ANIMATING', modalText: text, modalTextState: nextState };
-    } case 'ANIMATING': {
-      return { modalState: 'HOLD' };
-    } case 'HOLD': {
-      let {text, nextState} = textMachine(state.modalTextState);
-      if (text) {
-        return { modalState: 'ANIMATING', modalText: text, modalTextState: nextState };
-      } else {
-        return { modalState: 'HIDDEN', modalTextState: null };
-      }
-    }
-  }
-};
-
 export let isMovingBlocked = state => (
   isShowingModal(state) || isMoving(state) || isControlsDisabled(state));
