@@ -9,7 +9,12 @@ import { tick } from './actions/game';
 const store = configureStore();
 
 UIObserver.observe(window)(store.dispatch);
-setInterval(() => store.dispatch(tick()), 16);
+
+let gameLoop = () => {
+  store.dispatch(tick());
+  window.requestAnimationFrame(gameLoop);
+};
+gameLoop();
 
 render(
   <Provider store={store}>
