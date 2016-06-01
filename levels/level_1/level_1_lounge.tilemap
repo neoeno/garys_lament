@@ -1,4 +1,4 @@
-tile_set: "/levels/level_1/default.tilesource"
+tile_set: "/levels/level_1/level_1_tiles.tilesource"
 layers {
   id: "layer1"
   z: 0.0

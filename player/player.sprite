@@ -1,0 +1,2 @@
+tile_set: "/player/player.tilesource"
+default_animation: "standing_south"
