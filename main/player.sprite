@@ -1,0 +1,4 @@
+tile_set: "/main/player.tilesource"
+default_animation: "standing_south"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA
