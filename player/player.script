@@ -2,7 +2,7 @@ require "managers.position_manager"
 
 function init(self)
     msg.post(".", "acquire_input_focus")
-    self.moving = false
+    self.velocity = {0, 0}
     local pos = go.get_position()
     set_player_position(position_to_tile_x(pos), position_to_tile_y(pos), "south");
 end
@@ -13,19 +13,34 @@ function update(self, dt)
         update_position(self)
         if not player_moving() then
             -- we're done moving
-            end_moving()
+            pprint (self.velocity)
+            if self.velocity[1] == 0 and self.velocity[2] == 0 then
+                end_moving()
+            else
+                 local player_pos = get_player_position()
+                 if movement_is_legal(player_pos, self.velocity) then
+                    move_player(self.velocity)
+                 end
+            end
         end
     end
 end
 
 function on_input(self, action_id, action)
+    if action.released then
+        self.velocity = {0, 0}
+        return
+    end
+    
     if player_moving() then return end
     if not action.pressed then return end
+    
     local player_pos = get_player_position()
     local movement = movement_from_name(action_id)
     if movement_is_legal(player_pos, movement) then
         move_player(movement)
         begin_moving()
+        self.velocity = movement
     end
 end
 
