@@ -10,12 +10,22 @@ render = /main/main.renderc
 game_binding = /input/game.input_bindingc
 
 [display]
-width = 1280
-height = 720
+width = 512
+height = 512
+update_frequency = 60
+samples = 0
+high_dpi = 0
 
 [physics]
 scale = 0.02
 
 [script]
 shared_state = 1
+
+[graphics]
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
+
+[sprite]
+subpixels = 1
 

@@ -13,7 +13,6 @@ function update(self, dt)
         update_position(self)
         if not player_moving() then
             -- we're done moving
-            pprint (self.velocity)
             if self.velocity[1] == 0 and self.velocity[2] == 0 then
                 end_moving()
             else
@@ -55,8 +54,8 @@ end
 function update_position(self)
     local player_pos = get_player_position()
     local pos = go.get_position()
-    pos.x = (player_pos.xt * 64) - 32 - (player_pos.ticks[1] * 8)
-    pos.y = ((player_pos.yt - 1) * 64) + 32 - (player_pos.ticks[2] * 8)
+    pos.x = (player_pos.xt * 64) - 32 - (player_pos.ticks[1] * 4)
+    pos.y = ((player_pos.yt - 1) * 64) + 32 - (player_pos.ticks[2] * 4)
     go.set_position(pos)
 end
 

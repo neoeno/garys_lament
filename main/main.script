@@ -2,6 +2,8 @@ function init(self)
     -- Add initialization code here
     -- Remove this function if not needed
     msg.post("/camera#camera", "acquire_camera_focus")
+    tilemap.set_constant("/background#tilemap", "tint", vmath.vector4(0.99, 0.97, 0.94, 1))
+    sprite.set_constant("/player#sprite", "tint", vmath.vector4(0.99, 0.97, 0.94, 1))
 end
 
 function final(self)

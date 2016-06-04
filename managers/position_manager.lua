@@ -15,7 +15,7 @@ end
 function move_player(movement)
     player_xt = player_xt + movement[X_IDX]
     player_yt = player_yt + movement[Y_IDX]
-    player_ticks = {movement[X_IDX] * 8, movement[Y_IDX] * 8}
+    player_ticks = {movement[X_IDX] * 16, movement[Y_IDX] * 16}
     if movement[X_IDX] == 0 then 
         -- we're going north or south
         player_orientation = movement[Y_IDX] == 1 and "north" or "south"
