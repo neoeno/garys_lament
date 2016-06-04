@@ -1,16 +1,16 @@
 key_trigger {
   input: KEY_RIGHT
-  action: "move_right"
+  action: "key_right"
 }
 key_trigger {
   input: KEY_LEFT
-  action: "move_left"
+  action: "key_left"
 }
 key_trigger {
   input: KEY_UP
-  action: "move_up"
+  action: "key_up"
 }
 key_trigger {
   input: KEY_DOWN
-  action: "move_down"
+  action: "key_down"
 }
