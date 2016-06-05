@@ -42,47 +42,34 @@ function respond_to_movement_intent(action_id, action)
         local SHADE_TINT_2 = vmath.vector4((0.94/4)*2, (0.91/4)*2, (0.88/4)*2, 1);
         local SHADE_TINT_1 = vmath.vector4((0.94/4), (0.91/4), (0.88/4), 1);
         local OFF_TINT = vmath.vector4(1, 1, 1, 0);
+        
         local portal = portal_at(position_after_movement(player_pos, movement_intent))
-        timer.frames(1, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", SHADE_TINT_3)
-            sprite.set_constant("/player#sprite", "tint", SHADE_TINT_3)
-        end)
-        timer.frames(6, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", SHADE_TINT_2)
-            sprite.set_constant("/player#sprite", "tint", SHADE_TINT_2)
-        end)
-        timer.frames(11, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", SHADE_TINT_1)
-            sprite.set_constant("/player#sprite", "tint", SHADE_TINT_1)
-        end)
-        timer.frames(16, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", OFF_TINT)
-            sprite.set_constant("/player#sprite", "tint", OFF_TINT)
+        
+        timer.frames(1, set_screen_tint_fn(SHADE_TINT_3))
+        timer.frames(6, set_screen_tint_fn(SHADE_TINT_2))
+        timer.frames(11, set_screen_tint_fn(SHADE_TINT_1))
+        
+        timer.frames(16, set_screen_tint_fn(OFF_TINT, function()
             change_current_map(portal.map)
             set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
             update_position()
-        end)
+        end))
         
-        timer.frames(21, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", SHADE_TINT_1)
-            sprite.set_constant("/player#sprite", "tint", SHADE_TINT_1)
-        end)
+        timer.frames(21, set_screen_tint_fn(SHADE_TINT_1))
+        timer.frames(26, set_screen_tint_fn(SHADE_TINT_2))
+        timer.frames(31, set_screen_tint_fn(SHADE_TINT_3))
         
-        timer.frames(26, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", SHADE_TINT_2)
-            sprite.set_constant("/player#sprite", "tint", SHADE_TINT_2)
-        end)
-        
-        timer.frames(31, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", SHADE_TINT_3)
-            sprite.set_constant("/player#sprite", "tint", SHADE_TINT_3)
-        end)
-        
-        timer.frames(36, function()
-            tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", ON_TINT)
-            sprite.set_constant("/player#sprite", "tint", ON_TINT)
+        timer.frames(36, set_screen_tint_fn(ON_TINT, function()
             teleporting = false
-        end)
+        end))
+    end
+end
+
+function set_screen_tint_fn(tint, fn)
+    return function()
+        tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", tint)
+        sprite.set_constant("/player#sprite", "tint", tint)
+        if fn then fn() end
     end
 end
 
