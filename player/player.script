@@ -33,8 +33,8 @@ end
 function animate_movement(fn)
     local player_pos = get_player_position()
     local pos = go.get_position()
-    go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, tx_to_px(player_pos.tx), go.EASING_LINEAR, 0.25)
-    go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, ty_to_py(player_pos.ty), go.EASING_LINEAR, 0.25, 0, fn)
+    go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, tx_to_px(player_pos.tx), go.EASING_LINEAR, 0.27)
+    go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, ty_to_py(player_pos.ty), go.EASING_LINEAR, 0.27, 0, fn)
 end
 
 function update_position()

@@ -47,7 +47,7 @@ animations {
   start_tile: 7
   end_tile: 8
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 5
+  fps: 7
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -56,7 +56,7 @@ animations {
   start_tile: 4
   end_tile: 6
   playback: PLAYBACK_LOOP_PINGPONG
-  fps: 5
+  fps: 7
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -65,7 +65,7 @@ animations {
   start_tile: 1
   end_tile: 3
   playback: PLAYBACK_LOOP_PINGPONG
-  fps: 5
+  fps: 7
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -74,7 +74,7 @@ animations {
   start_tile: 9
   end_tile: 10
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 5
+  fps: 7
   flip_horizontal: 0
   flip_vertical: 0
 }
