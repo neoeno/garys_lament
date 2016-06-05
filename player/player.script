@@ -3,13 +3,7 @@ require "managers.input_manager"
 require "levels.level_1.level_1"
 local timer = require ("vendor.timer")
 local _ = require('vendor.moses')
-
--- extract these
-local ON_TINT = vmath.vector4(0.94, 0.91, 0.88, 1);
-local SHADE_TINT_3 = vmath.vector4((0.94/4)*3, (0.91/4)*3, (0.88/4)*3, 1);
-local SHADE_TINT_2 = vmath.vector4((0.94/4)*2, (0.91/4)*2, (0.88/4)*2, 1);
-local SHADE_TINT_1 = vmath.vector4((0.94/4), (0.91/4), (0.88/4), 1);
-local OFF_TINT = vmath.vector4(1, 1, 1, 0);
+local C = require('main.constants')
 
 function init(self)
     msg.post(".", "acquire_input_focus")
@@ -41,22 +35,24 @@ function respond_to_movement_intent(action_id, action)
             update_player_animation()
         end)
     elseif is_portal_at(position_after_movement(player_pos, movement_intent)) then
-        local portal = portal_at(position_after_movement(player_pos, movement_intent))
-        
-        portal_animate(
-            function()
-                state():teleport()
-            end,
-            function()
-                change_current_map(portal.map)
-                set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
-                update_position()
-            end,
-            function()
-                state():appear()
-            end
-        )
+        follow_portal(portal_at(position_after_movement(player_pos, movement_intent)))
     end
+end
+
+function follow_portal(portal)
+    portal_animate(
+        function()
+            state():teleport()
+        end,
+        function()
+            change_current_map(portal.map)
+            set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
+            update_position()
+        end,
+        function()
+            state():appear()
+        end
+    )
 end
 
 function step_animate(frame_interval, fns)
@@ -71,13 +67,13 @@ end
 function portal_animate(beginning, middle, ending)
     beginning()
     step_animate(5, {
-        set_screen_tint_fn(SHADE_TINT_3),
-        set_screen_tint_fn(SHADE_TINT_2),
-        set_screen_tint_fn(SHADE_TINT_1),
-        _.compose(middle, set_screen_tint_fn(OFF_TINT)),
-        set_screen_tint_fn(SHADE_TINT_2),
-        set_screen_tint_fn(SHADE_TINT_3),
-        _.compose(ending, set_screen_tint_fn(ON_TINT))
+        set_screen_tint_fn(C.SHADE_TINT_3),
+        set_screen_tint_fn(C.SHADE_TINT_2),
+        set_screen_tint_fn(C.SHADE_TINT_1),
+        _.compose(middle, set_screen_tint_fn(C.OFF_TINT)),
+        set_screen_tint_fn(C.SHADE_TINT_2),
+        set_screen_tint_fn(C.SHADE_TINT_3),
+        _.compose(ending, set_screen_tint_fn(C.ON_TINT))
     })
 end
 
