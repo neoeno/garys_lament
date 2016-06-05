@@ -1,9 +1,9 @@
 require "managers.position_manager"
 require "managers.input_manager"
+require "levels.level_1.level_1"
 
 function init(self)
     msg.post(".", "acquire_input_focus")
-    self.player_moving = false;
     local pos = go.get_position()
     set_player_position(px_to_tx(pos.x), py_to_ty(pos.y), "south");
 end
@@ -27,6 +27,15 @@ function respond_to_movement_intent(action_id, action)
             set_moving_flag(false)
             update_player_animation()
         end)
+    elseif is_portal_at(position_after_movement(player_pos, movement_intent)) then
+        local BASE_TINT = vmath.vector4(0.94, 0.91, 0.88, 1);
+        local OFF_TINT = vmath.vector4(1, 1, 1, 0);
+        local portal = portal_at(position_after_movement(player_pos, movement_intent))
+        tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", OFF_TINT)
+        change_current_map(portal.map)
+        tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", BASE_TINT)
+        set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
+        update_position()
     end
 end
 
@@ -57,6 +66,6 @@ end
 
 function movement_is_legal(player_pos, movement)
     local new_pos = position_after_movement(player_pos, movement)
-    local tile_no = tilemap.get_tile("/background#tilemap", "walkable", new_pos.tx, new_pos.ty)
+    local tile_no = tilemap.get_tile("/" .. get_current_map() .. "#tilemap", "walkable", new_pos.tx, new_pos.ty)
     return tile_no ~= 0 and tile_no ~= nil
 end

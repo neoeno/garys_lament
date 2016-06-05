@@ -1,9 +1,14 @@
-local BASE_TINT = vmath.vector4(0.94, 0.91, 0.88, 1); 
+require "levels.level_1.level_1"
+
+local BASE_TINT = vmath.vector4(0.94, 0.91, 0.88, 1);
+local OFF_TINT = vmath.vector4(1, 1, 1, 0);
 
 function init(self)
     -- Add initialization code here
     -- Remove this function if not needed
     msg.post("/camera#camera", "acquire_camera_focus")
-    tilemap.set_constant("/background#tilemap", "tint", BASE_TINT)
+    tilemap.set_constant("/bedroom#tilemap", "tint", OFF_TINT)
+    tilemap.set_constant("/lounge#tilemap", "tint", OFF_TINT)
+    tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", BASE_TINT)
     sprite.set_constant("/player#sprite", "tint", BASE_TINT)
 end

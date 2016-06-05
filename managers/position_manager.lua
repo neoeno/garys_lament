@@ -53,7 +53,6 @@ function movement_from_name(hashed_key_name)
 end
 
 function position_after_movement(player_pos, movement)
-    -- doesn't do orientation. we'll fix this upon extraction
     return {
         tx = player_pos.tx + movement[1],
         ty = player_pos.ty + movement[2]

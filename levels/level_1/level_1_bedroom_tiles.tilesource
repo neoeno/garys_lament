@@ -1,4 +1,4 @@
-image: "/levels/level_1/level_1_tiles.png"
+image: "/levels/level_1/level_1_bedroom_tiles.png"
 tile_width: 64
 tile_height: 64
 tile_margin: 0
