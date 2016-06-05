@@ -14,7 +14,6 @@ function is_portal_at(pos)
 end
 
 function portal_at(pos)
-    print(current_map, pos.tx, pos.ty)
     return PORTALS[current_map] and PORTALS[current_map][pos.tx..","..pos.ty]
 end
 

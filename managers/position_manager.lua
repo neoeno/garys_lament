@@ -6,7 +6,6 @@ local Y_IDX = 2
 local moving = false;
 
 function set_player_position(xt, yt, orientation)
-    print ("Setting initial position")
     player_tx = xt
     player_ty = yt
     player_orientation = orientation
