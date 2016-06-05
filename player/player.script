@@ -2,8 +2,14 @@ require "managers.position_manager"
 require "managers.input_manager"
 require "levels.level_1.level_1"
 local timer = require ("vendor.timer")
+local _ = require('vendor.moses')
 
-local teleporting = false;
+-- extract these
+local ON_TINT = vmath.vector4(0.94, 0.91, 0.88, 1);
+local SHADE_TINT_3 = vmath.vector4((0.94/4)*3, (0.91/4)*3, (0.88/4)*3, 1);
+local SHADE_TINT_2 = vmath.vector4((0.94/4)*2, (0.91/4)*2, (0.88/4)*2, 1);
+local SHADE_TINT_1 = vmath.vector4((0.94/4), (0.91/4), (0.88/4), 1);
+local OFF_TINT = vmath.vector4(1, 1, 1, 0);
 
 function init(self)
     msg.post(".", "acquire_input_focus")
@@ -17,8 +23,8 @@ end
 
 function on_input(self, action_id, action)
     accept_input(action_id, action)
-    if teleporting then return end
-    if not is_moving() and has_movement_intent() then
+    if state():cannot('walk') then return end
+    if not state():is('walking') and has_movement_intent() then
         respond_to_movement_intent()
     end
     update_player_animation()
@@ -29,47 +35,56 @@ function respond_to_movement_intent(action_id, action)
     local player_pos = get_player_position()
     set_orientation(movement_orientation(movement_intent))
     if movement_is_legal(player_pos, movement_intent) then
-        set_moving_flag(true)
-        move_player(movement_intent)
+        state():walk(movement_intent)
         animate_movement(function()
-            set_moving_flag(false)
+            state():halt()
             update_player_animation()
         end)
     elseif is_portal_at(position_after_movement(player_pos, movement_intent)) then
-        teleporting = true
-        local ON_TINT = vmath.vector4(0.94, 0.91, 0.88, 1);
-        local SHADE_TINT_3 = vmath.vector4((0.94/4)*3, (0.91/4)*3, (0.88/4)*3, 1);
-        local SHADE_TINT_2 = vmath.vector4((0.94/4)*2, (0.91/4)*2, (0.88/4)*2, 1);
-        local SHADE_TINT_1 = vmath.vector4((0.94/4), (0.91/4), (0.88/4), 1);
-        local OFF_TINT = vmath.vector4(1, 1, 1, 0);
-        
         local portal = portal_at(position_after_movement(player_pos, movement_intent))
         
-        timer.frames(1, set_screen_tint_fn(SHADE_TINT_3))
-        timer.frames(6, set_screen_tint_fn(SHADE_TINT_2))
-        timer.frames(11, set_screen_tint_fn(SHADE_TINT_1))
-        
-        timer.frames(16, set_screen_tint_fn(OFF_TINT, function()
-            change_current_map(portal.map)
-            set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
-            update_position()
-        end))
-        
-        timer.frames(21, set_screen_tint_fn(SHADE_TINT_1))
-        timer.frames(26, set_screen_tint_fn(SHADE_TINT_2))
-        timer.frames(31, set_screen_tint_fn(SHADE_TINT_3))
-        
-        timer.frames(36, set_screen_tint_fn(ON_TINT, function()
-            teleporting = false
-        end))
+        portal_animate(
+            function()
+                state():teleport()
+            end,
+            function()
+                change_current_map(portal.map)
+                set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
+                update_position()
+            end,
+            function()
+                state():appear()
+            end
+        )
     end
 end
 
-function set_screen_tint_fn(tint, fn)
+function step_animate(frame_interval, fns)
+    timer.frames(frame_interval, function()
+        fns[1]()
+        if #fns > 1 then
+            step_animate(frame_interval, _.rest(fns, 2))
+        end
+    end)
+end
+
+function portal_animate(beginning, middle, ending)
+    beginning()
+    step_animate(5, {
+        set_screen_tint_fn(SHADE_TINT_3),
+        set_screen_tint_fn(SHADE_TINT_2),
+        set_screen_tint_fn(SHADE_TINT_1),
+        _.compose(middle, set_screen_tint_fn(OFF_TINT)),
+        set_screen_tint_fn(SHADE_TINT_2),
+        set_screen_tint_fn(SHADE_TINT_3),
+        _.compose(ending, set_screen_tint_fn(ON_TINT))
+    })
+end
+
+function set_screen_tint_fn(tint)
     return function()
         tilemap.set_constant("/"..get_current_map().."#tilemap", "tint", tint)
         sprite.set_constant("/player#sprite", "tint", tint)
-        if fn then fn() end
     end
 end
 
@@ -90,7 +105,7 @@ end
 
 local prior_animation_id = "standing_south";
 function update_player_animation()
-    local disposition = (is_moving() or has_movement_intent() and not teleporting) and "walking" or "standing"
+    local disposition = (state():is("walking") or (not state():is("teleporting") and has_movement_intent())) and "walking" or "standing"
     local orientation = get_player_position().orientation
     local animation_id = (disposition .. "_" .. orientation)
     if prior_animation_id == animation_id then return end

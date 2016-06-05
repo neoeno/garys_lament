@@ -1,13 +1,33 @@
+local machine = require('vendor.statemachine')
+local _ = require('vendor.moses')
+
 local player_tx
 local player_ty
 local player_orientation
 local X_IDX = 1
 local Y_IDX = 2
-local moving = false;
 
-function set_player_position(xt, yt, orientation)
-    player_tx = xt
-    player_ty = yt
+local _state = machine.create({
+    initial = "standing",
+    events = {
+        { name = "walk",     from = "standing",              to = "walking" },
+        { name = "halt",     from = "walking",               to = "standing" },
+        { name = "teleport", from = {"walking", "standing"}, to = "teleporting" },
+        { name = "appear",   from = "teleporting",           to = "standing" }
+    },
+    callbacks = {
+        onbeforewalk =  function(a,b,c,d,msg) move_player(msg) end,
+        onstatechange = function(a,b,c,d,e)   print(a,b,c,d,e) end
+    }
+})
+
+function state()
+    return _state;
+end
+
+function set_player_position(tx, ty, orientation)
+    player_tx = tx
+    player_ty = ty
     player_orientation = orientation
 end
 
@@ -21,21 +41,13 @@ function set_orientation(orientation)
 end
 
 function movement_orientation(movement)
-    if movement[X_IDX] == 0 then 
+    if movement[X_IDX] == 0 then
         -- we're going north or south
         return movement[Y_IDX] == 1 and "north" or "south"
     else
         -- we're going east or west
         return movement[X_IDX] == 1 and "east" or "west"
     end
-end
-
-function set_moving_flag(bool)
-    moving = bool
-end
-
-function is_moving()
-    return moving
 end
 
 function get_player_position()
