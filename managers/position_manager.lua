@@ -1,48 +1,46 @@
-local player_xt
-local player_yt
-local player_ticks = {0, 0}
+local player_tx
+local player_ty
 local player_orientation
 local X_IDX = 1
 local Y_IDX = 2
+local moving = false;
 
 function set_player_position(xt, yt, orientation)
     print ("Setting initial position")
-    player_xt = xt
-    player_yt = yt
+    player_tx = xt
+    player_ty = yt
     player_orientation = orientation
 end
 
 function move_player(movement)
-    player_xt = player_xt + movement[X_IDX]
-    player_yt = player_yt + movement[Y_IDX]
-    player_ticks = {movement[X_IDX] * 16, movement[Y_IDX] * 16}
+    player_tx = player_tx + movement[X_IDX]
+    player_ty = player_ty + movement[Y_IDX]
+end
+
+function set_orientation(orientation)
+    player_orientation = orientation
+end
+
+function movement_orientation(movement)
     if movement[X_IDX] == 0 then 
         -- we're going north or south
-        player_orientation = movement[Y_IDX] == 1 and "north" or "south"
+        return movement[Y_IDX] == 1 and "north" or "south"
     else
         -- we're going east or west
-        player_orientation = movement[X_IDX] == 1 and "east" or "west"
+        return movement[X_IDX] == 1 and "east" or "west"
     end
 end
 
-function progress_player_movement()
-    if player_ticks[1] > 0 then
-        player_ticks[1] = player_ticks[1] - 1 
-    elseif player_ticks[1] < 0 then
-        player_ticks[1] = player_ticks[1] + 1
-    elseif player_ticks[2] > 0 then
-        player_ticks[2] = player_ticks[2] - 1
-    elseif player_ticks[2] < 0 then
-        player_ticks[2] = player_ticks[2] + 1
-    end 
+function set_moving_flag(bool)
+    moving = bool
 end
 
-function player_moving()
-    return (player_ticks[1] ~= 0) or (player_ticks[2] ~= 0) 
+function is_moving()
+    return moving
 end
 
 function get_player_position()
-    return {xt = player_xt, yt = player_yt, orientation = player_orientation, ticks = player_ticks}
+    return {tx = player_tx, ty = player_ty, orientation = player_orientation}
 end
 
 function movement_from_name(hashed_key_name)
@@ -57,7 +55,23 @@ end
 function position_after_movement(player_pos, movement)
     -- doesn't do orientation. we'll fix this upon extraction
     return {
-        xt = player_pos.xt + movement[1],
-        yt = player_pos.yt + movement[2]
+        tx = player_pos.tx + movement[1],
+        ty = player_pos.ty + movement[2]
     }
+end
+
+function px_to_tx(px)
+    return ((px + 32) / 64)
+end
+
+function py_to_ty(py)
+    return ((py - 32) / 64) + 1
+end
+
+function tx_to_px(tx)
+    return (tx * 64) - 32
+end
+
+function ty_to_py(ty)
+    return ((ty - 1) * 64) + 32
 end
