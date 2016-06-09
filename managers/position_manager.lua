@@ -12,7 +12,7 @@ local _state = machine.create({
     events = {
         { name = "walk",     from = "standing",              to = "walking" },
         { name = "halt",     from = "walking",               to = "standing" },
-        { name = "teleport", from = {"walking", "standing"}, to = "teleporting" },
+        { name = "teleport", from = "standing",              to = "teleporting" },
         { name = "appear",   from = "teleporting",           to = "standing" }
     },
     callbacks = {
