@@ -32,7 +32,6 @@ function set_player_position(tx, ty, orientation)
 end
 
 function move_player(movement)
-    pprint(movement)
     player_tx = player_tx + movement[X_IDX]
     player_ty = player_ty + movement[Y_IDX]
 end
