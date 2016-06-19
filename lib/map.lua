@@ -44,11 +44,15 @@ M.convert_tiled_portal = function(portal)
 end
 
 M.position_is_walkable = function(map, pos)
-    return _.include(M.get_objects_by_type(map, "Room"), function(object)
+    local is_in_room = _.include(M.get_objects_by_type(map, "Room"), function(object)
         return M.object_covers(object, pos)
-    end) and _.all(M.get_objects_by_type(map, "Furniture"), function(n, object)
+    end)
+
+    local is_not_on_furniture = _.all(M.get_objects_by_type(map, "Furniture"), function(n, object)
         return not M.object_covers(object, pos)
     end)
+
+    return is_in_room and is_not_on_furniture
 end
 
 M.position_is_engageable = function(map, pos)

@@ -65,7 +65,7 @@ function respond_to_engagement_intent()
     if current_text_routine then
         if text_machine():is("animating") then
             text_machine():skip()
-        elseif text_machine():can("animate") then
+        else
             local status, text = coroutine.resume(current_text_routine)
             if coroutine.status(current_text_routine) == "suspended" then
                 text_machine():animate(text)

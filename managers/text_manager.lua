@@ -3,9 +3,13 @@ local machine = require('vendor.statemachine')
 local state = machine.create({
     initial = "stopped",
     events = {
+        -- Start animating a new section
         { name = "animate",  from = {"showing", "stopped"},   to = "animating" },
+        -- Complete the animation naturally
         { name = "complete", from = "animating",              to = "showing" },
+        -- Skip the rest of the animation
         { name = "skip",     from = "animating",              to = "showing" },
+        -- Close the dialogue panel
         { name = "finish",   from = "showing",                to = "stopped" },
     },
     callbacks = {
