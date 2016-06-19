@@ -2,6 +2,10 @@ local _ = require('vendor.moses')
 
 local M = {}
 
+M.get_talkers = function(map)
+    return _.findWhere(map["layers"], {name = "Talkers"})["objects"]
+end
+
 M.get_objects_by_type = function(map, type)
     return _.select(
         _.findWhere(map["layers"], {name = "Objects"})["objects"],
@@ -40,11 +44,23 @@ M.convert_tiled_portal = function(portal)
 end
 
 M.position_is_walkable = function(map, pos)
-    return (_.countf(M.get_objects_by_type(map, "Room"), function(n, object)
+    return _.include(M.get_objects_by_type(map, "Room"), function(object)
         return M.object_covers(object, pos)
-    end) > 0) and _.all(M.get_objects_by_type(map, "Furniture"), function(n, object)
+    end) and _.all(M.get_objects_by_type(map, "Furniture"), function(n, object)
         return not M.object_covers(object, pos)
     end)
+end
+
+M.position_is_engageable = function(map, pos)
+    return _.include(M.get_talkers(map), function(object)
+        return M.object_covers(object, pos)
+    end)
+end
+
+M.get_engagement_at_position = function(map, pos)
+    return M.get_talkers(map)[_.detect(M.get_talkers(map), function(object)
+        return M.object_covers(object, pos)
+    end)].properties.text
 end
 
 M.object_covers = function(object, pos)

@@ -1,5 +1,9 @@
+local C = require "main/constants"
+
 function init(self)
+    self.dialog_panel_id = gui.get_node("dialog_panel")
     self.dialog_text_id = gui.get_node("dialog_text")
+    gui.set_enabled(self.dialog_panel_id, false)
 end
 
 function final(self)
@@ -14,7 +18,12 @@ end
 
 function on_message(self, message_id, message, sender)
     if hash("set_text") == message_id then
-        gui.set_text(self.dialog_text_id, message.text);
+        if message.text == nil then
+            gui.set_enabled(self.dialog_panel_id, false)
+        else
+            gui.set_enabled(self.dialog_panel_id, true)
+            gui.set_text(self.dialog_text_id, message.text);
+        end
     end
 end
 

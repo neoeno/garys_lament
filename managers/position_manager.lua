@@ -1,4 +1,5 @@
 local machine = require('vendor.statemachine')
+local C = require('main/constants')
 local _ = require('vendor.moses')
 
 local player_tx
@@ -10,10 +11,13 @@ local Y_IDX = 2
 local _state = machine.create({
     initial = "standing",
     events = {
-        { name = "walk",     from = "standing",              to = "walking" },
-        { name = "halt",     from = "walking",               to = "standing" },
-        { name = "teleport", from = "standing",              to = "teleporting" },
-        { name = "appear",   from = "teleporting",           to = "standing" }
+        { name = "walk",      from = "standing",              to = "walking" },
+        { name = "halt",      from = "walking",               to = "standing" },
+        { name = "engage",    from = "standing",              to = "engaging" },
+        { name = "engage",    from = "engaging",              to = "engaging" },
+        { name = "disengage", from = "engaging",              to = "standing" },
+        { name = "teleport",  from = "standing",              to = "teleporting" },
+        { name = "appear",    from = "teleporting",           to = "standing" }
     },
     callbacks = {
         onbeforewalk =  function(a,b,c,d,msg) move_player(msg) end,
@@ -59,6 +63,11 @@ function position_after_movement(player_pos, movement)
         tx = player_pos.tx + movement[1],
         ty = player_pos.ty + movement[2]
     }
+end
+
+function position_facing(player_pos)
+    local movement = C.ORIENTATION_TO_MOVEMENT[player_pos.orientation]
+    return position_after_movement(player_pos, movement)
 end
 
 function px_to_tx(px)

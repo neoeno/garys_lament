@@ -14,3 +14,11 @@ key_trigger {
   input: KEY_DOWN
   action: "key_down"
 }
+key_trigger {
+  input: KEY_ENTER
+  action: "key_enter"
+}
+key_trigger {
+  input: KEY_SPACE
+  action: "key_space"
+}

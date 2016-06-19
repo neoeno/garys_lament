@@ -47,7 +47,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "dialog_border/anim"
-  id: "box"
+  id: "dialog_panel"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_SW
@@ -120,7 +120,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: true
-  parent: "box"
+  parent: "dialog_panel"
   layer: ""
   inherit_alpha: true
   clipping_mode: CLIPPING_MODE_NONE

@@ -22,12 +22,12 @@
   </object>
   <object id="33" name="Bedside table" x="96" y="32" width="16" height="16">
    <properties>
-    <property name="text" value="table-top"/>
+    <property name="text" value="table_top"/>
    </properties>
   </object>
   <object id="34" name="Bedside Table 2" x="96" y="80" width="16" height="16">
    <properties>
-    <property name="text" value="table-bottom"/>
+    <property name="text" value="table_bottom"/>
    </properties>
   </object>
   <object id="38" name="Bedroom window" x="16" y="16" width="96" height="16">
