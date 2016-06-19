@@ -10,8 +10,8 @@ render = /main/main.renderc
 game_binding = /input/game.input_bindingc
 
 [display]
-width = 512
-height = 512
+width = 640
+height = 640
 update_frequency = 60
 samples = 0
 high_dpi = 0

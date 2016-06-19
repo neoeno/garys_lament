@@ -38,7 +38,7 @@ function update(self)
     render.draw_debug3d()
 
     render.set_view(vmath.matrix4())
-    render.set_projection(vmath.matrix4_orthographic(0, 64, 0, 64, -1, 1))
+    render.set_projection(vmath.matrix4_orthographic(0, w, 0, h, -1, 1))
 
     render.enable_state(render.STATE_STENCIL_TEST)
     render.draw(self.gui_pred)
