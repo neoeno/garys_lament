@@ -14,19 +14,17 @@
 
 local M = {}
 
-local timers = {}
-
 --- Get a callback when a certain number of seconds has elapsed
 -- @param seconds The number of seconds to wait before invoking the callback
 -- @param callback The function to call when the specified number of seconds has elapsed
-function M.seconds(seconds, callback)
+function M.seconds(timers, seconds, callback)
     table.insert(timers, { seconds = seconds, callback = callback })
 end
 
 --- Get a callback when a certain number of frames have elapsed
 -- @param frames The number of frames to wait before invoking the callback
 -- @param callback The function to call when the specified number of frames has elapsed
-function M.frames(frames, callback)
+function M.frames(timers, frames, callback)
     if frames == 0 then
         callback()
     else
@@ -35,13 +33,13 @@ function M.frames(frames, callback)
 end
 
 --- Cancel all timers. Callbacks will NOT be invoked.
-function M.cancel_all()
+function M.cancel_all(timers)
     timers = {}
 end
 
 --- Call this function once per frame to continuously check for completed timers
 -- @param dt Time in seconds that has elapsed since the last call
-function M.update(dt)
+function M.update(timers, dt)
     for k,timer in pairs(timers) do
         if timer.frames then
             timer.frames = timer.frames - 1

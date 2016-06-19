@@ -1,10 +1,12 @@
 require "managers.position_manager"
 require "managers.input_manager"
+require "managers.text_manager"
 require "levels.level_1.level_1"
-local timer = require ("vendor.timer")
+local timer = require "vendor/timer"
 local _ = require('vendor.moses')
 local C = require('main/constants')
 local Map = require('lib.map')
+local timers = {}
 
 function init(self)
     msg.post("/camera#camera", "acquire_camera_focus")
@@ -20,7 +22,7 @@ function init(self)
 end
 
 function update(self, dt)
-    timer.update(dt)
+    timer.update(timers, dt)
 end
 
 function on_input(self, action_id, action)
@@ -61,13 +63,17 @@ function respond_to_engagement_intent()
         end
     end
     if current_text_routine then
-        local status, text = coroutine.resume(current_text_routine)
-        if coroutine.status(current_text_routine) == "suspended" then
-            msg.post("dialog#gui", "set_text", {text = text})
-        else
-            msg.post("dialog#gui", "set_text", {text = nil})
-            current_text_routine = nil
-            state():disengage()
+        if text_machine():is("animating") then
+            text_machine():skip()
+        elseif text_machine():can("animate") then
+            local status, text = coroutine.resume(current_text_routine)
+            if coroutine.status(current_text_routine) == "suspended" then
+                text_machine():animate(text)
+            else
+                text_machine():finish()
+                current_text_routine = nil
+                state():disengage()
+            end
         end
     end
 end
@@ -89,7 +95,7 @@ function follow_portal(portal)
 end
 
 function step_animate(frame_interval, fns)
-    timer.frames(frame_interval, function()
+    timer.frames(timers, frame_interval, function()
         fns[1]()
         if #fns > 1 then
             step_animate(frame_interval, _.rest(fns, 2))

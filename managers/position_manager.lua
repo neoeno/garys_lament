@@ -21,7 +21,7 @@ local _state = machine.create({
     },
     callbacks = {
         onbeforewalk =  function(a,b,c,d,msg) move_player(msg) end,
-        onstatechange = function(a,b,c,d,e)   print(a,b,c,d,e) end
+        onstatechange = function(a,b,c,d,e)   print("P",a,b,c,d,e) end
     }
 })
 
