@@ -1,6 +1,6 @@
-image: "/levels/level_1/level_1_bedroom_tiles.png"
-tile_width: 64
-tile_height: 64
+image: "/levels/level_1/barbican__flat__bedroom.png"
+tile_width: 512
+tile_height: 512
 tile_margin: 0
 tile_spacing: 0
 collision: ""

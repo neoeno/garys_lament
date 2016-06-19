@@ -1,4 +1,4 @@
-script: ""
+script: "/dialog/dialog.gui_script"
 fonts {
   name: "pokemon_gb"
   font: "/dialog/pokemon_gb.font"
@@ -102,7 +102,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "You have been sleeping on four pillows so the blood doesn\'t flow into your head and make your wisdom tooth swell."
   font: "pokemon_gb"
-  id: "text"
+  id: "dialog_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NW

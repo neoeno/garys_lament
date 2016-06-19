@@ -1,8 +1,8 @@
 local m = require "vendor.moses"
 
 local KEY_TO_MOVEMENT = {
-    ["up"] = {0, 1},
-    ["down"] = {0, -1},
+    ["up"] = {0, -1},
+    ["down"] = {0, 1},
     ["left"] = {-1, 0},
     ["right"] = {1, 0}}
 
