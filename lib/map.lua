@@ -27,8 +27,8 @@ end
 
 M.tile_pos_to_px_pos = function(pos)
     return {
-        x = pos.tx * 16,
-        y = pos.ty * 16
+        x = pos.tx * 64,
+        y = pos.ty * 64
     }
 end
 
