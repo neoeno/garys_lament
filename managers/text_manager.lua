@@ -1,4 +1,4 @@
-local machine = require('vendor.statemachine')
+local machine = require "vendor/statemachine"
 
 local text = nil
 
