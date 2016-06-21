@@ -1,7 +1,8 @@
-require "managers.position_manager"
 require "levels.level_1.level_1"
 
-local text_manager = require "managers/text_manager";
+local position_manager = require "managers/position_manager"
+local state = position_manager.state()
+local text_manager = require "managers/text_manager"
 local text_machine = text_manager.text_machine()
 local input_manager = require "managers/input_manager"
 local timer = require "vendor/timer"
@@ -20,7 +21,7 @@ function init(self)
     sprite.set_constant("/player#sprite", "tint", C.ON_TINT)
 
     local pos = go.get_position("/player")
-    set_player_position(px_to_tx(pos.x), py_to_ty(pos.y), "south");
+    position_manager.set_player_position(position_manager.px_to_tx(pos.x), position_manager.py_to_ty(pos.y), "south");
 end
 
 function update(self, dt)
@@ -29,9 +30,9 @@ end
 
 function on_input(self, action_id, action)
     input_manager.accept_input(action_id, action)
-    if state():can('engage') and input_manager.pop_engagement_intent() then
+    if state:can('engage') and input_manager.pop_engagement_intent() then
         respond_to_engagement_intent()
-    elseif state():can('walk') then
+    elseif state:can('walk') then
         if input_manager.has_movement_intent() then
             respond_to_movement_intent()
         end
@@ -41,13 +42,13 @@ end
 
 function respond_to_movement_intent()
     local movement_intent = input_manager.get_movement_intent()
-    local player_pos = get_player_position()
-    local intended_position = position_after_movement(player_pos, movement_intent)
-    set_orientation(movement_orientation(movement_intent))
+    local player_pos = position_manager.get_player_position()
+    local intended_position = position_manager.position_after_movement(player_pos, movement_intent)
+    position_manager.set_orientation(position_manager.movement_orientation(movement_intent))
     if Map.position_is_walkable(get_current_map(), intended_position) then
-        state():walk(movement_intent)
+        state:walk(movement_intent)
         animate_movement(function()
-            state():halt()
+            state:halt()
             update_player_animation()
         end)
     elseif Map.is_portal_at(get_current_map(), intended_position) then
@@ -58,9 +59,9 @@ end
 local current_text_routine
 function respond_to_engagement_intent()
     if not current_text_routine then
-        if (Map.position_is_engageable(get_current_map(), position_facing(get_player_position()))) then
-            state():engage()
-            local engagement_name = Map.get_engagement_at_position(get_current_map(), position_facing(get_player_position()))
+        if (Map.position_is_engageable(get_current_map(), position_manager.position_facing(position_manager.get_player_position()))) then
+            state:engage()
+            local engagement_name = Map.get_engagement_at_position(get_current_map(), position_manager.position_facing(position_manager.get_player_position()))
             current_text_routine = get_current_texts()[engagement_name]()
         end
     end
@@ -74,7 +75,7 @@ function respond_to_engagement_intent()
             else
                 text_machine:finish()
                 current_text_routine = nil
-                state():disengage()
+                state:disengage()
             end
         end
     end
@@ -83,15 +84,15 @@ end
 function follow_portal(portal)
     portal_animate(
         function()
-            state():teleport()
+            state:teleport()
         end,
         function()
             change_current_map(portal.map)
-            set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
+            position_manager.set_player_position(portal.position.tx, portal.position.ty, portal.position.orientation);
             update_position()
         end,
         function()
-            state():appear()
+            state:appear()
         end
     )
 end
@@ -126,28 +127,28 @@ function set_screen_tint_fn(tint)
 end
 
 function animate_movement(fn)
-    local player_pos = get_player_position()
+    local player_pos = position_manager.get_player_position()
     local pos = go.get_position("/player")
-    go.animate("/player", "position.x", go.PLAYBACK_ONCE_FORWARD, tx_to_px(player_pos.tx), go.EASING_LINEAR, 0.27)
-    go.animate("/player", "position.y", go.PLAYBACK_ONCE_FORWARD, ty_to_py(player_pos.ty), go.EASING_LINEAR, 0.27, 0, fn)
+    go.animate("/player", "position.x", go.PLAYBACK_ONCE_FORWARD, position_manager.tx_to_px(player_pos.tx), go.EASING_LINEAR, 0.27)
+    go.animate("/player", "position.y", go.PLAYBACK_ONCE_FORWARD, position_manager.ty_to_py(player_pos.ty), go.EASING_LINEAR, 0.27, 0, fn)
 end
 
 function update_position()
-    local player_pos = get_player_position()
+    local player_pos = position_manager.get_player_position()
     local pos = go.get_position("/player#sprite")
-    pos.x = tx_to_px(player_pos.tx)
-    pos.y = ty_to_py(player_pos.ty)
+    pos.x = position_manager.tx_to_px(player_pos.tx)
+    pos.y = position_manager.ty_to_py(player_pos.ty)
     go.set_position(pos, "/player")
 end
 
 local current_player_animation_id = "standing_south";
 function update_player_animation()
-    local disposition = (state():is("walking")
+    local disposition = (state:is("walking")
                          or (
-                            not state():is("teleporting")
+                            not state:is("teleporting")
                             and input_manager.has_movement_intent())
                         ) and "walking" or "standing"
-    local orientation = get_player_position().orientation
+    local orientation = position_manager.get_player_position().orientation
     local animation_id = (disposition .. "_" .. orientation)
     if current_player_animation_id == animation_id then return end
     current_player_animation_id = animation_id

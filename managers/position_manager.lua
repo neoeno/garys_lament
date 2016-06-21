@@ -25,26 +25,28 @@ local _state = machine.create({
     }
 })
 
-function state()
-    return _state;
-end
-
-function set_player_position(tx, ty, orientation)
-    player_tx = tx
-    player_ty = ty
-    player_orientation = orientation
-end
-
 function move_player(movement)
     player_tx = player_tx + movement[X_IDX]
     player_ty = player_ty + movement[Y_IDX]
 end
 
-function set_orientation(orientation)
+local M = {}
+
+M.state = function()
+    return _state;
+end
+
+M.set_player_position = function(tx, ty, orientation)
+    player_tx = tx
+    player_ty = ty
     player_orientation = orientation
 end
 
-function movement_orientation(movement)
+M.set_orientation = function(orientation)
+    player_orientation = orientation
+end
+
+M.movement_orientation = function(movement)
     if movement[X_IDX] == 0 then
         -- we're going north or south
         return movement[Y_IDX] == 1 and "south" or "north"
@@ -54,34 +56,36 @@ function movement_orientation(movement)
     end
 end
 
-function get_player_position()
+M.get_player_position = function()
     return {tx = player_tx, ty = player_ty, orientation = player_orientation}
 end
 
-function position_after_movement(player_pos, movement)
+M.position_after_movement = function(player_pos, movement)
     return {
-        tx = player_pos.tx + movement[1],
-        ty = player_pos.ty + movement[2]
+        tx = player_pos.tx + movement[X_IDX],
+        ty = player_pos.ty + movement[Y_IDX]
     }
 end
 
-function position_facing(player_pos)
+M.position_facing = function(player_pos)
     local movement = C.ORIENTATION_TO_MOVEMENT[player_pos.orientation]
-    return position_after_movement(player_pos, movement)
+    return M.position_after_movement(player_pos, movement)
 end
 
-function px_to_tx(px)
+M.px_to_tx = function(px)
     return ((px + 32) / 64) - 1
 end
 
-function py_to_ty(py)
+M.py_to_ty = function(py)
     return (((py - 32) / 64) + 1)*-1
 end
 
-function tx_to_px(tx)
+M.tx_to_px = function(tx)
     return ((tx + 1) * 64) - 32
 end
 
-function ty_to_py(ty)
+M.ty_to_py = function(ty)
     return (((ty*-1) - 1) * 64) + 32
 end
+
+return M
