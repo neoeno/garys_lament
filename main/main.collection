@@ -1,9 +1,29 @@
 name: "main"
 instances {
-  id: "barbican__flat__bedroom"
-  prototype: "/levels/level_1/level_1_bedroom.go"
+  id: "barbican__corridor"
+  prototype: "/levels/level_2/level_2_corridor.go"
   position {
+    x: 1056.0
+    y: 96.0
+    z: 0.0
+  }
+  rotation {
     x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "barbican__flat__bedroom"
+  prototype: "/levels/level_2/level_2_bedroom.go"
+  position {
+    x: -32.0
     y: 0.0
     z: 0.0
   }
@@ -21,10 +41,10 @@ instances {
 }
 instances {
   id: "barbican__flat__lounge"
-  prototype: "/levels/level_1/level_1_lounge.go"
+  prototype: "/levels/level_2/level_2_lounge.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 32.0
+    y: -32.0
     z: 0.0
   }
   rotation {

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="39" height="3" tilewidth="64" tileheight="64" nextobjectid="66">
+ <imagelayer name="Background">
+  <image source="barbican__corridor.png"/>
+ </imagelayer>
+ <objectgroup name="Objects">
+  <object id="50" type="Room" x="64" y="64" width="2368" height="64"/>
+ </objectgroup>
+ <objectgroup name="Talkers">
+  <object id="60" x="320" y="0" width="64" height="64">
+   <properties>
+    <property name="text" value="door-1"/>
+   </properties>
+  </object>
+  <object id="61" x="704" y="0" width="64" height="64">
+   <properties>
+    <property name="text" value="door-2"/>
+   </properties>
+  </object>
+  <object id="62" x="960" y="0" width="64" height="64">
+   <properties>
+    <property name="text" value="door-3"/>
+   </properties>
+  </object>
+  <object id="63" x="1344" y="0" width="64" height="64">
+   <properties>
+    <property name="text" value="door-4"/>
+   </properties>
+  </object>
+  <object id="64" x="1600" y="0" width="64" height="64">
+   <properties>
+    <property name="text" value="door-5"/>
+   </properties>
+  </object>
+  <object id="65" x="2240" y="0" width="64" height="64">
+   <properties>
+    <property name="text" value="door-7"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Portals">
+  <object id="56" name="My flat" x="1984" y="0" width="64" height="64">
+   <properties>
+    <property name="facing" value="north"/>
+    <property name="map" value="barbican__flat__lounge"/>
+    <property name="tx" value="4"/>
+    <property name="ty" value="9"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

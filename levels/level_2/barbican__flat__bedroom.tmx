@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="6" tilewidth="64" tileheight="64" nextobjectid="63">
+ <imagelayer name="Background">
+  <image source="barbican__flat__bedroom.png"/>
+ </imagelayer>
+ <objectgroup name="Objects">
+  <object id="25" type="Room" x="64" y="64" width="384" height="320"/>
+  <object id="26" name="Bed" type="Furniture" x="256" y="128" width="192" height="128"/>
+  <object id="27" type="Furniture" x="384" y="256" width="64" height="64"/>
+  <object id="28" type="Furniture" x="384" y="64" width="64" height="64"/>
+  <object id="44" type="Furniture" x="64" y="64" width="64" height="128"/>
+  <object id="59" name="Player" x="320" y="256" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="Talkers">
+  <object id="29" name="Bed" x="256" y="128" width="192" height="128">
+   <properties>
+    <property name="text" value="bed"/>
+   </properties>
+  </object>
+  <object id="33" name="Bedside table" x="384" y="64" width="64" height="64">
+   <properties>
+    <property name="text" value="table-top"/>
+   </properties>
+  </object>
+  <object id="34" name="Bedside Table 2" x="384" y="256" width="64" height="64">
+   <properties>
+    <property name="text" value="table-bottom"/>
+   </properties>
+  </object>
+  <object id="38" name="Bedroom window" x="64" y="0" width="384" height="64">
+   <properties>
+    <property name="text" value="window"/>
+   </properties>
+  </object>
+  <object id="45" name="Vanity" x="64" y="64" width="64" height="128">
+   <properties>
+    <property name="text" value="vanity"/>
+   </properties>
+  </object>
+  <object id="61" name="Mess" x="128" y="128" width="64" height="64">
+   <properties>
+    <property name="text" value="mess"/>
+   </properties>
+  </object>
+  <object id="62" name="Plaster" x="256" y="256" width="64" height="64">
+   <properties>
+    <property name="text" value="plaster"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Portals">
+  <properties>
+   <property name="facing" value="south"/>
+   <property name="map" value="corridor"/>
+   <property name="tx" value="6"/>
+   <property name="ty" value="0"/>
+   <property name="walk" value="true"/>
+  </properties>
+  <object id="60" name="To Lounge" x="0" y="256" width="64" height="64">
+   <properties>
+    <property name="facing" value="west"/>
+    <property name="map" value="barbican__flat__lounge"/>
+    <property name="tx" value="5"/>
+    <property name="ty" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

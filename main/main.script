@@ -19,6 +19,7 @@ function init(self)
 
     sprite.set_constant("/barbican__flat__bedroom#map", "tint", C.OFF_TINT)
     sprite.set_constant("/barbican__flat__lounge#map", "tint", C.OFF_TINT)
+    sprite.set_constant("/barbican__corridor#map", "tint", C.OFF_TINT)
     sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", C.ON_TINT)
     sprite.set_constant("/player#sprite", "tint", C.ON_TINT)
 
