@@ -18,11 +18,19 @@ M.get_portals = function(map)
 end
 
 M.is_portal_at = function(map, pos)
-    return _.findWhere(M.get_portals(map), M.tile_pos_to_px_pos(pos)) ~= nil
+    return _.include(M.get_portals(map), function(object)
+        return M.object_covers(object, pos)
+    end)
 end
 
 M.portal_at = function(map, pos)
-    return M.convert_tiled_portal(_.findWhere(M.get_portals(map), M.tile_pos_to_px_pos(pos)))
+    return M.convert_tiled_portal(
+        M.get_portals(map)[
+            _.detect(M.get_portals(map), function(object)
+                return M.object_covers(object, pos)
+            end)
+        ]
+    )
 end
 
 M.tile_pos_to_px_pos = function(pos)
@@ -37,7 +45,7 @@ M.convert_tiled_portal = function(portal)
         position = {
             tx = tonumber(portal.properties.tx),
             ty = tonumber(portal.properties.ty),
-            orientation = portal.properties.facing,
+            orientation = portal.properties.facing
         },
         map = portal.properties.map
     }

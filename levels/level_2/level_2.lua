@@ -1,6 +1,6 @@
 local bedroom_data = require "levels/level_2/barbican__flat__bedroom"
-local lounge_data =  require "levels/level_2/barbican__flat__lounge"
-local corridor_data =  require "levels/level_2/barbican__corridor"
+local lounge_data = require "levels/level_2/barbican__flat__lounge"
+local corridor_data = require "levels/level_2/barbican__corridor"
 local bedroom_texts = require "levels/level_2/barbican__flat__bedroom__texts"
 local lounge_texts = require "levels/level_2/barbican__flat__lounge__texts"
 local corridor_texts = require "levels/level_2/barbican__corridor__texts"
@@ -8,13 +8,13 @@ local corridor_texts = require "levels/level_2/barbican__corridor__texts"
 local maps = {
     barbican__flat__bedroom = bedroom_data,
     barbican__flat__lounge = lounge_data,
-    barbican__flat__corridor = corridor_data
+    barbican__corridor = corridor_data
 }
 
 local texts = {
     barbican__flat__bedroom = bedroom_texts,
     barbican__flat__lounge = lounge_texts,
-    barbican__flat__corridor = corridor_texts
+    barbican__corridor = corridor_texts
 }
 
 local active_map_name = "barbican__flat__bedroom"
