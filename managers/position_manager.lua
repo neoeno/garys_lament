@@ -6,7 +6,7 @@ local Y_IDX = 2
 
 local player_pos
 
-local _state = machine.create({
+local player_state = machine.create({
     initial = "standing",
     events = {
         { name = "walk",      from = "standing",              to = "walking" },
@@ -37,8 +37,8 @@ end
 
 local M = {}
 
-M.state = function()
-    return _state;
+M.player_state = function()
+    return player_state;
 end
 
 M.set_player_position = function(pos)
