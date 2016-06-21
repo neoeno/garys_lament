@@ -1,5 +1,7 @@
 local machine = require('vendor.statemachine')
 
+local text = nil
+
 local state = machine.create({
     initial = "stopped",
     events = {
@@ -21,10 +23,14 @@ local state = machine.create({
     }
 })
 
-function text_machine()
+local M = {}
+
+M.text_machine = function()
     return state
 end
 
-function get_current_text()
+M.get_current_text = function()
     return text
 end
+
+return M

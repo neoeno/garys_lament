@@ -1,6 +1,8 @@
 require "managers.position_manager"
-require "managers.text_manager"
 require "levels.level_1.level_1"
+
+local text_manager = require "managers/text_manager";
+local text_machine = text_manager.text_machine()
 local input_manager = require "managers/input_manager"
 local timer = require "vendor/timer"
 local _ = require('vendor.moses')
@@ -63,14 +65,14 @@ function respond_to_engagement_intent()
         end
     end
     if current_text_routine then
-        if text_machine():is("animating") then
-            text_machine():skip()
+        if text_machine:is("animating") then
+            text_machine:skip()
         else
             local status, text = coroutine.resume(current_text_routine)
             if coroutine.status(current_text_routine) == "suspended" then
-                text_machine():animate(text)
+                text_machine:animate(text)
             else
-                text_machine():finish()
+                text_machine:finish()
                 current_text_routine = nil
                 state():disengage()
             end
@@ -140,7 +142,11 @@ end
 
 local current_player_animation_id = "standing_south";
 function update_player_animation()
-    local disposition = (state():is("walking") or (not state():is("teleporting") and input_manager.has_movement_intent())) and "walking" or "standing"
+    local disposition = (state():is("walking")
+                         or (
+                            not state():is("teleporting")
+                            and input_manager.has_movement_intent())
+                        ) and "walking" or "standing"
     local orientation = get_player_position().orientation
     local animation_id = (disposition .. "_" .. orientation)
     if current_player_animation_id == animation_id then return end

@@ -1,8 +1,9 @@
 local timer = require "vendor/timer"
 local C = require "main/constants"
 local wrap = require "vendor/wrap"
+local text_manager = require "managers/text_manager"
+local text_machine = text_manager.text_machine()
 local timers = {}
-require "managers.text_manager"
 
 function init(self)
     self.dialog_panel_id = gui.get_node("dialog_panel")
@@ -29,7 +30,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function get_current_wrapped_text()
-    return wrap(get_current_text(), 34)
+    return wrap(text_manager.get_current_text(), 34)
 end
 
 function initialize_text_animation(self, text)
@@ -48,6 +49,6 @@ function step_text_animation(self)
         coroutine.resume(self.text_animation)
         timer.frames(timers, 2, function() step_text_animation(self) end)
     else
-        text_machine():complete()
+        text_machine:complete()
     end
 end
