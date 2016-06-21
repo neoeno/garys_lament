@@ -12,7 +12,17 @@ local has_engagement_intent = false
 
 local active_direction_key = nil
 
-function accept_input(hashed_action_id, action)
+function is_engagement_key(key)
+    return C.KEY_TYPES[key] == "engagement"
+end
+
+function is_movement_key(key)
+    return C.KEY_TYPES[key] == "movement"
+end
+
+local M = {}
+
+M.accept_input = function(hashed_action_id, action)
     local key = C.HASHED_ACTION_TO_KEY[hashed_action_id]
     if is_movement_key(key) then
         if action.value == 1 then
@@ -30,25 +40,19 @@ function accept_input(hashed_action_id, action)
     end
 end
 
-function has_movement_intent()
-    return _.any(_.values(movement_input_state), _.identity)
+M.has_movement_intent = function()
+    return movement_input_state[active_direction_key] == true
 end
 
-function pop_engagement_intent()
+M.pop_engagement_intent = function()
     if has_engagement_intent then
         has_engagement_intent = false
         return true
     end
 end
 
-function get_movement_intent()
+M.get_movement_intent = function()
     return C.KEY_TO_MOVEMENT[active_direction_key]
 end
 
-function is_engagement_key(key)
-    return C.KEY_TYPES[key] == "engagement"
-end
-
-function is_movement_key(key)
-    return C.KEY_TYPES[key] == "movement"
-end
+return M
