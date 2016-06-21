@@ -1,4 +1,3 @@
-local current_map_name = "barbican__flat__bedroom"
 local bedroom_data = require "levels/level_1/barbican__flat__bedroom"
 local lounge_data =  require "levels/level_1/barbican__flat__lounge"
 local bedroom_texts = require "levels/level_1/barbican__flat__bedroom__texts"
@@ -14,18 +13,24 @@ local texts = {
     barbican__flat__lounge = lounge_texts
 }
 
-function change_current_map(map)
-    current_map_name = map
+local active_map_name = "barbican__flat__bedroom"
+
+local M = {}
+
+M.change_map = function(map)
+    active_map_name = map
 end
 
-function get_current_map_name()
-    return current_map_name
+M.get_map_layer_name = function(map)
+    return active_map_name
 end
 
-function get_current_map()
-    return maps[current_map_name]
+M.get_map = function()
+    return maps[active_map_name]
 end
 
-function get_current_texts()
-    return texts[current_map_name]
+M.get_texts = function()
+    return texts[active_map_name]
 end
+
+return M

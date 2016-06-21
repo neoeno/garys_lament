@@ -4,7 +4,7 @@ local Map = require "lib/map"
 local Space = require "lib/space"
 local timer = require "vendor/timer"
 
-require "levels.level_1.level_1"
+local level = require "levels/level_1/level_1"
 local input_manager = require "managers/input_manager"
 local position_manager = require "managers/position_manager"
 local text_manager = require "managers/text_manager"
@@ -19,7 +19,7 @@ function init(self)
 
     sprite.set_constant("/barbican__flat__bedroom#map", "tint", C.OFF_TINT)
     sprite.set_constant("/barbican__flat__lounge#map", "tint", C.OFF_TINT)
-    sprite.set_constant("/"..get_current_map_name().."#map", "tint", C.ON_TINT)
+    sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", C.ON_TINT)
     sprite.set_constant("/player#sprite", "tint", C.ON_TINT)
 
     local pos = go.get_position("/player")
@@ -51,24 +51,24 @@ function respond_to_movement_intent()
     local player_pos = position_manager.get_player_position()
     local intended_position = Space.position_after_movement(player_pos, movement_intent)
     position_manager.set_orientation(Space.movement_orientation(movement_intent))
-    if Map.position_is_walkable(get_current_map(), intended_position) then
+    if Map.position_is_walkable(level.get_map(), intended_position) then
         player:walk(movement_intent)
         animate_player_movement(function()
             player:halt()
             update_player_animation()
         end)
-    elseif Map.is_portal_at(get_current_map(), intended_position) then
-        follow_portal(Map.portal_at(get_current_map(), intended_position))
+    elseif Map.is_portal_at(level.get_map(), intended_position) then
+        follow_portal(Map.portal_at(level.get_map(), intended_position))
     end
 end
 
 local current_text_routine
 function respond_to_engagement_intent()
     if not current_text_routine then
-        if (Map.position_is_engageable(get_current_map(), Space.position_facing(position_manager.get_player_position()))) then
+        if (Map.position_is_engageable(level.get_map(), Space.position_facing(position_manager.get_player_position()))) then
             player:engage()
-            local engagement_name = Map.get_engagement_at_position(get_current_map(), Space.position_facing(position_manager.get_player_position()))
-            current_text_routine = get_current_texts()[engagement_name]()
+            local engagement_name = Map.get_engagement_at_position(level.get_map(), Space.position_facing(position_manager.get_player_position()))
+            current_text_routine = level.get_texts()[engagement_name]()
         end
     end
     if current_text_routine then
@@ -93,7 +93,7 @@ function follow_portal(portal)
             player:teleport()
         end,
         function()
-            change_current_map(portal.map)
+            level.change_map(portal.map)
             position_manager.set_player_position(portal.position);
             update_position()
         end,
@@ -127,7 +127,7 @@ end
 
 function set_screen_tint_fn(tint)
     return function()
-        sprite.set_constant("/"..get_current_map_name().."#map", "tint", tint)
+        sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", tint)
         sprite.set_constant("/player#sprite", "tint", tint)
     end
 end
