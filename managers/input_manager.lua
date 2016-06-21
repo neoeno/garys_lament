@@ -1,4 +1,4 @@
-local _ = require "vendor.moses"
+local _ = require "vendor/moses"
 local C = require "main/constants"
 
 local movement_input_state = {

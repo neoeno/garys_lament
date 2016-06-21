@@ -1,4 +1,4 @@
-local _ = require('vendor.moses')
+local _ = require "vendor/moses"
 
 local M = {}
 
