@@ -147,7 +147,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "table-top"
+            ["text"] = "table_top"
           }
         },
         {
@@ -162,7 +162,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "table-bottom"
+            ["text"] = "table_bottom"
           }
         },
         {

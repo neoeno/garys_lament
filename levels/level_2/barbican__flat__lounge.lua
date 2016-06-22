@@ -119,7 +119,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "bookcase-top"
+            ["text"] = "bookcase_top"
           }
         },
         {
@@ -149,7 +149,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "window-left"
+            ["text"] = "window_left"
           }
         },
         {
@@ -164,7 +164,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "window-right"
+            ["text"] = "window_right"
           }
         },
         {
@@ -194,7 +194,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "bookcase-bottom"
+            ["text"] = "bookcase_bottom"
           }
         },
         {

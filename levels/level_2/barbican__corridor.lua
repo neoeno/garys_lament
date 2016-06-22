@@ -67,7 +67,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "door-1"
+            ["text"] = "door_1"
           }
         },
         {
@@ -82,7 +82,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "door-2"
+            ["text"] = "door_2"
           }
         },
         {
@@ -97,7 +97,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "door-3"
+            ["text"] = "door_3"
           }
         },
         {
@@ -112,7 +112,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "door-4"
+            ["text"] = "door_4"
           }
         },
         {
@@ -127,7 +127,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "door-5"
+            ["text"] = "door_5"
           }
         },
         {
@@ -142,7 +142,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text"] = "door-7"
+            ["text"] = "door_7"
           }
         }
       }

@@ -13,7 +13,7 @@
  <objectgroup name="Talkers">
   <object id="19" name="Bookcase" x="320" y="384" width="64" height="64">
    <properties>
-    <property name="text" value="bookcase-top"/>
+    <property name="text" value="bookcase_top"/>
    </properties>
   </object>
   <object id="22" name="Phone" x="128" y="384" width="64" height="64">
@@ -23,12 +23,12 @@
   </object>
   <object id="30" name="Shakespeare Tower" x="0" y="0" width="192" height="64">
    <properties>
-    <property name="text" value="window-left"/>
+    <property name="text" value="window_left"/>
    </properties>
   </object>
   <object id="31" name="Shakespeare House 2" x="192" y="0" width="192" height="64">
    <properties>
-    <property name="text" value="window-right"/>
+    <property name="text" value="window_right"/>
    </properties>
   </object>
   <object id="36" name="Coffee" x="0" y="192" width="64" height="64">
@@ -38,7 +38,7 @@
   </object>
   <object id="40" name="Bookcase 2" x="320" y="448" width="64" height="64">
    <properties>
-    <property name="text" value="bookcase-bottom"/>
+    <property name="text" value="bookcase_bottom"/>
    </properties>
   </object>
   <object id="42" name="Desk Notebook" x="320" y="64" width="64" height="128">

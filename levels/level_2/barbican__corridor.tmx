@@ -9,32 +9,32 @@
  <objectgroup name="Talkers">
   <object id="60" x="320" y="0" width="64" height="64">
    <properties>
-    <property name="text" value="door-1"/>
+    <property name="text" value="door_1"/>
    </properties>
   </object>
   <object id="61" x="704" y="0" width="64" height="64">
    <properties>
-    <property name="text" value="door-2"/>
+    <property name="text" value="door_2"/>
    </properties>
   </object>
   <object id="62" x="960" y="0" width="64" height="64">
    <properties>
-    <property name="text" value="door-3"/>
+    <property name="text" value="door_3"/>
    </properties>
   </object>
   <object id="63" x="1344" y="0" width="64" height="64">
    <properties>
-    <property name="text" value="door-4"/>
+    <property name="text" value="door_4"/>
    </properties>
   </object>
   <object id="64" x="1600" y="0" width="64" height="64">
    <properties>
-    <property name="text" value="door-5"/>
+    <property name="text" value="door_5"/>
    </properties>
   </object>
   <object id="65" x="2240" y="0" width="64" height="64">
    <properties>
-    <property name="text" value="door-7"/>
+    <property name="text" value="door_7"/>
    </properties>
   </object>
  </objectgroup>
