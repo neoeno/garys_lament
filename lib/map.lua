@@ -40,6 +40,13 @@ M.tile_pos_to_px_pos = function(pos)
     }
 end
 
+M.map_pos_to_game_pos = function(pos)
+    return {
+        x = pos.x + 32,
+        y = pos.y * -1 - 32
+    }
+end
+
 M.convert_tiled_portal = function(portal)
     return {
         position = {
@@ -51,7 +58,7 @@ M.convert_tiled_portal = function(portal)
     }
 end
 
-M.position_is_walkable = function(map, pos)
+M.position_is_walkable = function(map, npcs, pos)
     local is_in_room = _.include(M.get_objects_by_type(map, "Room"), function(object)
         return M.object_covers(object, pos)
     end)
@@ -60,7 +67,11 @@ M.position_is_walkable = function(map, pos)
         return not M.object_covers(object, pos)
     end)
 
-    return is_in_room and is_not_on_furniture
+    local is_not_npc = _.all(npcs, function(n, object)
+        return not M.object_covers(object, pos)
+    end)
+
+    return is_in_room and is_not_on_furniture and is_not_npc
 end
 
 M.position_is_engageable = function(map, pos)

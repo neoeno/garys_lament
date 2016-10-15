@@ -23,12 +23,26 @@ function init(self)
     sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", C.ON_TINT)
     sprite.set_constant("/player#sprite", "tint", C.ON_TINT)
 
+    render_map(level.get_map_layer_name())
+
     local pos = go.get_position("/player")
     position_manager.set_player_position({
         tx = Space.px_to_tx(pos.x),
         ty = Space.py_to_ty(pos.y),
         orientation = "south"
     });
+end
+
+function render_map(map_name)
+    level.change_map(map_name)
+    for i, npc in pairs(level.get_npcs()) do
+        local npc_obj_id = go.get_id(npc.id)
+        local target_pos = Map.map_pos_to_game_pos(npc)
+        local pos = go.get_position(npc_obj_id)
+        pos.x = target_pos.x
+        pos.y = target_pos.y
+        go.set_position(pos, npc_obj_id)
+    end
 end
 
 function update(self, dt)
@@ -52,7 +66,7 @@ function respond_to_movement_intent(movement_intent)
     local player_pos = position_manager.get_player_position()
     local intended_position = Space.position_after_movement(player_pos, movement_intent)
     position_manager.set_orientation(Space.movement_orientation(movement_intent))
-    if Map.position_is_walkable(level.get_map(), intended_position) then
+    if Map.position_is_walkable(level.get_map(), level.get_npcs(), intended_position) then
         player:walk(movement_intent)
         animate_player_movement(function()
             player:halt()
@@ -103,7 +117,7 @@ function follow_portal(portal)
             player:teleport()
         end,
         function()
-            level.change_map(portal.map)
+            render_map(portal.map)
             position_manager.set_player_position(portal.position);
             update_position()
         end,

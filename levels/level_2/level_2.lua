@@ -33,6 +33,19 @@ M.get_map = function()
     return maps[active_map_name]
 end
 
+M.get_npcs = function()
+    return {
+        {
+            id = "geoff",
+            sprite = "player",
+            x = 192,
+            y = 192,
+            width = 64,
+            height = 64
+        }
+    }
+end
+
 M.get_texts = function()
     return texts[active_map_name]
 end
