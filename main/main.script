@@ -40,7 +40,7 @@ function render_map(map_name)
     level.change_map(map_name)
     for i, npc in pairs(level.get_npcs()) do
         local target_pos = Map.map_pos_to_game_pos(npc)
-        local pos = vmath.vector3(target_pos.x, target_pos.y, 2)
+        local pos = vmath.vector3(target_pos.x, target_pos.y, 1)
         npc_object_ids = collectionfactory.create("#npc_factory", pos)
     end
 end

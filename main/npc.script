@@ -1,0 +1,32 @@
+local C = require "main/constants"
+local timer = require "vendor/timer"
+
+function init(self)
+    self.timers = {}
+    sprite.set_constant("#spritey", "tint", C.ON_TINT)
+    schedule_shift(self)
+end
+
+function update(self, dt)
+    timer.update(self.timers, dt)
+end
+
+function schedule_shift(self)
+    timer.seconds(self.timers, 5, function()
+        shift()
+        schedule_shift(self)
+    end)
+end
+
+function shift()
+    local randomActionID = math.random(4)
+    if randomActionID == 0 then
+        msg.post("#spritey", "play_animation", {id = hash("standing_north")})
+    elseif randomActionID == 1 then
+        msg.post("#spritey", "play_animation", {id = hash("standing_east")})
+    elseif randomActionID == 2 then
+        msg.post("#spritey", "play_animation", {id = hash("standing_south")})
+    else
+        msg.post("#spritey", "play_animation", {id = hash("standing_west")})
+    end
+end
