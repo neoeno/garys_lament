@@ -12,6 +12,7 @@ local text_manager = require "managers/text_manager"
 local player = position_manager.player_state()
 local text_machine = text_manager.text_machine()
 local timers = {}
+local npc_object_ids = {}
 
 function init(self)
     msg.post("/camera#camera", "acquire_camera_focus")
@@ -34,14 +35,13 @@ function init(self)
 end
 
 function render_map(map_name)
+    go.delete_all(npc_object_ids)
+    npc_object_ids = {}
     level.change_map(map_name)
     for i, npc in pairs(level.get_npcs()) do
-        local npc_obj_id = go.get_id(npc.id)
         local target_pos = Map.map_pos_to_game_pos(npc)
-        local pos = go.get_position(npc_obj_id)
-        pos.x = target_pos.x
-        pos.y = target_pos.y
-        go.set_position(pos, npc_obj_id)
+        local pos = vmath.vector3(target_pos.x, target_pos.y, 2)
+        npc_object_ids = collectionfactory.create("#npc_factory", pos)
     end
 end
 

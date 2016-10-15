@@ -34,16 +34,20 @@ M.get_map = function()
 end
 
 M.get_npcs = function()
-    return {
-        {
-            id = "geoff",
-            sprite = "player",
-            x = 192,
-            y = 192,
-            width = 64,
-            height = 64
-        }
-    }
+    return ({
+        barbican__flat__bedroom = {
+            {
+                id = "geoff",
+                sprite = "player",
+                x = 128,
+                y = 64,
+                width = 64,
+                height = 64
+            }
+        },
+        barbican__flat__lounge = {},
+        barbican__corridor = {}
+    })[active_map_name]
 end
 
 M.get_texts = function()
