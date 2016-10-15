@@ -89,9 +89,9 @@ end
 local current_text_routine
 function respond_to_engagement_intent()
     if not current_text_routine then
-        if (Map.position_is_engageable(level.get_map(), Space.position_facing(position_manager.get_player_position()))) then
+        if (Map.position_is_engageable(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))) then
             player:engage()
-            local engagement_name = Map.get_engagement_at_position(level.get_map(), Space.position_facing(position_manager.get_player_position()))
+            local engagement_name = Map.get_engagement_at_position(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))
             current_text_routine = level.get_texts()[engagement_name]()
         end
     end

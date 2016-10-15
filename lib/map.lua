@@ -74,16 +74,32 @@ M.position_is_walkable = function(map, npcs, pos)
     return is_in_room and is_not_on_furniture and is_not_npc
 end
 
-M.position_is_engageable = function(map, pos)
+M.position_is_talker = function(map, pos)
     return _.include(M.get_talkers(map), function(object)
         return M.object_covers(object, pos)
     end)
 end
 
-M.get_engagement_at_position = function(map, pos)
-    return M.get_talkers(map)[_.detect(M.get_talkers(map), function(object)
+M.position_is_npc = function(npcs, pos)
+    return _.include(npcs, function(object)
         return M.object_covers(object, pos)
-    end)].properties.text
+    end)
+end
+
+M.position_is_engageable = function(map, npcs, pos)
+    return M.position_is_talker(map, pos) or M.position_is_npc(npcs, pos)
+end
+
+M.get_engagement_at_position = function(map, npcs, pos)
+    if M.position_is_npc(npcs, pos) then
+        return npcs[_.detect(npcs, function(object)
+            return M.object_covers(object, pos)
+        end)].talker_id
+    else
+        return M.get_talkers(map)[_.detect(M.get_talkers(map), function(object)
+            return M.object_covers(object, pos)
+        end)].properties.text
+    end
 end
 
 M.object_covers = function(object, pos)
