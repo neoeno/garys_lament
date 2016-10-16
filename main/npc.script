@@ -1,3 +1,4 @@
+local Space = require "lib/space"
 local C = require "main/constants"
 local timer = require "vendor/timer"
 
@@ -5,6 +6,22 @@ function init(self)
     self.timers = {}
     sprite.set_constant("#spritey", "tint", C.ON_TINT)
     schedule_shift(self)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("set_text_id") then
+        self.text_id = message.text_id
+    elseif message_id == hash("engage_with_tile") then
+        if position_is_us(self, message.position) then
+            -- TODO: make self face player
+            msg.post("/main", "play_text", {text = self.text_id})
+        end
+    end
+end
+
+function position_is_us(self, pos)
+    local self_pos = go.get_position()
+    return pos.tx == Space.px_to_tx(self_pos.x) and pos.ty == Space.py_to_ty(self_pos.y)
 end
 
 function update(self, dt)

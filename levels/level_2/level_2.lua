@@ -43,7 +43,7 @@ M.get_npcs = function()
                 y = 64,
                 width = 64,
                 height = 64,
-                talker_id = "table_bottom"
+                text_id = "table_bottom"
             }
         },
         barbican__flat__lounge = {},

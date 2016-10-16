@@ -42,6 +42,7 @@ function render_map(map_name)
         local target_pos = Map.map_pos_to_game_pos(npc)
         local pos = vmath.vector3(target_pos.x, target_pos.y, 1)
         npc_object_ids = collectionfactory.create("#npc_factory", pos)
+        msg.post(npc_object_ids["/sprite"], "set_text_id", {text_id = npc.text_id})
     end
 end
 
@@ -89,11 +90,12 @@ end
 local current_text_routine
 function respond_to_engagement_intent()
     if not current_text_routine then
-        if (Map.position_is_engageable(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))) then
-            player:engage()
-            local engagement_name = Map.get_engagement_at_position(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))
-            current_text_routine = level.get_texts()[engagement_name]()
-        end
+        msg.post("/collection0/sprite", "engage_with_tile", {position = Space.position_facing(position_manager.get_player_position())})
+        -- if (Map.position_is_engageable(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))) then
+        --     player:engage()
+        --     local engagement_name = Map.get_engagement_at_position(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))
+        --     current_text_routine = level.get_texts()[engagement_name]()
+        -- end
     end
     if current_text_routine then
         if text_machine:is("animating") then
@@ -108,6 +110,14 @@ function respond_to_engagement_intent()
                 player:disengage()
             end
         end
+    end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("play_text") then
+        player:engage()
+        current_text_routine = level.get_texts()[message.text]()
+        respond_to_engagement_intent()
     end
 end
 
