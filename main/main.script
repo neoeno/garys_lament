@@ -19,10 +19,10 @@ function init(self)
     sprite.set_constant("/barbican__flat__bedroom#map", "tint", C.OFF_TINT)
     sprite.set_constant("/barbican__flat__lounge#map", "tint", C.OFF_TINT)
     sprite.set_constant("/barbican__corridor#map", "tint", C.OFF_TINT)
-    sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", C.ON_TINT)
+    sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", C.OFF_TINT)
     sprite.set_constant("/player#sprite", "tint", C.ON_TINT)
 
-    render_map(level.get_map_layer_name())
+    clear_screen_and_render_map(level.get_map_layer_name())
 
     local pos = go.get_position("/player")
     position_manager.set_player_position({
@@ -32,10 +32,10 @@ function init(self)
     });
 end
 
-function render_map(map_name)
-    go.delete_all(transient_object_ids)
-    transient_object_ids = {}
+function clear_screen_and_render_map(map_name)
+    clear_screen()
     level.change_map(map_name)
+    sprite.set_constant("/"..map_name.."#map", "tint", C.ON_TINT)
     for i, npc in pairs(level.get_npcs()) do
         local target_pos = Map.map_pos_to_game_pos(npc)
         local pos = vmath.vector3(target_pos.x, target_pos.y, 1)
@@ -43,6 +43,12 @@ function render_map(map_name)
         msg.post(created_objects["/sprite"], "set_text_id", {text_id = npc.text_id})
         transient_object_ids = _.append(transient_object_ids, _.values(created_objects))
     end
+end
+
+function clear_screen()
+    sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", C.OFF_TINT)
+    go.delete_all(transient_object_ids)
+    transient_object_ids = {}
 end
 
 function update(self, dt)
@@ -118,7 +124,7 @@ function follow_portal(portal)
             player:teleport()
         end,
         function()
-            render_map(portal.map)
+            clear_screen_and_render_map(portal.map)
             position_manager.set_player_position(portal.position);
             update_position()
         end,
@@ -144,20 +150,20 @@ end
 function portal_animate(beginning, middle, ending)
     beginning()
     step_animate(5, {
-        set_screen_tint_fn(C.SHADE_TINT_3),
-        set_screen_tint_fn(C.SHADE_TINT_2),
-        set_screen_tint_fn(C.SHADE_TINT_1),
-        _.compose(middle, set_screen_tint_fn(C.OFF_TINT)),
-        set_screen_tint_fn(C.SHADE_TINT_2),
-        set_screen_tint_fn(C.SHADE_TINT_3),
-        _.compose(ending, set_screen_tint_fn(C.ON_TINT))
+        set_screen_tint_fn(0.25),
+        set_screen_tint_fn(0.5),
+        set_screen_tint_fn(0.75),
+        _.compose(middle, set_screen_tint_fn(1)),
+        set_screen_tint_fn(0.75),
+        set_screen_tint_fn(0.5),
+        set_screen_tint_fn(0.25),
+        _.compose(ending, set_screen_tint_fn(0))
     })
 end
 
-function set_screen_tint_fn(tint)
+function set_screen_tint_fn(opacity)
     return function()
-        sprite.set_constant("/"..level.get_map_layer_name().."#map", "tint", tint)
-        sprite.set_constant("/player#sprite", "tint", tint)
+        msg.post("/fader#gui", "set_fade", {opacity = opacity})
     end
 end
 

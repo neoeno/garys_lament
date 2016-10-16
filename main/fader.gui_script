@@ -1,0 +1,5 @@
+function on_message(self, message_id, message, sender)
+    if message_id == hash("set_fade") then
+        gui.set_color(gui.get_node("overlay"), vmath.vector4(0, 0, 0, message.opacity))
+    end
+end
