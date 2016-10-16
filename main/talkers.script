@@ -1,0 +1,14 @@
+-- Façade object that pretends to be all engageable objects on a level until
+-- such time as we need to bother creating them all individually like NPCs
+
+local Map = require "lib/map"
+local level = require "levels/level_2/level_2"
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("engage_with_tile") then
+        if Map.position_is_engageable(level.get_map(), message.position) then
+            local text_id = Map.get_engagement_at_position(level.get_map(), message.position)
+            msg.post("/main", "play_text", {text = text_id})
+        end
+    end
+end

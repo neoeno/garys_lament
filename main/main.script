@@ -7,12 +7,10 @@ local timer = require "vendor/timer"
 local level = require "levels/level_2/level_2"
 local input_manager = require "managers/input_manager"
 local position_manager = require "managers/position_manager"
-local text_manager = require "managers/text_manager"
 
 local player = position_manager.player_state()
-local text_machine = text_manager.text_machine()
 local timers = {}
-local npc_object_ids = {}
+local transient_object_ids = {}
 
 function init(self)
     msg.post("/camera#camera", "acquire_camera_focus")
@@ -35,14 +33,15 @@ function init(self)
 end
 
 function render_map(map_name)
-    go.delete_all(npc_object_ids)
-    npc_object_ids = {}
+    go.delete_all(transient_object_ids)
+    transient_object_ids = {}
     level.change_map(map_name)
     for i, npc in pairs(level.get_npcs()) do
         local target_pos = Map.map_pos_to_game_pos(npc)
         local pos = vmath.vector3(target_pos.x, target_pos.y, 1)
-        npc_object_ids = collectionfactory.create("#npc_factory", pos)
-        msg.post(npc_object_ids["/sprite"], "set_text_id", {text_id = npc.text_id})
+        local created_objects = collectionfactory.create("#npc_factory", pos)
+        msg.post(created_objects["/sprite"], "set_text_id", {text_id = npc.text_id})
+        transient_object_ids = _.append(transient_object_ids, _.values(created_objects))
     end
 end
 
@@ -87,37 +86,27 @@ function respond_to_movement_intent(movement_intent)
     end
 end
 
-local current_text_routine
 function respond_to_engagement_intent()
-    if not current_text_routine then
-        msg.post("/collection0/sprite", "engage_with_tile", {position = Space.position_facing(position_manager.get_player_position())})
-        -- if (Map.position_is_engageable(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))) then
-        --     player:engage()
-        --     local engagement_name = Map.get_engagement_at_position(level.get_map(), level.get_npcs(), Space.position_facing(position_manager.get_player_position()))
-        --     current_text_routine = level.get_texts()[engagement_name]()
-        -- end
+    if player:is('engaging') then
+        msg.post("/dialog#gui", "advance_text_sequence")
+    elseif player:can('engage') then
+        broadcast_to_engagables("engage_with_tile", {position = Space.position_facing(position_manager.get_player_position())})
     end
-    if current_text_routine then
-        if text_machine:is("animating") then
-            text_machine:skip()
-        else
-            local status, text = coroutine.resume(current_text_routine)
-            if coroutine.status(current_text_routine) == "suspended" then
-                text_machine:animate(text)
-            else
-                text_machine:finish()
-                current_text_routine = nil
-                player:disengage()
-            end
-        end
+end
+
+function broadcast_to_engagables(message_id, message)
+    msg.post("#talkers", message_id, message)
+    for i, object_id in pairs(transient_object_ids) do
+        msg.post(object_id, message_id, message)
     end
 end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("play_text") then
         player:engage()
-        current_text_routine = level.get_texts()[message.text]()
-        respond_to_engagement_intent()
+        msg.post("/dialog#gui", "start_text_sequence", {text = message.text})
+    elseif message_id == hash("engagement_end") then
+        player:disengage()
     end
 end
 

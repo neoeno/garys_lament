@@ -1,40 +1,83 @@
+local level = require "levels/level_2/level_2"
 local timer = require "vendor/timer"
-local C = require "main/constants"
 local wrap = require "vendor/wrap"
-local text_manager = require "managers/text_manager"
-local text_machine = text_manager.text_machine()
-local timers = {}
+local machine = require "vendor/statemachine"
+
+function create_state_machine(self)
+    return machine.create({
+        initial = "stopped",
+        events = {
+            -- Start animating a new section
+            { name = "animate",  from = {"showing", "stopped"},   to = "animating" },
+            -- Complete the animation naturally
+            { name = "complete", from = "animating",              to = "showing" },
+            -- Skip the rest of the animation
+            { name = "skip",     from = "animating",              to = "showing" },
+            -- Close the dialogue panel
+            { name = "finish",   from = "showing",                to = "stopped" },
+        },
+        callbacks = {
+            onanimate = function(a,b,c,d,msg)
+                open_dialog(self)
+                start_text_animation(self, msg)
+            end,
+            onskip = function(a,b,c,d,e)
+                complete_text_animation(self)
+            end,
+            oncomplete = function(a,b,c,d,e)
+                complete_text_animation(self)
+            end,
+            onfinish = function(a,b,c,d,e)
+                close_dialog(self)
+            end,
+            onstatechange = function(a,event,c,d,e)
+                print("T",a,b,c,d,e)
+            end
+        }
+    })
+end
 
 function init(self)
+    self.timers = {}
+    self.text_machine = create_state_machine(self)
     self.dialog_panel_id = gui.get_node("dialog_panel")
     self.dialog_text_id = gui.get_node("dialog_text")
     gui.set_enabled(self.dialog_panel_id, false)
 end
 
 function update(self, dt)
-    timer.update(timers, dt)
+    timer.update(self.timers, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    if hash("text_machine_state_change") == message_id then
-        if message.event == "animate" then
-            gui.set_enabled(self.dialog_panel_id, true)
-            initialize_text_animation(self, get_current_wrapped_text())
-        elseif message.event == "skip" or message.event == "complete" then
-            self.text_animation = nil
-            gui.set_text(self.dialog_text_id, get_current_wrapped_text())
-        elseif message.event == "finish" then
-            gui.set_enabled(self.dialog_panel_id, false)
+    if hash("start_text_sequence") == message_id then
+        self.text_sequence = level.get_texts()[message.text]()
+        advance_text_sequence(self)
+    elseif hash("advance_text_sequence") == message_id then
+        advance_text_sequence(self)
+    end
+end
+
+-- A text sequence is a series of 'frames', e.g. a conversation might be
+-- one person speaks (frame 1) and another person replies (frame 2)
+function advance_text_sequence(self)
+    if self.text_machine:is("animating") then
+        self.text_machine:skip()
+    else
+        local status, text = coroutine.resume(self.text_sequence)
+        if coroutine.status(self.text_sequence) == "suspended" then
+            self.text_machine:animate(text)
+        else
+            self.text_machine:finish()
         end
     end
 end
 
-function get_current_wrapped_text()
-    return wrap(text_manager.get_current_text(), 34)
-end
-
-function initialize_text_animation(self, text)
-    self.text_animation = coroutine.create(function()
+-- Text animation is the way text appears on the screen, in this case letter
+-- by letter.
+function start_text_animation(self, text)
+    self.displayed_text = text
+    self.text_coroutine = coroutine.create(function()
         for i = 1, string.len(text) do
             gui.set_text(self.dialog_text_id, string.sub(text, 0, i))
             coroutine.yield()
@@ -44,11 +87,30 @@ function initialize_text_animation(self, text)
 end
 
 function step_text_animation(self)
-    if not self.text_animation then return end
-    if coroutine.status(self.text_animation) == "suspended" then
-        coroutine.resume(self.text_animation)
-        timer.frames(timers, 2, function() step_text_animation(self) end)
+    if not self.text_coroutine then return end
+    if coroutine.status(self.text_coroutine) == "suspended" then
+        coroutine.resume(self.text_coroutine)
+        timer.frames(self.timers, 2, function() step_text_animation(self) end)
     else
-        text_machine:complete()
+        self.text_machine:complete()
     end
+end
+
+function complete_text_animation(self)
+    self.text_coroutine = nil
+    gui.set_text(self.dialog_text_id, wrap_text(self.displayed_text))
+end
+
+function open_dialog(self)
+    gui.set_enabled(self.dialog_panel_id, true)
+end
+
+function close_dialog(self)
+    self.displayed_text = nil
+    gui.set_enabled(self.dialog_panel_id, false)
+    msg.post("/main", "engagement_end")
+end
+
+function wrap_text(text)
+    return wrap(text, 34)
 end
