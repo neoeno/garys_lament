@@ -13,9 +13,11 @@ function on_message(self, message_id, message, sender)
         self.text_id = message.text_id
     elseif message_id == hash("engage_with_tile") then
         if position_is_us(self, message.position) then
-            -- TODO: make self face player
+            face_player(self, message.position)
             msg.post("/main", "play_text", {text = self.text_id})
         end
+    elseif message_id == hash("end_engagement") then
+        schedule_shift(self)
     end
 end
 
@@ -28,11 +30,21 @@ function update(self, dt)
     timer.update(self.timers, dt)
 end
 
+function face_player(self, position)
+    stop_shifting(self)
+    local face = Space.reverse_orientation(position.orientation)
+    msg.post("#spritey", "play_animation", {id = hash("standing_" .. face)})
+end
+
 function schedule_shift(self)
     timer.seconds(self.timers, 5, function()
         shift()
         schedule_shift(self)
     end)
+end
+
+function stop_shifting(self)
+    self.timers = {}
 end
 
 function shift()

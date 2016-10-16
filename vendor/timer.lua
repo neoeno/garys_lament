@@ -1,3 +1,5 @@
+local _ = require "vendor/moses"
+
 --- Module that can be used to get a callback when a certain amount of time has elapsed
 --
 -- @usage
@@ -30,11 +32,6 @@ function M.frames(timers, frames, callback)
     else
         table.insert(timers, { frames = frames, callback = callback })
     end
-end
-
---- Cancel all timers. Callbacks will NOT be invoked.
-function M.cancel_all(timers)
-    timers = {}
 end
 
 --- Call this function once per frame to continuously check for completed timers

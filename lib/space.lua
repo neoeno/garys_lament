@@ -28,6 +28,18 @@ M.position_facing = function(pos)
     return M.position_after_movement(pos, movement)
 end
 
+M.reverse_orientation = function(orientation)
+    if orientation == 'north' then
+        return 'south'
+    elseif orientation == 'south' then
+        return 'north'
+    elseif orientation == 'east' then
+        return 'west'
+    elseif orientation == 'west' then
+        return 'east'
+    end
+end
+
 M.px_to_tx = function(px)
     return ((px + 32) / 64) - 1
 end

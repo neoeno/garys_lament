@@ -105,7 +105,9 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("play_text") then
         player:engage()
         msg.post("/dialog#gui", "start_text_sequence", {text = message.text})
+        self.engaging_with_object = sender
     elseif message_id == hash("engagement_end") then
+        msg.post(self.engaging_with_object, "end_engagement")
         player:disengage()
     end
 end
